@@ -1,0 +1,73 @@
+{% extends "admin/admin_base.html.twig" %}
+
+{% block title %}Users{% endblock %}
+
+{% block content_header %}
+    <h1>
+        Users
+        <small>All Users</small>
+    </h1>
+{% endblock content_header %}
+
+{% block content %}
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+                <a class="btn btn-app text-center">
+                    <i class="fa fa-plus"></i> New User
+                </a>
+            </div>
+            <hr />
+            <div class="row">
+                {% for user in users %}
+                    <div class="col-xs-12 col-md-4 col-lg-4">
+                        <div class="box box-widget widget-user">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <div class="widget-user-header bg-yellow">
+                                <h3 class="widget-user-username">{{ user.fname|e }} {{ user.lname|e }}</h3>
+                                <h5 class="widget-user-desc">{{ user.email|e }}</h5>
+                            </div>
+                            <div class="widget-user-image">
+                                <img class="img-circle" src="../photos/{{ user.photo }}" alt="User Avatar">
+                            </div>
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-xs-4 col-sm-4 border-right">
+                                        <div class="description-block">
+                                            <a class="btn btn-app">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </a>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col-xs-4 col -->
+                                    <div class="col-xs-4 col-sm-4 border-right">
+                                        <div class="description-block">
+                                            <a class="btn btn-app">
+                                                <i class="fa fa-lock"></i> Password
+                                            </a>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <div class="col-xs-4 col-sm-4 border-right">
+                                        <div class="description-block">
+                                            <a class="btn btn-app">
+                                                <i class="fa fa-close"></i> Delete
+                                            </a>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+
+                                <!-- /.row -->
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </section>
+        <!-- /.content -->
+{% endblock content %}

@@ -1,0 +1,123 @@
+{% extends "admin/admin_base.html.twig" %}
+
+{% block title %}Gallery{% endblock %}
+
+{% block content_header %}
+    <h1>
+        Photo Gallery
+        <small>All </small>
+    </h1>
+{% endblock content_header %}
+
+{% block content %}
+        <!-- Main content -->
+        <section class="content photos">
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputFile">Upload Photo - {{ adminName }}</label>
+                            <input type="file" id="exampleInputFile">
+                            <p class="help-block">Example block-level help text here.</p>
+                        </div>
+
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <!-- /.box -->
+                </div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- bathroom -->
+                    <div class="box box-default collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Bathroom </h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" style="none;">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><img src="../photos/b-photo1.jpg" class="img-responsive"/> </div>
+                                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><img src="../photos/b-photo2.jpg" class="img-responsive"/> </div>
+                                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><img src="../photos/b-photo3.jpg" class="img-responsive"/> </div>
+                                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><img src="../photos/b-photo4.jpg" class="img-responsive"/> </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-3"><img src="../photos/b-photo1.jpg" class="img-responsive"/> </div>
+                                <div class="col-xs-3"><img src="../photos/b-photo2.jpg" class="img-responsive"/> </div>
+                                <div class="col-xs-3"><img src="../photos/b-photo3.jpg" class="img-responsive"/> </div>
+                                <div class="col-xs-3"><img src="../photos/b-photo4.jpg" class="img-responsive"/> </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- bedroom -->
+                    <div class="box box-default collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Bedroom </h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" style="display: none;">
+                            <div class="row">
+                                <div class="col-xs-3"><img src="../photos/bed-photo1.jpg" class="img-responsive"/> </div>
+                                <div class="col-xs-3"><img src="../photos/bed-photo2.jpg" class="img-responsive"/> </div>
+                                <div class="col-xs-3"><img src="../photos/bed-photo3.jpg" class="img-responsive"/> </div>
+                                <div class="col-xs-3"><img src="../photos/bed-photo4.jpeg" class="img-responsive"/> </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-3"><img src="../photos/bed-photo1.jpg" class="img-responsive"/> </div>
+                                <div class="col-xs-3"><img src="../photos/bed-photo2.jpg" class="img-responsive"/> </div>
+                                <div class="col-xs-3"><img src="../photos/bed-photo3.jpg" class="img-responsive"/> </div>
+                                <div class="col-xs-3"><img src="../photos/bed-photo4.jpeg" class="img-responsive"/> </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- kitchen -->
+                    <div class="box box-default collapsed-box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Kitchen </h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" style="display: none;">
+                            <div class="row">
+                                <div class="col-xs-3 photo-frame"><img src="../photos/k-photo1.jpg" class="img-responsive photo"/> </div>
+                                <div class="col-xs-3"><img src="../photos/k-photo2.jpg" class="img-responsive"/> </div>
+                                <div class="col-xs-3"><img src="../photos/k-photo3.jpg" class="img-responsive"/> </div>
+                                <div class="col-xs-3"><img src="../photos/k-photo4.jpg" class="img-responsive"/> </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-3"><img src="../photos/k-photo1.jpg" class="img-responsive"/> </div>
+                                <div class="col-xs-3"><img src="../photos/k-photo2.jpg" class="img-responsive"/> </div>
+                                <div class="col-xs-3"><img src="../photos/k-photo3.jpg" class="img-responsive"/> </div>
+                                <div class="col-xs-3"><img src="../photos/k-photo4.jpg" class="img-responsive"/> </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+        <!-- /.content -->
+{% endblock content %}
