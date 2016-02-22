@@ -12,12 +12,14 @@
 {% block content %}
         <!-- Main content -->
         <section class="content">
-
+            {% include 'admin/modals/user_modal.html.twig.html' %}
             <div class="row">
-                <a class="btn btn-app text-center">
+                <a class="btn btn-app text-center" data-toggle="modal" data-target="#user-modal">
                     <i class="fa fa-plus"></i> New User
                 </a>
             </div>
+            <!-- end row -->
+
             <hr />
             <div class="row">
                 {% for user in users %}

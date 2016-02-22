@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 require 'vendor/autoload.php';
 
 date_default_timezone_set('America/Los_Angeles');
@@ -42,19 +45,6 @@ $app->notFound(function () use ($app) {
 	$app->render('404.html.twig');
 });
 
-// Session
-$app->add(new \Slim\Middleware\SessionCookie(array(
-	'expires' => '30 minutes',
-	'path' => '/',
-	'domain' => null,
-	'secure' => false,
-	'httponly' => false,
-	'name' => 'slim_session',
-	'secret' => 'blablabla',
-	'cipher' => MCRYPT_RIJNDAEL_256,
-	'cipher_mode' => MCRYPT_MODE_CBC
-)));
-
 
 // Only invoked if mode is "production"
 $app->configureMode('production', function () use ($app) {
@@ -65,9 +55,9 @@ $app->configureMode('production', function () use ($app) {
 });
 
 
-
-
-// Routes
+/**
+ * ALL APP ROUTES
+ */
 
 $app->get('/', function() use ($app, $twig) {
 	echo $app->render('home.html.twig');
@@ -107,17 +97,29 @@ $app->get('/gallery', function () {
 
 
 // Admin routes
-$app->group('/admin', function () use ($app, $twig) {
+$app->group('/admin', function () use ($app) {
 
 
 	$app->get('/', function() use ($app) {
-		echo $app->redirect('admin/login');
+		if ( isset($_SESSION['adminName']) ) {
+			$app->redirect('admin/dashboard');
+		} else {
+			$app->redirect('admin/login');
+		}
 	})->name('admin');
+
+	$app->get('/dashboard', function() use ($app) {
+
+		$app->view->appendData(['adminName' => $_SESSION['adminName']]);
+		$app->view->appendData(['adminPhoto' => $_SESSION['adminPhoto']]);
+
+		echo $app->render('admin/dashboard.html.twig');
+	})->name('dashboard');
 
 	/**
 	 * Entrance Route to the Admin Dashboard
 	 */
-	$app->post('/', function() use ($app, $twig) {
+	$app->post('/', function() use ($app) {
 		// Get User
 		$username = $app->request()->params('username');
 		$password = $app->request()->params('pwd');
@@ -130,8 +132,10 @@ $app->group('/admin', function () use ($app, $twig) {
 				$is_admin = true;
 				$_SESSION['adminName'] = $user->fname . ' ' . $user->lname;
 				$_SESSION['adminPhoto'] = $user->photo;
+
 				$app->view->appendData(['adminName' => $_SESSION['adminName']]);
 				$app->view->appendData(['adminPhoto' => $_SESSION['adminPhoto']]);
+
 			} else {
 				$app->flash('error', 'Invalid Password');
 			}
@@ -151,27 +155,42 @@ $app->group('/admin', function () use ($app, $twig) {
 	});
 
 	$app->get('/logout', function() use ($app){
-		// TODO delete admin cookie
+
+		unset($_SESSION['adminName']);
+		unset($_SESSION['adminPhoto']);
+
 		$app->redirect('../'); // back to home
 	})->name('logout');
 
 	$app->get('/login', function() use ($app) {
-		echo $app->render('login.html.twig', ['form_action_link'=> $app->urlFor('admin'), 'flash' => $_SESSION['slim.flash']]);
+		echo $app->render('login.html.twig', ['form_action_link'=> $app->urlFor('admin')]);
 	})->name('login');
 
 	$app->get('/users', function() use ($app){
 		$users = ORM::for_table('users')->find_many();
+
+		$app->view->appendData(['adminName' => $_SESSION['adminName']]);
+		$app->view->appendData(['adminPhoto' => $_SESSION['adminPhoto']]);
+
 		echo $app->render('admin/users.html.twig', ['users'=> $users]);
 	})->name('users');
 
 	$app->get('/testimonials', function() use ($app){
 		$testimonials = ORM::for_table('testimonials')->find_many();
 		$data['testimonials'] = $testimonials;
+
+		$app->view->appendData(['adminName' => $_SESSION['adminName']]);
+		$app->view->appendData(['adminPhoto' => $_SESSION['adminPhoto']]);
+
 		echo $app->render('admin/testimonials.html.twig', $data);
 	})->name('testimonials');
 
 	$app->get('/photos', function() use ($app){
 		$photos = ORM::for_table('photos')->find_many();
+
+		$app->view->appendData(['adminName' => $_SESSION['adminName']]);
+		$app->view->appendData(['adminPhoto' => $_SESSION['adminPhoto']]);
+
 		echo $app->render('admin/photos.html.twig');
 	})->name('photos');
 
@@ -212,15 +231,7 @@ $app->group('/admin', function () use ($app, $twig) {
 
 });
 
-/**
- * Global View Variables
- */
 
-// Base static links (header, sidebar, footer)
-//$twig->addGlobal('testimonials_link', $app->urlFor('testimonials'));
-//$twig->addGlobal('logout_link', $app->urlFor('logout'));
-//$twig->addGlobal('users_link', $app->urlFor('users'));
-//$twig->addGlobal('admin2', 'David Lopez');
 
 
 $app->run();
