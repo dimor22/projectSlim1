@@ -138,6 +138,10 @@ $app->group('/admin', function () use ($app) {
 				$is_admin = true;
 				$_SESSION['adminName'] = $user->fname . ' ' . $user->lname;
 				$_SESSION['adminPhoto'] = $user->photo;
+
+				// I need to set these variables here for the first time
+				$app->view->appendData(['adminName' => $_SESSION['adminName']]);
+				$app->view->appendData(['adminPhoto' => $_SESSION['adminPhoto']]);
 			} else {
 				$app->flash('error', 'Invalid Password');
 			}
