@@ -177,7 +177,7 @@
             <ul class="sidebar-menu">
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="treeview">
-                    <a href="#">
+                    <a href="{{ siteUrl('/admin/dashboard') }}">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     </a>
 
@@ -469,5 +469,7 @@
 <script src="../adminlte2/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../adminlte2/dist/js/demo.js"></script>
+
+{% block js %}{% endblock js %}
 </body>
 </html>

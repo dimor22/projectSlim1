@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="col-xs-4 col-sm-4 border-right">
                                         <div class="description-block">
-                                            <a class="btn btn-app" data-toggle="modal" data-target="#delete-user">
+                                            <a class="btn btn-app" data-toggle="modal" data-target="#delete-user" id="{{ user.id }}">
                                                 <i class="fa fa-close"></i> Delete
                                             </a>
                                         </div>
@@ -83,3 +83,17 @@
         </section>
         <!-- /.content -->
 {% endblock content %}
+
+{% block js %}
+    <script>
+        $('.btn-app').click( function(){
+            if ($(this).attr('id')){
+                console.log($(this).attr('id'));
+                $("input:hidden[name=user-id]").val($(this).attr('id'));
+                console.log($("input:hidden[name=user-id]").val());
+            }
+        });
+    </script>
+{% endblock js %}
+
+

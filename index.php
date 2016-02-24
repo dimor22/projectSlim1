@@ -31,6 +31,16 @@ $app = new \Slim\Slim([
 	'view' => new \Slim\Views\Twig()
 ]);
 
+/**
+ * Pass global variables to parent views
+ */
+$app->hook('slim.before', function () use ($app) {
+	if ( isset($_SESSION['adminName'])) {
+		$app->view->appendData(['adminName' => $_SESSION['adminName']]);
+		$app->view->appendData(['adminPhoto' => $_SESSION['adminPhoto']]);
+	}
+});
+
 
 /**
  * TWIG VIEWS - Extension
@@ -109,10 +119,6 @@ $app->group('/admin', function () use ($app) {
 	})->name('admin');
 
 	$app->get('/dashboard', function() use ($app) {
-
-		$app->view->appendData(['adminName' => $_SESSION['adminName']]);
-		$app->view->appendData(['adminPhoto' => $_SESSION['adminPhoto']]);
-
 		echo $app->render('admin/dashboard.html.twig');
 	})->name('dashboard');
 
@@ -132,10 +138,6 @@ $app->group('/admin', function () use ($app) {
 				$is_admin = true;
 				$_SESSION['adminName'] = $user->fname . ' ' . $user->lname;
 				$_SESSION['adminPhoto'] = $user->photo;
-
-				$app->view->appendData(['adminName' => $_SESSION['adminName']]);
-				$app->view->appendData(['adminPhoto' => $_SESSION['adminPhoto']]);
-
 			} else {
 				$app->flash('error', 'Invalid Password');
 			}
@@ -167,24 +169,37 @@ $app->group('/admin', function () use ($app) {
 		$app->get( '/', function () use ( $app ) {
 			$users = ORM::for_table( 'users' )->find_many();
 
-			$app->view->appendData( [ 'adminName' => $_SESSION['adminName'] ] );
-			$app->view->appendData( [ 'adminPhoto' => $_SESSION['adminPhoto'] ] );
-
 			echo $app->render( 'admin/users.html.twig', [ 'users' => $users ] );
 		} )->name( 'users' );
 
 		$app->post( '/', function () use ( $app ) {
-			$app->request->params();
+//			var_dump($app->request->params());
+//			var_dump($_FILES);
+//			var_dump(move_uploaded_file($_FILES["userPhoto"]["name"], "$app->request->getRootUri() . /photos/"));
+//			die;
 
-			//$users = ORM::for_table('users')->find_many();
+			$user = ORM::for_table('users')->create();
+
+			$user->username = $app->request->params('userName');
+			$user->email = $app->request->params('userEmail');
+			$user->pwd = $app->request->params('userPassword');
+			$user->fname = $app->request->params('userFname');
+			$user->lname = $app->request->params('userLname');
+			$user->photo = $_FILES["userPhoto"]["name"];
+			$user->phone = $app->request->params('userPhone');
+
+			$user->save();
+
+			// TODO save image in server
+
+
 			$app->flash( 'success', 'User Created' );
 			$app->redirect( './users' );
 		} );
 
 		$app->delete( '/', function () use ( $app ) {
-			$app->request->params();
-
-			//$users = ORM::for_table('users')->find_many();
+			$user = ORM::for_table('users')->find_one($app->request->params('user-id'));
+			$user->delete();
 			$app->flash( 'success', 'User Deleted' );
 			$app->redirect( './users' );
 		} );
@@ -205,19 +220,11 @@ $app->group('/admin', function () use ($app) {
 	$app->get('/testimonials', function() use ($app){
 		$testimonials = ORM::for_table('testimonials')->find_many();
 		$data['testimonials'] = $testimonials;
-
-		$app->view->appendData(['adminName' => $_SESSION['adminName']]);
-		$app->view->appendData(['adminPhoto' => $_SESSION['adminPhoto']]);
-
 		echo $app->render('admin/testimonials.html.twig', $data);
 	})->name('testimonials');
 
 	$app->get('/photos', function() use ($app){
 		$photos = ORM::for_table('photos')->find_many();
-
-		$app->view->appendData(['adminName' => $_SESSION['adminName']]);
-		$app->view->appendData(['adminPhoto' => $_SESSION['adminPhoto']]);
-
 		echo $app->render('admin/photos.html.twig');
 	})->name('photos');
 
