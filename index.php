@@ -143,9 +143,6 @@ $app->group('/admin', function () use ($app) {
 			$app->flash('error', 'User Not Found');
 		}
 
-		// TODO Drop cookie to keep admin logged in
-
-
 		// Render View
 		if ( $is_admin ) {
 			echo $app->render('admin/dashboard.html.twig');
@@ -153,7 +150,6 @@ $app->group('/admin', function () use ($app) {
 			$app->redirect('login');
 		}
 	});
-
 	$app->get('/logout', function() use ($app){
 
 		unset($_SESSION['adminName']);
@@ -166,14 +162,45 @@ $app->group('/admin', function () use ($app) {
 		echo $app->render('login.html.twig', ['form_action_link'=> $app->urlFor('admin')]);
 	})->name('login');
 
-	$app->get('/users', function() use ($app){
-		$users = ORM::for_table('users')->find_many();
+	$app->group('/users', function () use ($app) {
 
-		$app->view->appendData(['adminName' => $_SESSION['adminName']]);
-		$app->view->appendData(['adminPhoto' => $_SESSION['adminPhoto']]);
+		$app->get( '/', function () use ( $app ) {
+			$users = ORM::for_table( 'users' )->find_many();
 
-		echo $app->render('admin/users.html.twig', ['users'=> $users]);
-	})->name('users');
+			$app->view->appendData( [ 'adminName' => $_SESSION['adminName'] ] );
+			$app->view->appendData( [ 'adminPhoto' => $_SESSION['adminPhoto'] ] );
+
+			echo $app->render( 'admin/users.html.twig', [ 'users' => $users ] );
+		} )->name( 'users' );
+
+		$app->post( '/', function () use ( $app ) {
+			$app->request->params();
+
+			//$users = ORM::for_table('users')->find_many();
+			$app->flash( 'success', 'User Created' );
+			$app->redirect( './users' );
+		} );
+
+		$app->delete( '/', function () use ( $app ) {
+			$app->request->params();
+
+			//$users = ORM::for_table('users')->find_many();
+			$app->flash( 'success', 'User Deleted' );
+			$app->redirect( './users' );
+		} );
+
+		$app->post( '/edit-profile', function () use ( $app ) {
+
+			$app->flash( 'success', 'Profile Edited' );
+			$app->redirect( '../../admin/users' );
+		});
+
+		$app->post( '/password', function () use ( $app ) {
+
+			$app->flash( 'success', 'Password Updated' );
+			$app->redirect( '../../admin/users' );
+		});
+	});
 
 	$app->get('/testimonials', function() use ($app){
 		$testimonials = ORM::for_table('testimonials')->find_many();

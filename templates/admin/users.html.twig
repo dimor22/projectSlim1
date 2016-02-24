@@ -12,9 +12,18 @@
 {% block content %}
         <!-- Main content -->
         <section class="content">
-            {% include 'admin/modals/user_modal.html.twig.html' %}
+            {% include 'admin/modals/add_user.html.twig' %}
+            {% include 'admin/modals/edit_user.html.twig' %}
+            {% include 'admin/modals/change_password.html.twig' %}
+            {% include 'admin/modals/delete_user.html.twig' %}
+            {% if flash.success %}
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-check"></i> {{ flash.success }}!</h4>
+                </div>
+            {% endif %}
             <div class="row">
-                <a class="btn btn-app text-center" data-toggle="modal" data-target="#user-modal">
+                <a class="btn btn-app text-center" data-toggle="modal" data-target="#add-user">
                     <i class="fa fa-plus"></i> New User
                 </a>
             </div>
@@ -29,6 +38,7 @@
                             <div class="widget-user-header bg-yellow">
                                 <h3 class="widget-user-username">{{ user.fname|e }} {{ user.lname|e }}</h3>
                                 <h5 class="widget-user-desc">{{ user.email|e }}</h5>
+                                <h5 class="widget-user-desc">{{ user.phone|e }}</h5>
                             </div>
                             <div class="widget-user-image">
                                 <img class="img-circle" src="../photos/{{ user.photo }}" alt="User Avatar">
@@ -37,7 +47,7 @@
                                 <div class="row">
                                     <div class="col-xs-4 col-sm-4 border-right">
                                         <div class="description-block">
-                                            <a class="btn btn-app">
+                                            <a class="btn btn-app" data-toggle="modal" data-target="#edit-user">
                                                 <i class="fa fa-edit"></i> Edit
                                             </a>
                                         </div>
@@ -46,7 +56,7 @@
                                     <!-- /.col-xs-4 col -->
                                     <div class="col-xs-4 col-sm-4 border-right">
                                         <div class="description-block">
-                                            <a class="btn btn-app">
+                                            <a class="btn btn-app" data-toggle="modal" data-target="#change-password">
                                                 <i class="fa fa-lock"></i> Password
                                             </a>
                                         </div>
@@ -54,7 +64,7 @@
                                     </div>
                                     <div class="col-xs-4 col-sm-4 border-right">
                                         <div class="description-block">
-                                            <a class="btn btn-app">
+                                            <a class="btn btn-app" data-toggle="modal" data-target="#delete-user">
                                                 <i class="fa fa-close"></i> Delete
                                             </a>
                                         </div>
