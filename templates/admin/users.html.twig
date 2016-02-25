@@ -47,7 +47,7 @@
                                 <div class="row">
                                     <div class="col-xs-4 col-sm-4 border-right">
                                         <div class="description-block">
-                                            <a class="btn btn-app" data-toggle="modal" data-target="#edit-user">
+                                            <a class="btn btn-app edit-user-btn" data-toggle="modal" data-target="#edit-user" id="edit-{{ user.id }}">
                                                 <i class="fa fa-edit"></i> Edit
                                             </a>
                                         </div>
@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="col-xs-4 col-sm-4 border-right">
                                         <div class="description-block">
-                                            <a class="btn btn-app" data-toggle="modal" data-target="#delete-user" id="{{ user.id }}">
+                                            <a class="btn btn-app delete-user-btn" data-toggle="modal" data-target="#delete-user" id="{{ user.id }}">
                                                 <i class="fa fa-close"></i> Delete
                                             </a>
                                         </div>
@@ -86,11 +86,34 @@
 
 {% block js %}
     <script>
-        $('.btn-app').click( function(){
+        //edit user
+
+        $('.edit-user-btn').click(function(){
+            var userId = $(this).attr('id');
+            userIdNumber = userId.substr(userId.indexOf("-") + 1);
+
+            $.ajax({
+                method: "POST",
+                url: "../ajax/user.php",
+                data: { userId: userIdNumber, action: "edit" },
+                error: function(){ console.log('there was an error')},
+                success: function(data){
+                    var user = JSON.parse(data);
+                    $('#editUserName').val(user[0].username);
+                    $('#editUserEmail').val(user[0].email);
+                    $('#editUserPwd').val(user[0].pwd);
+                    $('#editUserFname').val(user[0].fname);
+                    $('#editUserLname').val(user[0].lname);
+                    $('#editUserPhone').val(user[0].phone);
+                }
+            })
+
+        });
+
+        // delete user
+        $('.delete-user-btn').click( function(){
             if ($(this).attr('id')){
-                console.log($(this).attr('id'));
                 $("input:hidden[name=user-id]").val($(this).attr('id'));
-                console.log($("input:hidden[name=user-id]").val());
             }
         });
     </script>
