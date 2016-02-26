@@ -13,11 +13,23 @@
         <!-- Main content -->
         <section class="content">
 
+            {% include 'admin/modals/add_user.html.twig' %}
+            {% include 'admin/modals/edit_user.html.twig' %}
+            {% include 'admin/modals/change_password.html.twig' %}
+            {% include 'admin/modals/delete_user.html.twig' %}
+            {% if flash.success %}
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-check"></i> {{ flash.success }}!</h4>
+                </div>
+            {% endif %}
             <div class="row">
-                <a class="btn btn-app text-center">
+                <a class="btn btn-app text-center" data-toggle="modal" data-target="#add-user">
                     <i class="fa fa-plus"></i> New User
                 </a>
             </div>
+            <!-- end row -->
+
             <hr />
             <div class="row">
                 {% for user in users %}
@@ -27,6 +39,7 @@
                             <div class="widget-user-header bg-yellow">
                                 <h3 class="widget-user-username">{{ user.fname|e }} {{ user.lname|e }}</h3>
                                 <h5 class="widget-user-desc">{{ user.email|e }}</h5>
+                                <h5 class="widget-user-desc">{{ user.phone|e }}</h5>
                             </div>
                             <div class="widget-user-image">
                                 <img class="img-circle" src="../photos/{{ user.photo }}" alt="User Avatar">
@@ -35,7 +48,7 @@
                                 <div class="row">
                                     <div class="col-xs-4 col-sm-4 border-right">
                                         <div class="description-block">
-                                            <a class="btn btn-app">
+                                            <a class="btn btn-app edit-user-btn" data-toggle="modal" data-target="#edit-user" id="edit-{{ user.id }}">
                                                 <i class="fa fa-edit"></i> Edit
                                             </a>
                                         </div>
@@ -44,7 +57,7 @@
                                     <!-- /.col-xs-4 col -->
                                     <div class="col-xs-4 col-sm-4 border-right">
                                         <div class="description-block">
-                                            <a class="btn btn-app">
+                                            <a class="btn btn-app change-user-pwd" data-toggle="modal" data-target="#change-password" id="pwd-{{ user.id }}">
                                                 <i class="fa fa-lock"></i> Password
                                             </a>
                                         </div>
@@ -52,7 +65,7 @@
                                     </div>
                                     <div class="col-xs-4 col-sm-4 border-right">
                                         <div class="description-block">
-                                            <a class="btn btn-app">
+                                            <a class="btn btn-app delete-user-btn" data-toggle="modal" data-target="#delete-user" id="{{ user.id }}">
                                                 <i class="fa fa-close"></i> Delete
                                             </a>
                                         </div>
@@ -71,3 +84,96 @@
         </section>
         <!-- /.content -->
 {% endblock content %}
+
+{% block js %}
+    <script>
+        //edit user
+
+        $('.edit-user-btn').click(function(){
+            var userId = $(this).attr('id');
+            var userIdNumber = userId.substr(userId.indexOf("-") + 1);
+
+            $.ajax({
+                method: "POST",
+                url: "../ajax/user.php",
+                data: { userId: userIdNumber, action: "edit" },
+                error: function(){ console.log('there was an error')},
+                success: function(data){
+                    var user = JSON.parse(data);
+                    $('#editUserId').val(user[0].id);
+                    $('#editUserName').val(user[0].username);
+                    $('#editUserEmail').val(user[0].email);
+                    $('#editUserPwd').val(user[0].pwd);
+                    $('#editUserFname').val(user[0].fname);
+                    $('#editUserLname').val(user[0].lname);
+                    $('#editUserPhone').val(user[0].phone);
+                }
+            })
+
+        });
+
+        // change user password
+        var userObj;
+        $('.change-user-pwd').click( function(){
+            var userId = $(this).attr('id');
+            var userIdNumber = userId.substr(userId.indexOf("-") + 1);
+            $.ajax({
+                method: "POST",
+                url: "../ajax/user.php",
+                data: { userId: userIdNumber, action: "pwd" },
+                error: function(){ console.log('there was an error')},
+                success: function(data){
+                    userObj = JSON.parse(data);
+                    $('#pwdUserId').val(userObj[0].id);
+                }
+            })
+        });
+
+        $('#change-pwd-submit').click( function(e){
+            e.preventDefault();
+
+            var oldPwd = $('#oldPwd').val();
+            var newPwd = $('#newPwd').val();
+            var newPwd2 = $('#changeConfirmPwd').val();
+
+            var error = '';
+
+            // validate all fields are not empty
+            if ( oldPwd.length > 0 && newPwd.length > 0 && newPwd2.length > 0) {
+                // validate old pwd
+                if ( oldPwd === userObj[0].pwd ) {
+                    // validate new pwd
+                    if ( newPwd === newPwd2 ) {
+                        // submit
+                        $('#change-pwd-form').submit();
+                    } else {
+                        error = 'Your new password doesn\'t match';
+                    }
+
+                } else {
+                    error = 'Your old password is not correct';
+                }
+
+            } else {
+                error = 'All fields are required';
+            }
+
+            if ( error.length > 0 ) {
+                $('.feedback-wrapper').show();
+                $('#password-validation-error').html(error);
+            }
+
+        });
+
+
+
+        // delete user
+        $('.delete-user-btn').click( function(){
+            if ($(this).attr('id')){
+                $("input:hidden[name=user-id]").val($(this).attr('id'));
+            }
+        });
+    </script>
+{% endblock js %}
+
+
