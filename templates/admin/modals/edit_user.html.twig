@@ -9,6 +9,7 @@
             <div class="modal-body">
 
                 <form method="post" action="{{ siteUrl('admin/users/edit-profile') }}">
+                    <input type="hidden" id="editUserId" name="userId" value="">
                     <div class="form-group">
                         <label for="userName">Username</label>
                         <input type="text" class="form-control" id="editUserName" placeholder="Email" name="userName" value="">

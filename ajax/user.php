@@ -1,9 +1,5 @@
 <?php
-require '../vendor/autoload.php';
-//
-///**
-// * IDIORM - ORM
-// */
+
 require_once '../vendor/idiorm/idiorm.php';
 require_once '../db_config.php';
 

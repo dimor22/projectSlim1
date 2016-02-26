@@ -24,3 +24,7 @@ li#sign-out a {
 a.btn.btn-default.btn-flat {
     background-color: #3C8DBC;
 }
+
+.error-wrapper{
+    display: none;
+}

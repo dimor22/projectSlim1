@@ -12,6 +12,7 @@
 {% block content %}
         <!-- Main content -->
         <section class="content">
+
             {% include 'admin/modals/add_user.html.twig' %}
             {% include 'admin/modals/edit_user.html.twig' %}
             {% include 'admin/modals/change_password.html.twig' %}
@@ -56,7 +57,7 @@
                                     <!-- /.col-xs-4 col -->
                                     <div class="col-xs-4 col-sm-4 border-right">
                                         <div class="description-block">
-                                            <a class="btn btn-app" data-toggle="modal" data-target="#change-password">
+                                            <a class="btn btn-app change-user-pwd" data-toggle="modal" data-target="#change-password" id="pwd-{{ user.id }}">
                                                 <i class="fa fa-lock"></i> Password
                                             </a>
                                         </div>
@@ -90,7 +91,7 @@
 
         $('.edit-user-btn').click(function(){
             var userId = $(this).attr('id');
-            userIdNumber = userId.substr(userId.indexOf("-") + 1);
+            var userIdNumber = userId.substr(userId.indexOf("-") + 1);
 
             $.ajax({
                 method: "POST",
@@ -99,6 +100,7 @@
                 error: function(){ console.log('there was an error')},
                 success: function(data){
                     var user = JSON.parse(data);
+                    $('#editUserId').val(user[0].id);
                     $('#editUserName').val(user[0].username);
                     $('#editUserEmail').val(user[0].email);
                     $('#editUserPwd').val(user[0].pwd);
@@ -109,6 +111,61 @@
             })
 
         });
+
+        // change user password
+        var userObj;
+        $('.change-user-pwd').click( function(){
+            var userId = $(this).attr('id');
+            var userIdNumber = userId.substr(userId.indexOf("-") + 1);
+            $.ajax({
+                method: "POST",
+                url: "../ajax/user.php",
+                data: { userId: userIdNumber, action: "pwd" },
+                error: function(){ console.log('there was an error')},
+                success: function(data){
+                    userObj = JSON.parse(data);
+                    $('#pwdUserId').val(userObj[0].id);
+                }
+            })
+        });
+
+        $('#change-pwd-submit').click( function(e){
+            e.preventDefault();
+
+            var oldPwd = $('#oldPwd').val();
+            var newPwd = $('#newPwd').val();
+            var newPwd2 = $('#changeConfirmPwd').val();
+
+            var error = '';
+
+            // validate all fields are not empty
+            if ( oldPwd.length > 0 && newPwd.length > 0 && newPwd2.length > 0) {
+                // validate old pwd
+                if ( oldPwd === userObj[0].pwd ) {
+                    // validate new pwd
+                    if ( newPwd === newPwd2 ) {
+                        // submit
+                        $('#change-pwd-form').submit();
+                    } else {
+                        error = 'Your new password doesn\'t match';
+                    }
+
+                } else {
+                    error = 'Your old password is not correct';
+                }
+
+            } else {
+                error = 'All fields are required';
+            }
+
+            if ( error.length > 0 ) {
+                $('.error-wrapper').show();
+                $('#password-validation-error').html(error);
+            }
+
+        });
+
+
 
         // delete user
         $('.delete-user-btn').click( function(){

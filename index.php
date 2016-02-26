@@ -210,11 +210,28 @@ $app->group('/admin', function () use ($app) {
 
 		$app->post( '/edit-profile', function () use ( $app ) {
 
+			$user = ORM::for_table('users')->find_one($app->request->params('userId'));
+			$user->set([
+				'username'  =>  $app->request->params('userName'),
+				'email'  =>  $app->request->params('userEmail'),
+				'phone'  =>  $app->request->params('userPhone'),
+				'fname'  =>  $app->request->params('userFname'),
+				'lname'  =>  $app->request->params('userLname'),
+			]);
+			$user->save();
+
+
 			$app->flash( 'success', 'Profile Edited' );
 			$app->redirect( '../../admin/users' );
 		});
 
 		$app->post( '/password', function () use ( $app ) {
+
+			$user = ORM::for_table('users')->find_one($app->request->params('userId'));
+			$user->set([
+				'pwd'  =>  $app->request->params('confirmPwd'),
+			]);
+			$user->save();
 
 			$app->flash( 'success', 'Password Updated' );
 			$app->redirect( '../../admin/users' );
