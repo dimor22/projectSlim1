@@ -70,6 +70,7 @@ $app->configureMode('production', function () use ($app) {
  */
 
 $app->get('/', function() use ($app, $twig) {
+	echo $app->request->getRootUri() . '/photos';
 	echo $app->render('home.html.twig');
 })->name('home');
 
@@ -177,10 +178,6 @@ $app->group('/admin', function () use ($app) {
 		} )->name( 'users' );
 
 		$app->post( '/', function () use ( $app ) {
-//			var_dump($app->request->params());
-//			var_dump($_FILES);
-//			var_dump(move_uploaded_file($_FILES["userPhoto"]["name"], "$app->request->getRootUri() . /photos/"));
-//			die;
 
 			$user = ORM::for_table('users')->create();
 
@@ -194,10 +191,14 @@ $app->group('/admin', function () use ($app) {
 
 			$user->save();
 
-			// TODO save image in server
+			$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['userPhoto']['name'];
+			$upload = move_uploaded_file($_FILES["userPhoto"]["tmp_name"], $uploadFile);
 
-
-			$app->flash( 'success', 'User Created' );
+			if($upload) {
+				$app->flash( 'success', 'User Created' );
+			} else {
+				$app->flash( 'danger', 'Photo Upload failed' );
+			}
 			$app->redirect( './users' );
 		} );
 
@@ -217,8 +218,13 @@ $app->group('/admin', function () use ($app) {
 				'phone'  =>  $app->request->params('userPhone'),
 				'fname'  =>  $app->request->params('userFname'),
 				'lname'  =>  $app->request->params('userLname'),
+				'photo' => $_FILES["userPhoto"]["name"]
+
 			]);
 			$user->save();
+
+			$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['userPhoto']['name'];
+			$upload = move_uploaded_file($_FILES["userPhoto"]["tmp_name"], $uploadFile);
 
 
 			$app->flash( 'success', 'Profile Edited' );

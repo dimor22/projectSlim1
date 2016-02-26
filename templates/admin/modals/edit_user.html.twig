@@ -8,7 +8,7 @@
             </div>
             <div class="modal-body">
 
-                <form method="post" action="{{ siteUrl('admin/users/edit-profile') }}">
+                <form method="post" action="{{ siteUrl('admin/users/edit-profile') }}" enctype="multipart/form-data">
                     <input type="hidden" id="editUserId" name="userId" value="">
                     <div class="form-group">
                         <label for="userName">Username</label>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputFile">Profile Photo</label>
-                        <input type="file" id="editUserPhoto">
+                        <input type="file" id="editUserPhoto" name="userPhoto">
                         <p class="help-block">Example block-level help text here.</p>
                     </div>
 
