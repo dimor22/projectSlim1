@@ -18,12 +18,7 @@
             {% include 'admin/modals/change_password.html.twig' %}
             {% include 'admin/modals/delete_user.html.twig' %}
             {% include 'admin/modals/edit_photo.html.twig' %}
-            {% if flash.success %}
-                <div class="alert alert-success alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <h4><i class="icon fa fa-check"></i> {{ flash.success }}!</h4>
-                </div>
-            {% endif %}
+
             <div class="row">
                 <a class="btn btn-app text-center" data-toggle="modal" data-target="#add-user">
                     <i class="fa fa-plus"></i> New User
@@ -43,10 +38,6 @@
                                 <h5 class="widget-user-desc">{{ user.phone|e }}</h5>
                             </div>
                             <div class="widget-user-image">
-                                {#<a class="user-photo-admin" data-toggle="modal" data-target="#edit-user-photo" id="photo-{{ user.id }}">#}
-                                    {#<img class="img-circle" src="../photos/{{ user.photo }}" alt="User Avatar">#}
-                                {#</a>#}
-
                                 <img class="img-circle user-photo-admin" src="../photos/{{ user.photo }}" alt="User Avatar" data-toggle="modal" data-target="#edit-user-photo" id="photo-{{ user.id }}">
                             </div>
                             <div class="box-footer">
@@ -92,6 +83,43 @@
 
 {% block js %}
     <script>
+
+        // add user
+
+        $('#add-user-form').submit( function(e){
+            e.preventDefault();
+
+            var username = $('#userName').val();
+            var email = $('#userEmail').val();
+            var pwd = $('#userPassword').val();
+            var pwd2 = $('#confirmPwd').val();
+            var error = '';
+
+            function validateEmail($email) {
+                var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                return emailReg.test( $email );
+            }
+            if (username.length > 0 && email.length > 0 && pwd.length > 0 && pwd2.length > 0 ){
+                if (validateEmail(email)) {
+                    if ( pwd === pwd2) {
+                        $(this).submit();
+                    } else {
+                        error = 'Passwords don\'t match';
+                    }
+                } else {
+                    error = 'Email not valid';
+                }
+            } else {
+                error = 'Username, Email and Password are Required';
+            }
+
+            if ( error.length > 0 ) {
+                $('.feedback-wrapper').show();
+                $('#user-validation-error').html(error);
+            }
+
+        });
+
         //edit user
 
         $('.edit-user-btn').click(function(){

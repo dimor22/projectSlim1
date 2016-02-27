@@ -8,7 +8,7 @@
             </div>
             <div class="modal-body">
 
-                <form method="post" action="" enctype="multipart/form-data">
+                <form method="post" id="add-user-form" action="" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="userName">Username</label>
                         <input type="text" class="form-control" id="userName" placeholder="Username" name="userName">
@@ -43,8 +43,14 @@
                     <div class="form-group">
                         <label for="userPhoto">Profile Photo</label>
                         <input type="file" id="userPhoto" name="userPhoto">
-                        <p class="help-block">Example block-level help text here.</p>
+                        <p class="help-block">Square photo for best results (min. 160 x 160)</p>
                     </div>
+
+                    <!-- error message -->
+                    <div class="callout callout-danger feedback-wrapper">
+                        <h4 id="user-validation-error"></h4>
+                    </div>
+
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

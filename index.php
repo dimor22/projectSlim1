@@ -189,18 +189,23 @@ $app->group('/admin', function () use ($app) {
 			$user->pwd = $app->request->params('userPassword');
 			$user->fname = $app->request->params('userFname');
 			$user->lname = $app->request->params('userLname');
-			$user->photo = $_FILES["userPhoto"]["name"];
+			if ($_FILES['userPhoto']['size'] == 0){
+				$user->photo = 'no_photo.jpg';
+			} else {
+				$user->photo = $_FILES["userPhoto"]["name"];
+
+				$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['userPhoto']['name'];
+				$upload = move_uploaded_file($_FILES["userPhoto"]["tmp_name"], $uploadFile);
+			}
 			$user->phone = $app->request->params('userPhone');
 
 			$user->save();
 
-			$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['userPhoto']['name'];
-			$upload = move_uploaded_file($_FILES["userPhoto"]["tmp_name"], $uploadFile);
 
-			if($upload) {
+			if($_FILES['userPhoto']['error'] == 0) {
 				$app->flash( 'success', 'User Created' );
 			} else {
-				$app->flash( 'danger', 'Photo Upload failed' );
+				$app->flash( 'fail', 'Photo Upload failed' );
 			}
 			$app->redirect( './users' );
 		} );

@@ -31,6 +31,16 @@
 <!-- Site wrapper -->
 <div class="wrapper">
 
+    {% if flash %}
+        {% for key, msg in flash %}
+            <div class="alert alert-{{ key }} alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-check"></i> {{ msg }}!</h4>
+            </div>
+        {% endfor %}
+
+    {% endif %}
+
     <header class="main-header">
         <!-- Logo -->
         <a href="../../index2.html" class="logo">
@@ -469,6 +479,16 @@
 <script src="../adminlte2/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../adminlte2/dist/js/demo.js"></script>
+
+// dismiss success alerts with a click
+<script>
+    $('.alert-dismissible').click( function(){
+       $(this).slideUp();
+    });
+    setTimeout(function() {
+        $('.alert-dismissible').slideUp('fast');
+    }, 2000); // <-- time in milliseconds
+</script>
 
 {% block js %}{% endblock js %}
 </body>
