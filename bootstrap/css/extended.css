@@ -28,3 +28,7 @@ a.btn.btn-default.btn-flat {
 .feedback-wrapper{
     display: none;
 }
+
+.user-photo-admin:hover {
+    cursor: pointer;
+}

@@ -70,7 +70,6 @@ $app->configureMode('production', function () use ($app) {
  */
 
 $app->get('/', function() use ($app, $twig) {
-	echo $app->request->getRootUri() . '/photos';
 	echo $app->render('home.html.twig');
 })->name('home');
 
@@ -137,7 +136,11 @@ $app->group('/admin', function () use ($app) {
 		if ( $user ) {
 			if ( $user->pwd == $password ) {
 				$is_admin = true;
-				$_SESSION['adminName'] = $user->fname . ' ' . $user->lname;
+				if(! empty($user->fname) || ! empty($user->fname)) {
+					$_SESSION['adminName'] = $user->fname . ' ' . $user->lname;
+				} else {
+					$_SESSION['adminName'] = $user->username;
+				}
 				$_SESSION['adminPhoto'] = $user->photo;
 
 				// I need to set these variables here for the first time
@@ -212,20 +215,24 @@ $app->group('/admin', function () use ($app) {
 		$app->post( '/edit-profile', function () use ( $app ) {
 
 			$user = ORM::for_table('users')->find_one($app->request->params('userId'));
+
+			if(! empty($app->request->params('userFname')) ) {
+				$_SESSION['adminName'] = $user->fname;
+				if (! empty($app->request->params('userLname')) ){
+					$_SESSION['adminName'] = $user->fname . ' ' . $user->lname;
+				}
+			} else {
+				$_SESSION['adminName'] = $user->username;
+			}
+
 			$user->set([
 				'username'  =>  $app->request->params('userName'),
 				'email'  =>  $app->request->params('userEmail'),
 				'phone'  =>  $app->request->params('userPhone'),
 				'fname'  =>  $app->request->params('userFname'),
 				'lname'  =>  $app->request->params('userLname'),
-				'photo' => $_FILES["userPhoto"]["name"]
-
 			]);
 			$user->save();
-
-			$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['userPhoto']['name'];
-			$upload = move_uploaded_file($_FILES["userPhoto"]["tmp_name"], $uploadFile);
-
 
 			$app->flash( 'success', 'Profile Edited' );
 			$app->redirect( '../../admin/users' );
@@ -242,6 +249,23 @@ $app->group('/admin', function () use ($app) {
 			$app->flash( 'success', 'Password Updated' );
 			$app->redirect( '../../admin/users' );
 		});
+
+		$app->post( '/change-photo', function () use ( $app ) {
+
+			$user = ORM::for_table('users')->find_one($app->request->params('userId'));
+			$user->set([
+				'photo'  =>  $_FILES["userPhoto"]["name"],
+			]);
+			$user->save();
+
+			$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['userPhoto']['name'];
+			$upload = move_uploaded_file($_FILES["userPhoto"]["tmp_name"], $uploadFile);
+
+			$app->flash( 'success', 'Photo Changed' );
+			$app->redirect( '../../admin/users' );
+		});
+
+
 	});
 
 	$app->get('/testimonials', function() use ($app){
