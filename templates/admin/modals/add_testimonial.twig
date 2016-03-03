@@ -1,0 +1,52 @@
+<!-- Modal -->
+<div class="modal fade" id="add-testimonial" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel1">Add Testimonial</h4>
+            </div>
+            <div class="modal-body">
+
+                <form method="post" id="add-testimonial-form" action="" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="testimonialName">Title</label>
+                        <input type="text" class="form-control" id="testimonialTitle" placeholder="Title" name="testimonialTitle">
+                    </div>
+                    <div class="form-group">
+                        <label for="testimonialBody">Body</label>
+                        <textarea class="form-control" id="testimonialBody" placeholder="Body" name="testimonialBody"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="testimonialOwner">Owner</label>
+                        <input type="text" class="form-control" id="testimonialOwner" placeholder="Owner" name="testimonialOwner">
+                    </div>
+                    <div class="form-group">
+                        <label for="testimonialCompany">Company</label>
+                        <input type="text" class="form-control" id="testimonialCompany" placeholder="Company" name="testimonialCompany">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="testimonialPhoto">Testimonial Photo</label>
+                        <input type="file" id="testimonialPhoto" name="testimonialPhoto">
+                        <p class="help-block">Square photo for best results (min. 160 x 160)</p>
+                    </div>
+
+                    <!-- error message -->
+                    <div class="callout callout-danger feedback-wrapper">
+                        <h4 id="testimonial-validation-error"></h4>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="submit-testimonial-btn">Add testimonial</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -202,9 +202,9 @@ $app->group('/admin', function () use ($app) {
 			$user->save();
 
 
-			if($_FILES['userPhoto']['error'] == 0) {
+			if(empty($_FILES['userPhoto']['name']) ) {
 				$app->flash( 'success', 'User Created' );
-			} else {
+			} elseif ( ! empty($_FILES['userPhoto']['name']) && $_FILES['userPhoto']['error'] != 0) {
 				$app->flash( 'fail', 'Photo Upload failed' );
 			}
 			$app->redirect( './users' );
@@ -279,6 +279,25 @@ $app->group('/admin', function () use ($app) {
 		echo $app->render('admin/testimonials.html.twig', $data);
 	})->name('testimonials');
 
+	$app->post('/testimonials', function() use ($app){
+		$testimonial = ORM::for_table('testimonials')->create();
+		$testimonial->title = $app->request->params('testimonialTitle');
+		$testimonial->body = $app->request->params('testimonialBody');
+		$testimonial->owner = $app->request->params('testimonialOwner');
+		$testimonial->company = $app->request->params('testimonialCompany');
+		if ($_FILES['testimonialPhoto']['size'] == 0){
+			$testimonial->photo = 'no_photo.jpg';
+		} else {
+			$testimonial->photo = $_FILES["testimonialPhoto"]["name"];
+
+			$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['testimonialPhoto']['name'];
+			$upload = move_uploaded_file($_FILES["testimonialPhoto"]["tmp_name"], $uploadFile);
+		}
+		$testimonial->save();
+
+		$app->redirect('testimonials');
+	});
+
 	$app->get('/photos', function() use ($app){
 		$photos = ORM::for_table('photos')->find_many();
 		echo $app->render('admin/photos.html.twig');
@@ -303,8 +322,35 @@ $app->group('/admin', function () use ($app) {
 		});
 
 		// Post testimonials with ID
-		$app->post('/:id', function ($id) {
-			echo "This POSTS testimonial with id $id";
+		$app->post('/edit-testimonial', function() use ($app) {
+			$user = ORM::for_table('testimonials')->find_one($app->request->params('testimonialId'));
+
+
+			$user->set([
+				'title'  =>  $app->request->params('testimonialTitle'),
+				'body'  =>  $app->request->params('testimonialBody'),
+				'owner'  =>  $app->request->params('testimonialOwner'),
+				'company'  =>  $app->request->params('testimonialCompany'),
+			]);
+			$user->save();
+
+			$app->flash( 'success', 'Testimonial Edited' );
+			$app->redirect( '../../admin/testimonials' );
+		});
+
+		$app->post( '/change-photo', function () use ( $app ) {
+
+			$user = ORM::for_table('testimonials')->find_one($app->request->params('userId'));
+			$user->set([
+				'photo'  =>  $_FILES["changeTestimonialPhoto"]["name"],
+			]);
+			$user->save();
+
+			$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['changeTestimonialPhoto']['name'];
+			$upload = move_uploaded_file($_FILES["changeTestimonialPhoto"]["tmp_name"], $uploadFile);
+
+			$app->flash( 'success', 'Photo Changed' );
+			$app->redirect( '../../admin/testimonials' );
 		});
 
 		// Update testimonials with ID
@@ -313,8 +359,13 @@ $app->group('/admin', function () use ($app) {
 		});
 
 		// Delete testimonials with ID
-		$app->delete('/:id', function ($id) {
-			echo "This DELETES testimonial with id $id";
+		$app->delete('/', function() use ($app) {
+			$testimonial = ORM::for_table('testimonials')->find_one($app->request->params('testimonial-id'));
+			$testimonial->delete();
+			$app->flash( 'success', 'Testimonial Deleted' );
+			$app->redirect( './testimonials' );
+
+
 		});
 
 	});

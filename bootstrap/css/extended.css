@@ -29,7 +29,7 @@ a.btn.btn-default.btn-flat {
     display: none;
 }
 
-.user-photo-admin:hover {
+.user-photo-admin:hover, .profile-user-img:hover {
     cursor: pointer;
 }
 

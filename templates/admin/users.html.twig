@@ -86,7 +86,7 @@
 
         // add user
 
-        $('#add-user-form').submit( function(e){
+        $('#submit-add-user-btn').click( function(e){
             e.preventDefault();
 
             var username = $('#userName').val();
@@ -102,7 +102,7 @@
             if (username.length > 0 && email.length > 0 && pwd.length > 0 && pwd2.length > 0 ){
                 if (validateEmail(email)) {
                     if ( pwd === pwd2) {
-                        $(this).submit();
+                        $('#add-user-form').submit();
                     } else {
                         error = 'Passwords don\'t match';
                     }
@@ -209,21 +209,21 @@
 
         // edit photo
 
-        $('.user-photo-admin').click(function(){
-            var userId = $(this).attr('id');
-            var userIdNumber = userId.substr(userId.indexOf("-") + 1);
-            $.ajax({
-                method: "POST",
-                url: "../ajax/user.php",
-                data: { userId: userIdNumber, action: "pwd" },
-                error: function(){ console.log('there was an error')},
-                success: function(data){
-                    userObj = JSON.parse(data);
-                    $('#old-photo').attr('src', '../photos/' + userObj[0].photo);
-                    $('#changePhotoId').val(userObj[0].id);
-                }
-            })
-        });
+            $('.user-photo-admin').click(function(){
+                var userId = $(this).attr('id');
+                var userIdNumber = userId.substr(userId.indexOf("-") + 1);
+                $.ajax({
+                    method: "POST",
+                    url: "../ajax/user.php",
+                    data: { userId: userIdNumber, action: "pwd" },
+                    error: function(){ console.log('there was an error')},
+                    success: function(data){
+                        userObj = JSON.parse(data);
+                        $('#old-photo').attr('src', '../photos/' + userObj[0].photo);
+                        $('#changePhotoId').val(userObj[0].id);
+                    }
+                })
+            });
 
     </script>
 {% endblock js %}
