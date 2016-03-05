@@ -13,6 +13,8 @@
         <!-- Main content -->
         <section class="content photos">
             {% include 'admin/modals/gallery_photo_options.twig' %}
+            {% include 'admin/modals/add_album.twig' %}
+            {% include 'admin/modals/delete_album.twig' %}
 
             <div class="row">
                 <a class="btn btn-app text-center btn-flat" data-toggle="modal" data-target="#add-album">
@@ -23,10 +25,10 @@
             <h3>Choose Photo Album</h3>
             <form id="album-list-form" method="post" action="">
                 <select class="form-control" name="album">
-                    <option value="bathroom">- Choose Album - </option>
-                    <option value="bathroom">Bathroom</option>
-                    <option value="bedroom">Bedroom</option>
-                    <option value="kitchen">Kitchen</option>
+                    <option value="none">- Choose Album - </option>
+                    {% for album in albums %}
+                        <option value="{{ album.name }}">{{ album.name }}</option>
+                    {% endfor %}
                 </select>
             </form>
 
@@ -35,20 +37,20 @@
             <div class="box box-solid">
                 <div class="box-header with-border">
                     <div class="row">
-                        <div class="col-xs-12 text-center"><h2>{{ album }} Album</h2></div>
+                        <div class="col-xs-12 text-center"><h2>{{ album.name }} Album</h2></div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 text-center">
                             <div class="btn-group">
                                 <button id="add-gallery-photo" type="button" class="btn btn-success btn-flat">Add Photo</button>
-                                <button type="button" class="btn btn-danger btn-flat">Delete This Album</button>
+                                <button type="button" class="btn btn-danger btn-flat delete-album-btn" data-toggle="modal" data-target="#delete-album" id="{{ album.id }}">Delete This Album</button>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
                             <form id="upload-gallery-photo" method="post" enctype="multipart/form-data">
-                                <input type="hidden" name="album" value="{{ album }}"/>
+                                <input type="hidden" name="album" value="{{ album.name }}"/>
                                 <div class="form-group">
                                     <label for="gallery-photo">Upload Photo</label>
                                     <input type="file" id="gallery-photo" name="gallery-photo">
@@ -139,6 +141,31 @@
 {% block js %}
 
     <script>
+        // validate album name is not duplicated
+        $('#submit-album-btn').click(function (e) {
+            e.preventDefault();
+            var validated = true;
+            // get all option names
+            $.each($('option'), function (index, value) {
+                if ( value.text === $('#albumName').val().toLowerCase()) {
+                    $('.feedback-wrapper').show();
+                    $('#album-validation-error').text('Album already exists');
+                    validated = false;
+                }
+            });
+
+            if ($('#albumName').val().length <= 0 ){
+                validated = false;
+                $('.feedback-wrapper').show();
+                $('#album-validation-error').text('Type something');
+            }
+
+            if (validated) {
+                $('#add-album-form').submit();
+            }
+        });
+
+
         // reload page when different album is selected
         $('#album-list-form').change(function () {
            console.log('album changed');
@@ -201,6 +228,14 @@
 
                 }
             })
+        });
+
+        // delete album
+
+        $('.delete-album-btn').click( function(){
+            if ($(this).attr('id')){
+                $("input:hidden[name=album-id]").val($(this).attr('id'));
+            }
         });
     </script>
 

@@ -282,21 +282,27 @@ $app->group('/admin', function () use ($app) {
 
 	// photos
 	$app->group('/photos', function() use ($app) {
+
 		$app->get('/', function() use ($app){
 			$albumName = 'bathroom';
 			$slider = getSliderPhotos();
 			$gallery = getGalleryPhotos($albumName);
+			$albums = ORM::for_table('albums')->find_many();
+			$album = ORM::for_table('albums')->where('name', $albumName)->find_one();
 
 			echo $app->render('admin/photos.html.twig', [
 				'gallery' => $gallery,
 				'slider' => $slider->as_array(),
-				'album' => $albumName
+				'album' => $album->as_array(),
+				'albums' => $albums
 			]);
 		})->name('photos');
 
 		$app->post('/', function() use ($app) {
 
 			$albumName = $app->request->params('album');
+			$album = ORM::for_table('albums')->where('name', $albumName)->find_one();
+
 			$slider = getSliderPhotos();
 			$gallery = getGalleryPhotos($albumName);
 
@@ -305,6 +311,7 @@ $app->group('/admin', function () use ($app) {
 				$photo->set([
 					'name'  =>  $_FILES["gallery-photo"]["name"],
 					'album' =>  $albumName
+
 				]);
 				$photo->save();
 
@@ -312,15 +319,30 @@ $app->group('/admin', function () use ($app) {
 				move_uploaded_file($_FILES["gallery-photo"]["tmp_name"], $uploadFile);
 			}
 
+			$slider = getSliderPhotos();
+			$gallery = getGalleryPhotos($albumName);
+			$albums = ORM::for_table('albums')->find_many();
 
 
 			echo $app->render('admin/photos.html.twig', [
 				'gallery' => $gallery,
 				'slider' => $slider->as_array(),
-				'album' => $albumName
+				'album' => $album,
+				'albums' => $albums
+
 			]);
 
 
+		})->name('addAlbum');
+
+		$app->post('/newalbum', function() use ($app){
+			$newAlbumName = $app->request->params('newalbum');
+
+			$newAlbum = ORM::for_table('albums')->create();
+			$newAlbum->name = $newAlbumName;
+			$newAlbum->save();
+
+			$app->redirect( '../../admin/photos' );
 		});
 
 		$app->delete('/', function() use ($app) {
@@ -346,6 +368,13 @@ $app->group('/admin', function () use ($app) {
 			}
 
 			$app->redirect( './photos' );
+		});
+
+		$app->delete('/album', function() use ($app){
+			$albumid = ORM::for_table('albums')->find_one($app->request->params('album-id'));
+			$albumid->delete();
+			$app->flash( 'success', 'Album Deleted' );
+			$app->redirect('../../admin/photos');
 		});
 	});
 
