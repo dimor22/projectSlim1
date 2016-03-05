@@ -1,0 +1,37 @@
+<!-- Modal -->
+<div class="modal fade" id="gallery-photo-options" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modalPhotoOptions">Photo Options</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a id="single-gallery-photo" href=""><img id="gallery-photo-preview" src="" width="100%"></a>
+                    </div>
+                </div>
+
+                <form method="post" id="change-photo-form" action="{{ siteUrl('admin/photos') }}" enctype="multipart/form-data">
+                    <input type="hidden" name="_METHOD" value="DELETE"/>
+                    <input id="gallery-photo-id" type="hidden" name="gallery-photo" value=""/>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-success btn-flat col-xs-4" id="add-photo-slide">Add To Slide</button>
+                        <button type="button" class="btn btn-danger btn-flat col-xs-4" id="remove-photo-slide">Remove From Slide</button>
+                        <button type="submit" class="btn btn-danger btn-flat col-xs-4">Delete Photo</button>
+                        <button type="button" class="btn btn-default btn-flat col-xs-4" data-dismiss="modal">Close</button>
+
+                    </div>
+                    <div class="modal-footer">
+                        {#<button type="submit" class="btn btn-primary btn-flat">Change Photo</button>#}
+                    </div>
+                </form>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

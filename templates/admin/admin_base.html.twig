@@ -18,7 +18,7 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../adminlte2/dist/css/skins/_all-skins.min.css">
     <!-- App extended css -->
-    <link rel="stylesheet" href="../bootstrap/css/extended.css">
+    <link rel="stylesheet" href="../public/css/app.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -480,15 +480,8 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../adminlte2/dist/js/demo.js"></script>
 
-// dismiss success alerts with a click
-<script>
-    $('.alert-dismissible').click( function(){
-       $(this).slideUp();
-    });
-    setTimeout(function() {
-        $('.alert-dismissible').slideUp('fast');
-    }, 2000); // <-- time in milliseconds
-</script>
+<!-- app specific js -->
+<script src="../public/js/app.js"></script>
 
 {% block js %}{% endblock js %}
 </body>

@@ -29,7 +29,7 @@ a.btn.btn-default.btn-flat {
     display: none;
 }
 
-.user-photo-admin:hover, .profile-user-img:hover {
+.user-photo-admin:hover, .profile-user-img:hover, .gallery-photo:hover {
     cursor: pointer;
 }
 
@@ -53,4 +53,12 @@ a.btn.btn-default.btn-flat {
     color: white;
     text-align: center;
     border-radius: 0px;
+}
+
+.remove-photo-slide{
+    display: none;
+}
+
+#upload-gallery-photo {
+    display: none;
 }

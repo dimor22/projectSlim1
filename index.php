@@ -4,6 +4,8 @@ session_start();
 
 require 'vendor/autoload.php';
 
+require 'src/helpers.php';
+
 date_default_timezone_set('America/Los_Angeles');
 
 
@@ -38,6 +40,7 @@ $app->hook('slim.before', function () use ($app) {
 	if ( isset($_SESSION['adminName'])) {
 		$app->view->appendData(['adminName' => $_SESSION['adminName']]);
 		$app->view->appendData(['adminPhoto' => $_SESSION['adminPhoto']]);
+		$app->view->appendData(['photoInfo' => 'Square photo for best results (min. 160 x 160)']);
 	}
 });
 
@@ -160,6 +163,8 @@ $app->group('/admin', function () use ($app) {
 			$app->redirect('login');
 		}
 	});
+
+	// Log out
 	$app->get('/logout', function() use ($app){
 
 		unset($_SESSION['adminName']);
@@ -168,10 +173,12 @@ $app->group('/admin', function () use ($app) {
 		$app->redirect('../'); // back to home
 	})->name('logout');
 
+	// Log in
 	$app->get('/login', function() use ($app) {
 		echo $app->render('login.html.twig', ['form_action_link'=> $app->urlFor('admin')]);
 	})->name('login');
 
+	// Users Routes Group
 	$app->group('/users', function () use ($app) {
 
 		$app->get( '/', function () use ( $app ) {
@@ -273,55 +280,107 @@ $app->group('/admin', function () use ($app) {
 
 	});
 
-	$app->get('/testimonials', function() use ($app){
-		$testimonials = ORM::for_table('testimonials')->find_many();
-		$data['testimonials'] = $testimonials;
-		echo $app->render('admin/testimonials.html.twig', $data);
-	})->name('testimonials');
+	// photos
+	$app->group('/photos', function() use ($app) {
+		$app->get('/', function() use ($app){
+			$albumName = 'bathroom';
+			$slider = getSliderPhotos();
+			$gallery = getGalleryPhotos($albumName);
 
-	$app->post('/testimonials', function() use ($app){
-		$testimonial = ORM::for_table('testimonials')->create();
-		$testimonial->title = $app->request->params('testimonialTitle');
-		$testimonial->body = $app->request->params('testimonialBody');
-		$testimonial->owner = $app->request->params('testimonialOwner');
-		$testimonial->company = $app->request->params('testimonialCompany');
-		if ($_FILES['testimonialPhoto']['size'] == 0){
-			$testimonial->photo = 'no_photo.jpg';
-		} else {
-			$testimonial->photo = $_FILES["testimonialPhoto"]["name"];
+			echo $app->render('admin/photos.html.twig', [
+				'gallery' => $gallery,
+				'slider' => $slider->as_array(),
+				'album' => $albumName
+			]);
+		})->name('photos');
 
-			$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['testimonialPhoto']['name'];
-			$upload = move_uploaded_file($_FILES["testimonialPhoto"]["tmp_name"], $uploadFile);
-		}
-		$testimonial->save();
+		$app->post('/', function() use ($app) {
 
-		$app->redirect('testimonials');
+			$albumName = $app->request->params('album');
+			$slider = getSliderPhotos();
+			$gallery = getGalleryPhotos($albumName);
+
+			if(isset($_FILES['gallery-photo']) && $_FILES['gallery-photo']['size'] > 0){
+				$photo = ORM::for_table('photos')->create();
+				$photo->set([
+					'name'  =>  $_FILES["gallery-photo"]["name"],
+					'album' =>  $albumName
+				]);
+				$photo->save();
+
+				$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['gallery-photo']['name'];
+				move_uploaded_file($_FILES["gallery-photo"]["tmp_name"], $uploadFile);
+			}
+
+
+
+			echo $app->render('admin/photos.html.twig', [
+				'gallery' => $gallery,
+				'slider' => $slider->as_array(),
+				'album' => $albumName
+			]);
+
+
+		});
+
+		$app->delete('/', function() use ($app) {
+			$option = $app->request->params('option');
+
+			if ($option == 'add') {
+				$photo = ORM::for_table('photos')->find_one($app->request->params('gallery-photo'));
+				$photo->slider = 1;
+				$photo->save();
+				$app->flash( 'success', 'Photo Added To Slider' );
+
+			} elseif ($option == 'remove') {
+				$photo = ORM::for_table('photos')->find_one($app->request->params('gallery-photo'));
+				$photo->slider = 0;
+				$photo->save();
+				$app->flash( 'success', 'Photo Removed From Slider' );
+
+			} else {
+				$galleryPhotoId = ORM::for_table('photos')->find_one($app->request->params('gallery-photo'));
+				$galleryPhotoId->delete();
+				$app->flash( 'success', 'Photo Deleted' );
+
+			}
+
+			$app->redirect( './photos' );
+		});
 	});
-
-	$app->get('/photos', function() use ($app){
-		$photos = ORM::for_table('photos')->find_many();
-		echo $app->render('admin/photos.html.twig');
-	})->name('photos');
 
 
 	// Testimonials
 	$app->group('/testimonials', function () use ($app) {
 
-		// Get testimonials with ID
-		$app->get('/:id', function ($id) {
+		// Get All testimonials
+		$app->get('/', function() use ($app){
+			$testimonials = ORM::for_table('testimonials')->find_many();
+			$data['testimonials'] = $testimonials;
+			echo $app->render('admin/testimonials.html.twig', $data);
+		})->name('testimonials');
 
-			$testimonial = ORM::for_table('testimonials')->find_one($id);
-
-			echo "This GETS testimonial with id $id<br/>";
-
-			if ($testimonial) {
-				var_dump($testimonial);
+		// New testimonial
+		$app->post('/', function() use ($app){
+			$testimonial = ORM::for_table('testimonials')->create();
+			$testimonial->title = $app->request->params('testimonialTitle');
+			$testimonial->body = $app->request->params('testimonialBody');
+			$testimonial->owner = $app->request->params('testimonialOwner');
+			$testimonial->company = $app->request->params('testimonialCompany');
+			if ($_FILES['testimonialPhoto']['size'] == 0){
+				$testimonial->photo = 'no_photo.jpg';
 			} else {
-				echo "Testimonial with id $id not doesn't exist.";
+				$testimonial->photo = $_FILES["testimonialPhoto"]["name"];
+
+				$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['testimonialPhoto']['name'];
+				$upload = move_uploaded_file($_FILES["testimonialPhoto"]["tmp_name"], $uploadFile);
 			}
+			$testimonial->save();
+
+			$app->redirect('testimonials');
 		});
 
-		// Post testimonials with ID
+		// Edit testimonial
 		$app->post('/edit-testimonial', function() use ($app) {
 			$user = ORM::for_table('testimonials')->find_one($app->request->params('testimonialId'));
 
@@ -338,6 +397,7 @@ $app->group('/admin', function () use ($app) {
 			$app->redirect( '../../admin/testimonials' );
 		});
 
+		// Edit photo
 		$app->post( '/change-photo', function () use ( $app ) {
 
 			$user = ORM::for_table('testimonials')->find_one($app->request->params('userId'));
@@ -351,11 +411,6 @@ $app->group('/admin', function () use ($app) {
 
 			$app->flash( 'success', 'Photo Changed' );
 			$app->redirect( '../../admin/testimonials' );
-		});
-
-		// Update testimonials with ID
-		$app->put('/:id', function ($id) {
-			echo "This PUTS testimonial with id $id";
 		});
 
 		// Delete testimonials with ID

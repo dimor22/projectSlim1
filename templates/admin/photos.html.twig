@@ -12,112 +12,196 @@
 {% block content %}
         <!-- Main content -->
         <section class="content photos">
+            {% include 'admin/modals/gallery_photo_options.twig' %}
 
             <div class="row">
-                <div class="col-xs-12">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputFile">Upload Photo - {{ adminName }}</label>
-                            <input type="file" id="exampleInputFile">
-                            <p class="help-block">Example block-level help text here.</p>
-                        </div>
-
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </form>
-                    <!-- /.box -->
-                </div>
+                <a class="btn btn-app text-center btn-flat" data-toggle="modal" data-target="#add-album">
+                    <i class="fa fa-plus"></i> New Photo Album
+                </a>
             </div>
             <hr/>
-            <div class="row">
-                <div class="col-xs-12">
-                    <!-- bathroom -->
-                    <div class="box box-default collapsed-box">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Bathroom </h3>
+            <h3>Choose Photo Album</h3>
+            <form id="album-list-form" method="post" action="">
+                <select class="form-control" name="album">
+                    <option value="bathroom">- Choose Album - </option>
+                    <option value="bathroom">Bathroom</option>
+                    <option value="bedroom">Bedroom</option>
+                    <option value="kitchen">Kitchen</option>
+                </select>
+            </form>
 
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                                </button>
-                            </div>
-                            <!-- /.box-tools -->
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body" style="none;">
-                            <div class="row">
-                                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><img src="../photos/b-photo1.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><img src="../photos/b-photo2.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><img src="../photos/b-photo3.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><img src="../photos/b-photo4.jpg" class="img-responsive"/> </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-3"><img src="../photos/b-photo1.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/b-photo2.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/b-photo3.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/b-photo4.jpg" class="img-responsive"/> </div>
-                            </div>
-                        </div>
-                        <!-- /.box-body -->
+            <hr/>
+
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <div class="row">
+                        <div class="col-xs-12 text-center"><h2>{{ album }} Album</h2></div>
                     </div>
-                    <!-- bedroom -->
-                    <div class="box box-default collapsed-box">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Bedroom </h3>
-
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                                </button>
-                            </div>
-                            <!-- /.box-tools -->
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body" style="display: none;">
-                            <div class="row">
-                                <div class="col-xs-3"><img src="../photos/bed-photo1.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/bed-photo2.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/bed-photo3.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/bed-photo4.jpeg" class="img-responsive"/> </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-3"><img src="../photos/bed-photo1.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/bed-photo2.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/bed-photo3.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/bed-photo4.jpeg" class="img-responsive"/> </div>
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <div class="btn-group">
+                                <button id="add-gallery-photo" type="button" class="btn btn-success btn-flat">Add Photo</button>
+                                <button type="button" class="btn btn-danger btn-flat">Delete This Album</button>
                             </div>
                         </div>
-                        <!-- /.box-body -->
                     </div>
-                    <!-- kitchen -->
-                    <div class="box box-default collapsed-box">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Kitchen </h3>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <form id="upload-gallery-photo" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="album" value="{{ album }}"/>
+                                <div class="form-group">
+                                    <label for="gallery-photo">Upload Photo</label>
+                                    <input type="file" id="gallery-photo" name="gallery-photo">
+                                    <p class="help-block">Upload instructions explained here.</p>
+                                </div>
+                                <button type="submit" class="btn btn-default btn-flat">Upload</button>
+                            </form>
+                        </div>
 
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                                </button>
-                            </div>
-                            <!-- /.box-tools -->
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body" style="display: none;">
-                            <div class="row">
-                                <div class="col-xs-3 photo-frame"><img src="../photos/k-photo1.jpg" class="img-responsive photo"/> </div>
-                                <div class="col-xs-3"><img src="../photos/k-photo2.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/k-photo3.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/k-photo4.jpg" class="img-responsive"/> </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-3"><img src="../photos/k-photo1.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/k-photo2.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/k-photo3.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/k-photo4.jpg" class="img-responsive"/> </div>
-                            </div>
-                        </div>
-                        <!-- /.box-body -->
                     </div>
                 </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    {% for photos in gallery %}
+                        <div class="row">
+                            {% for photo in photos %}
+                            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                <img src="../photos/{{ photo.name }}"
+                                     class="img-responsive gallery-photo"
+                                     data-toggle="modal"
+                                     data-target="#gallery-photo-options"
+                                     id="gallery-{{ photo.id }}"
+                                />
+                            </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- /.box-body -->
+            </div>
+
+            <hr/>
+
+
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <h4>Slider Photos</h4>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+
+                    {% for photos in slider %}
+                                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                    <img src="../photos/{{ photos.name }}"
+                                         class="img-responsive gallery-photo inSlide"
+                                         data-toggle="modal"
+                                         data-target="#gallery-photo-options"
+                                         id="gallery-{{ photos.id }}"
+                                    />
+                                </div>
+                    {% endfor %}
+                    </div>
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <h4>Before and After Photos</h4>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+
+                        {% for photos in beaf %}
+                            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                <img src="../photos/{{ photos.name }}"
+                                     class="img-responsive gallery-photo inSlide"
+                                     data-toggle="modal"
+                                     data-target="#gallery-photo-options"
+                                     id="gallery-{{ photos.id }}"
+                                />
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+                <!-- /.box-body -->
             </div>
 
 
         </section>
         <!-- /.content -->
 {% endblock content %}
+
+{% block js %}
+
+    <script>
+        // reload page when different album is selected
+        $('#album-list-form').change(function () {
+           console.log('album changed');
+            $(this).submit();
+        });
+
+        // Add photo to gallery
+        $('#add-gallery-photo').click(function () {
+            $('#upload-gallery-photo').toggle();
+        });
+
+        // Add to slide
+
+        $('#add-photo-slide').click( function(){
+            $('<input>').attr({
+                type: 'hidden',
+                id: 'option',
+                name: 'option',
+                value: 'add'
+            }).appendTo('#change-photo-form');
+
+            $('#change-photo-form').submit();
+        });
+        $('#remove-photo-slide').click( function(){
+            $('<input>').attr({
+                type: 'hidden',
+                id: 'option',
+                name: 'option',
+                value: 'remove'
+            }).appendTo('#change-photo-form');
+
+            $('#change-photo-form').submit();
+        });
+
+
+        // change testimonial photo
+
+        $('.gallery-photo').click(function(){
+            var photoId = $(this).attr('id');
+            var photoIdNumber = photoId.substr(photoId.indexOf("-") + 1);
+            var inSlide = $(this).hasClass('inSlide');
+            $.ajax({
+                method: "POST",
+                url: "../ajax/gallery.php",
+                data: { galleryPhoto: photoIdNumber },
+                error: function(){ console.log('there was an error')},
+                success: function(data){
+                    userObj = JSON.parse(data);
+                    $('#gallery-photo-preview').attr('src', '../photos/' + userObj[0].name);
+                    $('#single-gallery-photo').attr('href', '../photos/' + userObj[0].name);
+                    $('#gallery-photo-id').val(userObj[0].id);
+                    if (inSlide) {
+                        $('#add-photo-slide').hide();
+                        $('#remove-photo-slide').show();
+                    } else {
+                        $('#add-photo-slide').show();
+                        $('#remove-photo-slide').hide();
+                    }
+                    console.log(inSlide);
+
+                }
+            })
+        });
+    </script>
+
+{% endblock js %}
