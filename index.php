@@ -73,7 +73,7 @@ $app->configureMode('production', function () use ($app) {
  */
 
 $app->get('/', function() use ($app, $twig) {
-	echo $app->render('home.html.twig');
+	echo $app->render('corporate-index.html');
 })->name('home');
 
 $app->get('/hello/:name', function ($name) {

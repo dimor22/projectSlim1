@@ -83,4 +83,7 @@ select.btn.btn-default.btn-lg {
     padding: 24px;
     margin: 20px 0px;
 }
+.show-error{
+    border: 2px solid red;
+}
 

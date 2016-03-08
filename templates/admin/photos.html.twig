@@ -130,7 +130,6 @@
                             <form id="add-beaf-form" action="" method="post">
                                 <button type="button" id="add-before-photo-btn" class="btn btn-default btn-flat btn-lg" data-toggle="modal" data-target="#add-before-photo">Add Before Photo</button>
                                 <button type="button" id="add-after-photo-btn" class="btn btn-default btn-flat btn-lg" data-toggle="modal" data-target="#add-after-photo">Add After Photo</button>
-
                                 <button type="submit" id="create-beaf" class="btn btn-success btn-flat btn-lg">Create</button>
                             </form>
                         </div>
@@ -382,8 +381,9 @@
         // create before and after photo set
         $('#create-beaf').click(function (e) {
             e.preventDefault;
+            $('.btn-flat').removeClass('show-error');
 
-            if (category && beforePhoto  && afterPhoto) {
+            if (typeof(category) !== 'undefined' && typeof(beforePhoto) !== 'undefined' && typeof(afterPhoto) !== 'undefined') {
                 $.ajax({
                     method: "POST",
                     url: "../ajax/beaf.php",
@@ -394,9 +394,12 @@
                     }
                 });
             } else {
+                if (typeof(category) == 'undefined'){
+                    $('#beaf-category').addClass('show-error');
+                }
                 console.log('something went wrong with the photo selection');
             }
-
+            return false;
         });
 
         // delete b eaf
