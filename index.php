@@ -289,12 +289,14 @@ $app->group('/admin', function () use ($app) {
 			$gallery = getGalleryPhotos($albumName);
 			$albums = ORM::for_table('albums')->find_many();
 			$album = ORM::for_table('albums')->where('name', $albumName)->find_one();
+			$beafs = ORM::for_table('beaf')->find_many();
 
 			echo $app->render('admin/photos.html.twig', [
 				'gallery' => $gallery,
 				'slider' => $slider->as_array(),
 				'album' => $album->as_array(),
-				'albums' => $albums
+				'albums' => $albums,
+				'beafs' =>  $beafs
 			]);
 		})->name('photos');
 
@@ -302,6 +304,8 @@ $app->group('/admin', function () use ($app) {
 
 			$albumName = $app->request->params('album');
 			$album = ORM::for_table('albums')->where('name', $albumName)->find_one();
+			$beafs = ORM::for_table('beaf')->find_many();
+
 
 			$slider = getSliderPhotos();
 			$gallery = getGalleryPhotos($albumName);
@@ -328,7 +332,9 @@ $app->group('/admin', function () use ($app) {
 				'gallery' => $gallery,
 				'slider' => $slider->as_array(),
 				'album' => $album,
-				'albums' => $albums
+				'albums' => $albums,
+				'beafs' =>  $beafs
+
 
 			]);
 
@@ -371,8 +377,12 @@ $app->group('/admin', function () use ($app) {
 		});
 
 		$app->delete('/album', function() use ($app){
-			$albumid = ORM::for_table('albums')->find_one($app->request->params('album-id'));
-			$albumid->delete();
+			$album = ORM::for_table('albums')->find_one($app->request->params('album-id'));
+			$albumName = $album->name;
+			$album->delete();
+			$photos = ORM::for_table('photos')->where('album', $albumName)->find_many();
+			$photos->delete();
+
 			$app->flash( 'success', 'Album Deleted' );
 			$app->redirect('../../admin/photos');
 		});

@@ -62,3 +62,17 @@ a.btn.btn-default.btn-flat {
 #upload-gallery-photo {
     display: none;
 }
+
+select.btn.btn-default.btn-lg {
+    height: 46px;
+}
+
+.col-xs-12.col-sm-4.col-md-4.col-lg-2.margin-top {
+    margin-top: 10px;
+}
+.btn {margin: 3px;}
+
+.selected-photo {
+    border: 2px solid red;
+}
+
