@@ -126,7 +126,7 @@ $app->group('/admin', function () use ($app) {
 	})->name('dashboard');
 
 	/**
-	 * Entrance Route to the Admin Dashboard
+	 * Entrance Route to the ADMIN Dashboard
 	 */
 	$app->post('/', function() use ($app) {
 		// Get User
@@ -289,7 +289,7 @@ $app->group('/admin', function () use ($app) {
 			$gallery = getGalleryPhotos($albumName);
 			$albums = ORM::for_table('albums')->find_many();
 			$album = ORM::for_table('albums')->where('name', $albumName)->find_one();
-			$beafs = ORM::for_table('beaf')->find_many();
+			$beafs = ORM::for_table('beaf')->order_by_desc('created_at')->find_many();
 
 			echo $app->render('admin/photos.html.twig', [
 				'gallery' => $gallery,
@@ -304,7 +304,7 @@ $app->group('/admin', function () use ($app) {
 
 			$albumName = $app->request->params('album');
 			$album = ORM::for_table('albums')->where('name', $albumName)->find_one();
-			$beafs = ORM::for_table('beaf')->find_many();
+			$beafs = ORM::for_table('beaf')->order_by_desc('created_at')->find_many();
 
 
 			$slider = getSliderPhotos();
@@ -386,15 +386,22 @@ $app->group('/admin', function () use ($app) {
 			$app->flash( 'success', 'Album Deleted' );
 			$app->redirect('../../admin/photos');
 		});
-	});
 
+		$app->delete('/beaf', function() use ($app){
+			$beaf = ORM::for_table('beaf')->find_one($app->request->params('beaf-id'));
+			$beaf->delete();
+
+			$app->flash( 'success', 'Before and After Deleted' );
+			$app->redirect('../../admin/photos');
+		});
+	});
 
 	// Testimonials
 	$app->group('/testimonials', function () use ($app) {
 
 		// Get All testimonials
 		$app->get('/', function() use ($app){
-			$testimonials = ORM::for_table('testimonials')->find_many();
+			$testimonials = ORM::for_table('testimonials')->order_by_desc('created_at')->find_many();
 			$data['testimonials'] = $testimonials;
 			echo $app->render('admin/testimonials.html.twig', $data);
 		})->name('testimonials');

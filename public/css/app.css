@@ -75,4 +75,12 @@ select.btn.btn-default.btn-lg {
 .selected-photo {
     border: 2px solid red;
 }
+#beaf-options{
+    display: none;
+}
+#beaf-options {
+    background: #E6E6E6;
+    padding: 24px;
+    margin: 20px 0px;
+}
 
