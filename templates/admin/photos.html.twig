@@ -282,6 +282,8 @@
         }
         // adds class to photo clicked
         function selectPhoto(targetedClass, option) {
+            console.log('selectPhoto is hit');
+
             $(targetedClass).click(function () {
                 if ($('.' + option + '-photo').hasClass('selected-photo')) {
                     $('.selected-photo').removeClass('selected-photo');
@@ -297,33 +299,38 @@
             });
         }
 
-
-
         // populate modals "add_before_photo" and "add_after_photo" when their btns are clicked
         function createPhotos(photoClass, photos){
+            // clear all rows
+            $("#modal-show-before-photo .row").remove();
+
             var rows = 0;
             if (photos.length < 4) {
                 rows = 1;
             } else {
                 rows = Math.ceil(photos.length/4);
             }
-            var index = 0;
+            var photoIndex = 0;
             for ( var i = 0; i < rows; i++) {
                 var rowDiv = $("<div></div>");
                 $(rowDiv).attr('class','row');
                 $('#modal-show-' + photoClass).prepend(rowDiv);
-                for (var e = 0; e < 4; e++) {
-                    var photo = $("<img/>");
-                    photo = photo.attr('src', '../photos/' + photos[e].name);
-                    photo = photo.attr('class', 'img-responsive');
-                    photo = photo.addClass(photoClass);
-                    var div = $("<div></div>");
-                    div = div.attr('class', 'col-xs-3');
-                    var row = div.html(photo);
-                    rowDiv.append(row);
-                    index++;
+                    for (var e = 0; e < 4; e++) {
+                        if (photoIndex < photos.length) {
+                            var photo = $("<img/>");
+                            photo = photo.attr('src', '../photos/' + photos[photoIndex].name);
+                            console.log( photoIndex + ' ' + photos[photoIndex].name);
+                            photo = photo.attr('class', 'img-responsive');
+                            photo = photo.addClass(photoClass);
+                            var div = $("<div></div>");
+                            div = div.attr('class', 'col-xs-3');
+                            var row = div.html(photo);
+                            rowDiv.append(row);
+                            photoIndex++;
+                        } else {
+                            continue;
+                    }
                 }
-
             }
         }
 
@@ -337,13 +344,12 @@
                     error: function(){ console.log('there was an error loading ajax')},
                     success: function(data){
                         var photos = JSON.parse(data);
-                        console.log(photos);
                         createPhotos('before-photo', photos);
                         selectPhoto('.before-photo', 'before');
                     }
                 });
             } else {
-                console.log('select a valid categroy');
+                console.log('select a valid category');
             }
         });
         $('#add-after-photo-btn').click(function () {
@@ -356,13 +362,12 @@
                     error: function(){ console.log('there was an error loading ajax')},
                     success: function(data){
                         var photos = JSON.parse(data);
-                        console.log(photos);
                         createPhotos('after-photo', photos);
                         selectPhoto('.after-photo', 'after');
                     }
                 });
             } else {
-                console.log('select a valid categroy');
+                console.log('select a valid categrory');
             }
         });
 
@@ -370,8 +375,11 @@
            getCategory();
         });
 
-        selectPhoto('.before-photo', 'before');
-        selectPhoto('.after-photo', 'after');
+        $('.before-photo').click( function(){
+            selectPhoto('.before-photo', 'before');
+        });
+
+
 
         // create before and after photo set
         $('#create-beaf').click(function (e) {
