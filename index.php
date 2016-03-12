@@ -42,6 +42,9 @@ $app->hook('slim.before', function () use ($app) {
 		$app->view->appendData(['adminPhoto' => $_SESSION['adminPhoto']]);
 		$app->view->appendData(['photoInfo' => 'Square photo for best results (min. 160 x 160)']);
 	}
+	$app->view->appendData(['header_email' => 'nova@novainteriors.com']);
+	$app->view->appendData(['header_phone' => '702-241-1491']);
+
 });
 
 
@@ -74,14 +77,14 @@ $app->configureMode('production', function () use ($app) {
 
 $app->get('/', function() use ($app, $twig) {
 	$pageData = [
-		'title' => 'Home Page',
-		'slides' => [
+		'title'     => 'Home Page',
+		'slides'    => [
 			'assets/images/corporate/top-slider/photo1.jpg',
 			'assets/images/corporate/top-slider/photo2.jpg',
 			'assets/images/corporate/top-slider/photo3.jpg',
 			'assets/images/corporate/top-slider/photo4.jpg',
 		],
-		'work' => [
+		'work'      => [
 			[
 				'data-title'    => 'Corporate animation',
 				'href'          => 'assets/images/corporate/latest-work/photo1.jpg',
@@ -138,26 +141,149 @@ $app->get('/', function() use ($app, $twig) {
 				'src'           => 'assets/images/corporate/latest-work/photo8.jpg',
 				'h3'            => 'Risky Heart magazine'
 			]
+		],
+		'team'      => [
+			[
+				'delay' =>  '0.1s',
+				'alt'   =>  'Brandon Reed',
+				'src'   =>  'assets/images/corporate/team01-notinclude.jpg',
+				'social'    =>  [
+					[
+					'name'  =>  'facebook',
+					'href'  =>  '#'
+					],
+					[
+						'name'  =>  'twitter',
+						'href'  =>  '#'
+					],
+					[
+						'name'  =>  'behance',
+						'href'  =>  '#'
+					]
+				],
+				'strong'    =>  'Brandon Reed',
+				'span'      =>  'CEO',
+				'p'         =>  ' Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate users.'
+			],
+			[
+				'delay' =>  '0.2s',
+				'alt'   =>  'Amanda Hayes',
+				'src'   =>  'assets/images/corporate/team02-notinclude.jpg',
+				'social'    =>  [
+					[
+						'name'  =>  'facebook',
+						'href'  =>  '#'
+					],
+					[
+						'name'  =>  'twitter',
+						'href'  =>  '#'
+					],
+					[
+						'name'  =>  'behance',
+						'href'  =>  '#'
+					]
+				],
+				'strong'    =>  'Amanda Hayes',
+				'span'      =>  'Director',
+				'p'         =>  ' Efficiently unleash cross-media information without cross-media value. Quickly maximize deliverables schemas.'
+			],
+			[
+				'delay' =>  '0.3s',
+				'alt'   =>  'Donald Coleman',
+				'src'   =>  'assets/images/corporate/team03-notinclude.jpg',
+				'social'    =>  [
+					[
+						'name'  =>  'facebook',
+						'href'  =>  '#'
+					],
+					[
+						'name'  =>  'twitter',
+						'href'  =>  '#'
+					],
+					[
+						'name'  =>  'behance',
+						'href'  =>  '#'
+					]
+				],
+				'strong'    =>  'Donald Coleman',
+				'span'      =>  'Developer',
+				'p'         =>  ' Completely synergize resource sucking relationships premier niche markets. Professionally cultivate customer.'
+			],
+			[
+				'delay' =>  '0.4s',
+				'alt'   =>  'Shirley King',
+				'src'   =>  'assets/images/corporate/team04-notinclude.jpg',
+				'social'    =>  [
+					[
+						'name'  =>  'facebook',
+						'href'  =>  '#'
+					],
+					[
+						'name'  =>  'twitter',
+						'href'  =>  '#'
+					],
+					[
+						'name'  =>  'behance',
+						'href'  =>  '#'
+					]
+				],
+				'strong'    =>  'Shirley King',
+				'span'      =>  'Designer',
+				'p'         =>  ' Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly testing procedures.'
+			]
+		],
+		'testimonials_info'  => [
+
+			[
+				'h1'    =>  'Lisa Hughes',
+				'src'   => 'assets/images/corporate/team16-notinclude.jpg',
+				'alt'   =>  'team16-notinclude',
+				'cite'  =>  'Technolab'
+			],
+			[
+				'h1'    =>  'Marie Clark',
+				'src'   => 'assets/images/corporate/team15-notinclude.jpg',
+				'alt'   =>  'team15-notinclude',
+				'cite'  =>  'Technolab'
+			],
+			[
+				'h1'    =>  'Scott Adams',
+				'src'   => 'assets/images/corporate/team13-notinclude.jpg',
+				'alt'   =>  'team13-notinclude',
+				'cite'  =>  'Trisbam'
+			]
+
+		],
+		'testimonial_text'  =>  [
+				'This theme is super easy to customise and the support team is just awesome. They helped me add a few design and styling changes and guided me to customise my theme. They were very knowledgable and fast. Thanks again! This is the best theme and support money can buy!',
+				'After purchasing all of the top rated theme I find this theme to be the most intuitive. Everything is right where it\'s supposed to be and makes use of the best plugin combinations I have ever seen. Truly, there are no words to describe how happy I am with this theme! Recommended',
+				'This Theme is just awesome. It is so easy to create a gorgeous looking sites. I would also like to mention their excellent and superfast support. It never took more than 2-3hours to have the correct solution. I\'m going to buy more themes of them, sure! Keep up the good work.'
 		]
 	];
-	echo $app->render('corporate-index.twig', ['data' => $pageData]);
+	echo $app->render('public_base.twig', ['data' => $pageData]);
 })->name('home');
 
 $app->get('/hello/:name', function ($name) {
 	echo "Hello, $name";
 });
 
-$app->get('/contact', function () {
-	echo "This is the Contact Page";
-});
+$app->get('/contact', function () use ($app) {
+	$pageData = [
+		'title' =>  'Contact Page'
+	];
+	echo $app->render('contact.twig', ['data'   =>  $pageData]);
+})->name('contact');
 
 $app->get('/appointments', function () {
 	echo "This is the Appointments Page";
 });
 
-$app->get('/about', function () {
-	echo "This is the About Page";
-});
+$app->get('/about', function () use ($app) {
+	$pageData = [
+		'title' =>  'About Page'
+	];
+	echo $app->render('about.twig', ['data'   =>  $pageData]);
+})->name('about');
 
 $app->get('/products', function () {
 	echo "This is the Products Page";

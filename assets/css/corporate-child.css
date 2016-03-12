@@ -1,3 +1,7 @@
 element.style {
     background-color: rgb(59, 139, 200);
 }
+
+a.navbar-brand {
+    padding: 15px 0px;
+}

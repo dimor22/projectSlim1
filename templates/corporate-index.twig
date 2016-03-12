@@ -31,10 +31,10 @@
         <div class="container">
             <div class="top top-left">
                 <div class="sidebar-widget text-left small-screen-center widget_text">
-                    <div class="textwidget"> <i class="fa fa-envelope"></i>&nbsp; <a href="mailto:dimor22@gmail.com">nova@novainteriors.com</a> </div>
+                    <div class="textwidget"> <i class="fa fa-envelope"></i>&nbsp; <a href="mailto:dimor22@gmail.com">{{ data.email }}</a> </div>
                 </div>
                 <div class="sidebar-widget text-left small-screen-center widget_text">
-                    <div class="textwidget"> <i class="fa fa-phone"></i> &nbsp; 702-241-1491 </div>
+                    <div class="textwidget"> <i class="fa fa-phone"></i> &nbsp; {{ data.phone }} </div>
                 </div>
             </div>
             <div class="top top-right">
@@ -322,21 +322,18 @@
                             <p class="lead text-center center element-bottom-40 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.2s"> Time to meet our team of technology and business professionals.
                                 <br> Let us help your business reach it&#8217;s potential.</p>
                             <div class="row staff-list-container list-container element-bottom-50">
+                                {% for person in data.team %}
                                 <div class="figure col-md-3 fade-in element-bottom-20 figcaption-bottom text-left fade-in os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s">
-                                    <div class="figure-image"> <img alt="Brandon Reed" src="assets/images/corporate/team01-notinclude.jpg">
+                                    <div class="figure-image"> <img alt="{{ person.alt }}" src="{{ person.src }}">
                                         <div class="figure-overlay">
                                             <div class="figure-overlay-container">
                                                 <div class="figure-caption text-center">
                                                     <ul class="figure-overlay-icons social-icons social-simple">
+                                                        {% for media in person.social %}
                                                         <li>
-                                                            <a href="#" target="_self"> <i class="fa fa-facebook"></i> </a>
+                                                            <a href="{{ media.href }}" target="_self"> <i class="fa fa-{{ media.name }}"></i> </a>
                                                         </li>
-                                                        <li>
-                                                            <a href="#" target="_self"> <i class="fa fa-twitter"></i> </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" target="_self"> <i class="fa fa-behance"></i> </a>
-                                                        </li>
+                                                        {% endfor %}
                                                     </ul>
                                                 </div>
                                             </div>
@@ -344,98 +341,13 @@
                                     </div>
                                     <div class="figure-caption text-left">
                                         <h3 class="figure-caption-title">
-                                    <strong>Brandon Reed</strong>
-                                    <span>CEO</span>
+                                    <strong>{{ person.strong }}</strong>
+                                    <span>{{ person.span }}</span>
                                 </h3>
-                                        <p class="figure-caption-description"> Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate users.</p>
+                                        <p class="figure-caption-description">{{ person.p }}</p>
                                     </div>
                                 </div>
-                                <div class="figure col-md-3 fade-in element-bottom-20 figcaption-bottom text-left fade-in os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.2s">
-                                    <div class="figure-image"> <img alt="Amanda Hayes" src="assets/images/corporate/team02-notinclude.jpg">
-                                        <div class="figure-overlay">
-                                            <div class="figure-overlay-container">
-                                                <div class="figure-caption text-center">
-                                                    <ul class="figure-overlay-icons social-icons social-simple">
-                                                        <li>
-                                                            <a href="#" target="_self"> <i class="fa fa-facebook"></i> </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" target="_self"> <i class="fa fa-twitter"></i> </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" target="_self"> <i class="fa fa-google-plus"></i> </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="figure-caption text-left">
-                                        <h3 class="figure-caption-title">
-                                    <strong>Amanda
-                                    Hayes</strong> <span>Director</span>
-                                </h3>
-                                        <p class="figure-caption-description"> Efficiently unleash cross-media information without cross-media value. Quickly maximize deliverables schemas.</p>
-                                    </div>
-                                </div>
-                                <div class="figure col-md-3 fade-in element-bottom-20 figcaption-bottom text-left fade-in os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.3s">
-                                    <div class="figure-image"> <img alt="Donald Coleman" src="assets/images/corporate/team03-notinclude.jpg">
-                                        <div class="figure-overlay">
-                                            <div class="figure-overlay-container">
-                                                <div class="figure-caption text-center">
-                                                    <ul class="figure-overlay-icons social-icons social-simple">
-                                                        <li>
-                                                            <a href="#" target="_self"> <i class="fa fa-git"></i> </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" target="_self"> <i class="fa fa-twitter"></i> </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" target="_self"> <i class="fa fa-google-plus"></i> </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="figure-caption text-left">
-                                        <h3 class="figure-caption-title">
-                                    <strong>Donald
-                                    Coleman</strong> <span>Developer</span>
-                                </h3>
-                                        <p class="figure-caption-description"> Completely synergize resource sucking relationships premier niche markets. Professionally cultivate customer.</p>
-                                    </div>
-                                </div>
-                                <div class="figure col-md-3 fade-in element-bottom-20 figcaption-bottom text-left fade-in os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.4s">
-                                    <div class="figure-image"> <img alt="Shirley King" src="assets/images/corporate/team04-notinclude.jpg">
-                                        <div class="figure-overlay">
-                                            <div class="figure-overlay-container">
-                                                <div class="figure-caption text-center">
-                                                    <ul class="figure-overlay-icons social-icons social-simple">
-                                                        <li>
-                                                            <a href="#" target="_self"> <i class="fa fa-facebook"></i> </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" target="_self"> <i class="fa fa-twitter"></i> </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" target="_self"> <i class="fa fa-dribbble"></i> </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" target="_self"> <i class="fa fa-behance"></i> </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="figure-caption text-left">
-                                        <h3 class="figure-caption-title">
-                                <strong>Shirley King</strong>
-                                <span>Designer</span></h3>
-                                        <p class="figure-caption-description"> Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly testing procedures.</p>
-                                    </div>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -449,24 +361,14 @@
                             <div class="text-center flexslider feature-slider" data-flex-animation="fade" data-flex-controls="hide" data-flex-controls-position="outside" data-flex-controlsalign="center" data-flex-directions="hide" data-flex-slideshow="true"
                             data-flex-speed="7000" data-os-animation="none" data-os-animation-delay="0s" id="flexslider-818">
                                 <ul class="slides">
+                                    {% for info in data.testimonials_info %}
                                     <li>
                                         <blockquote class="blockquote-simple">
-                                            <h1>Lisa Hughes</h1> <img alt="team16-notinclude" class="attachment-thumbnail" height="150" src="assets/images/corporate/team16-notinclude.jpg" width="150">
-                                            <footer> <cite title="Technolab">Technolab</cite> </footer>
+                                            <h1>{{ info.h1 }}</h1> <img alt="{{ info.alt }}" class="attachment-thumbnail" height="150" src="{{ info.src }}" width="150">
+                                            <footer> <cite title="Technolab">{{ info.cite }}</cite> </footer>
                                         </blockquote>
                                     </li>
-                                    <li>
-                                        <blockquote class="blockquote-simple">
-                                            <h1>Marie Clark</h1> <img alt="team15-notinclude" class="attachment-thumbnail" height="150" src="assets/images/corporate/team15-notinclude.jpg" width="150">
-                                            <footer> <cite title="Streetdax">Streetdax</cite> </footer>
-                                        </blockquote>
-                                    </li>
-                                    <li>
-                                        <blockquote class="blockquote-simple">
-                                            <h1>Scott Adams</h1> <img alt="team13-notinclude" class="attachment-thumbnail" height="150" src="assets/images/corporate/team13-notinclude.jpg" width="150">
-                                            <footer> <cite title="Trisbam">Trisbam</cite> </footer>
-                                        </blockquote>
-                                    </li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>
@@ -474,24 +376,13 @@
                             <div class="element-top-80 element-bottom-80 text-center text-light flexslider feature-slider" data-flex-animation="slide" data-flex-controls="hide" data-flex-controls-position="outside" data-flex-controlsalign="center" data-flex-directions="hide"
                             data-flex-slideshow="true" data-flex-speed="7000" data-os-animation="none" data-os-animation-delay="0s" id="flexslider-39">
                                 <ul class="slides">
+                                    {% for text in data.testimonial_text %}
                                     <li>
                                         <blockquote>
-                                            <p>This theme is super easy to customise and the support team is just awesome. They helped me add a few design and styling changes and guided me to customise my theme. They were very knowledgable and fast. Thanks
-                                                again! This is the best theme and support money can buy!</p>
+                                            <p>{{ text }}</p>
                                         </blockquote>
                                     </li>
-                                    <li>
-                                        <blockquote>
-                                            <p>After purchasing all of the top rated theme I find this theme to be the most intuitive. Everything is right where it's supposed to be and makes use of the best plugin combinations I have ever seen. Truly, there
-                                                are no words to describe how happy I am with this theme! Recommended</p>
-                                        </blockquote>
-                                    </li>
-                                    <li>
-                                        <blockquote>
-                                            <p>This Theme is just awesome. It is so easy to create a gorgeous looking sites. I would also like to mention their excellent and superfast support. It never took more than 2-3hours to have the correct solution.
-                                                I'm going to buy more themes of them, sure! Keep up the good work.</p>
-                                        </blockquote>
-                                    </li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>
