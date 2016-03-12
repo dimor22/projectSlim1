@@ -1,0 +1,757 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>{{ data.title }}</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,900%7CGentium+Basic:400italic&amp;subset=latin,latin" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/css/extras.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/theme.min.css">
+    <link rel="stylesheet" href="assets/css/corporate.min.css">
+    <link rel="stylesheet" href="assets/css/corporate-child.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/images/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/images/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/images/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/images/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/images/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/images/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/images/favicons/apple-touch-icon-144x144.png">
+    <link rel="icon" type="image/png" href="assets/images/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="assets/images/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="assets/images/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="shortcut icon" href="assets/images/favicons/favicon.ico"> </head>
+
+<body class="pace-on pace-counter">
+    <div class="pace-overlay"></div>
+    <div class="top-bar">
+        <div class="container">
+            <div class="top top-left">
+                <div class="sidebar-widget text-left small-screen-center widget_text">
+                    <div class="textwidget"> <i class="fa fa-envelope"></i>&nbsp; <a href="mailto:dimor22@gmail.com">nova@novainteriors.com</a> </div>
+                </div>
+                <div class="sidebar-widget text-left small-screen-center widget_text">
+                    <div class="textwidget"> <i class="fa fa-phone"></i> &nbsp; 702-241-1491 </div>
+                </div>
+            </div>
+            <div class="top top-right">
+                <div class="sidebar-widget text-right small-screen-center widget_social">
+                    <ul class="unstyled inline social-icons social-simple social-normal">
+                        <li>
+                            <a data-iconcolor="#3b5998" href="corporate-index.html"> <i class="fa fa-facebook"></i> </a>
+                        </li>
+                        <li>
+                            <a data-iconcolor="#00acee" href="corporate-index.html"> <i class="fa fa-twitter"></i> </a>
+                        </li>
+                        <li>
+                            <a data-iconcolor="#5FB0D5" href="corporate-index.html"> <i class="fa fa-linkedin"></i> </a>
+                        </li>
+                        <li>
+                            <a data-iconcolor="#E45135" href="corporate-index.html"> <i class="fa fa-google-plus"></i> </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="menu navbar navbar-static-top header-logo-left-menu-right oxy-mega-menu navbar-sticky" id="masthead">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle collapsed" data-target=".main-navbar" data-toggle="collapse" type="button"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="corporate-index.html">
+                <img src="assets/images/nova-logo.png"/>
+            </a> </div>
+            <div class="nav-container">
+                <nav class="collapse navbar-collapse main-navbar logo-navbar navbar-right">
+                    <div class="menu-container">
+                        <ul class="nav navbar-nav" id="menu-main">
+                            <li class="menu-item active  "> <a href="/corporate-index.html">Home</a> </li>
+                            <li class="menu-item"> <a href="/corporate-services.html">Appointments</a> </li>
+                            <li class="menu-item"> <a href="/corporate-single-service.html">Gallery</a> </li>
+                            <li class="menu-item"> <a href="/corporate-meet-the-team.html">Testimonials</a> </li>
+                            <li class="menu-item"> <a href="/corporate-404.html">Services</a> </li>
+                            <li class="menu-item"> <a href="/corporate-right-sidebar.html">Products/Materials</a> </li>
+                            <li class="menu-item"> <a href="/corporate-left-sidebar.html">About</a> </li>
+                            <li class="menu-item"> <a href="/corporate-left-sidebar.html">Contact</a> </li>
+
+                        </ul>
+                    </div>
+                    <div class="menu-sidebar">
+                        <div class="sidebar-widget widget_search" id="search-5">
+                            <form action="corporate-index.html" method="get" name="searchform">
+                                <div class="input-group">
+                                    <input class="form-control" name="s" placeholder="Search" type="text"> <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit" value="Search">                                        
+                                        <i class="fa fa-search"></i>                                        
+                                    </button>
+                                </span> </div>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div id="content" role="main">
+        <article>
+            <section class="section">
+                <div class="container-fullwidth">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="fullwidthbanner-container">
+                                <div class="tp-banner">
+                                    <ul>
+                                        {% for slide in data.slides %}
+                                        <!-- SLIDE  -->
+                                        <li data-transition="fade" data-slotamount="5" data-masterspeed="500" data-saveperformance="on" data-title="Intro Slide">
+                                            <!-- MAIN IMAGE --><img src="{{ slide }}" alt="slidebg1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                                        </li>
+                                     {% endfor %}
+                                    </ul>
+                                    <div class="tp-bannertimer"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="text-center element-top-70 os-animation big" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                        Our services
+                    </h1>
+                            <div class="divider-border divider-border-center element-top-10 element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s" style="height:3px;">
+                                <div class="divider-border-inner" style="width:60px;"> </div>
+                            </div>
+                            <p class="lead text-center center element-bottom-40 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.2s"> We help businesses to create and implement exceptional experiences for their customers.
+                                <br> We specialise in online <strong>multi-channel</strong> technology services. </p>
+                            <div class="list-container row element-bottom-50 os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.1s">
+                                <div class="col-md-4 element-bottom-20 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.1s"> <span class="service-simple-image">
+                                <img alt="Visualise" src="assets/images/corporate/idea.png">
+                            </span>
+                                    <h2>Visualise</h2>
+                                    <p>Lambda is ultra flexible and lets you create stunning pages easily for any kind of site out of the box. Get started now.</p>
+                                </div>
+                                <div class="col-md-4 element-bottom-20 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.2s"> <span class="service-simple-image">
+                                <img alt="Research" src="assets/images/corporate/research.png">
+                            </span>
+                                    <h2>Research</h2>
+                                    <p>Lambda is ultra flexible and lets you create stunning pages easily for any kind of site out of the box. Get started now.</p>
+                                </div>
+                                <div class="col-md-4 element-bottom-20 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.3s"> <span class="service-simple-image">
+                                <img alt="Develop" src="assets/images/corporate/development.png">
+                            </span>
+                                    <h2>Develop</h2>
+                                    <p>Basic search engine optimisation is fundamental. Lambda makes sure that your website will be always be accessible.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="background-overlay" style="background-color: rgba(1,192,225,1);"></div>
+                <div class="container container-vertical-middle">
+                    <div class="row vertical-middle">
+                        <div class="col-md-10">
+                            <h2 class="text-center element-top-60 element-bottom-60 text-light os-animation big light" data-os-animation="fadeInLeft" data-os-animation-delay="0s">
+                        FREE In-Home Estimate
+                    </h2> </div>
+                        <div class="col-md-2 text-center"> <a class="btn btn-primary btn-lg text-light btn-icon-right element-top-60 element-bottom-60" data-os-animation="none" data-os-animation-delay="0s" href="corporate-contact.html" target="_self">
+                        Schedule Now
+                        <i class="fa fa-comment-o" data-animation="tada"></i>
+                    </a> </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="text-center element-top-70 os-animation big" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                        Our latest work
+                    </h1>
+                            <div class="divider-border divider-border-center element-top-10 element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s" style="height:3px;">
+                                <div class="divider-border-inner" style="width:60px;"> </div>
+                            </div>
+                            <p class="lead text-center center element-bottom-40" data-os-animation="none" data-os-animation-delay="0s"> We put all our 25 years of design experience into every project.
+                                <br> Take a look at some of our latest work.</p>
+                            <div class="portfolio-container element-bottom-60">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="portfolio-header clearfix">
+                                            <div class="portfolio-filters pull-right"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="portfolio masonry no-transition magnific-all" data-col-lg="4" data-col-md="4" data-col-sm="4" data-col-xs="2" data-layout="fitRows" data-padding="15">
+                                    {%  for photo in data.work %}
+                                        <div class="masonry-item portfolio-item filter-people" data-title="{{ photo.data-title }}">
+                                            <div class="figure portfolio-os-animation image-filter-blur image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="bounceInDown" data-os-animation-delay="0.1s">
+                                                <a class="figure-image magnific" href="{{ photo.href }}" target="_self"> <img alt="{{ photo.alt }}" class="normalwidth" src="{{ photo.src }}">
+                                                    <div class="figure-overlay">
+                                                        <div class="figure-overlay-container">
+                                                            <div class="figure-caption">
+                                                                <h3 class="figure-caption-title bordered bordered-small">{{ photo.h3 }}</h3>
+                                                                <p class="figure-caption-description"> </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="background-media" data-0-top-bottom="background-position: 50% 50px" data-start="background-position: 50% -31px" style="background-image: url(); background-repeat:no-repeat; background-size:cover; background-attachment:fixed; background-position: 50% 0%;">
+                </div>
+                <div class="background-overlay" style="background-color: rgba(3,194,227,0.9);"></div>
+                <div class="container-fullwidth container-vertical-middle">
+                    <div class="row vertical-middle">
+                        <div class="col-md-3 text-center" style="background:rgba(0, 0, 0, 0.2);">
+                            <div class="divider-wrapper">
+                                <div class="visible-xs element-height-30"></div>
+                                <div class="visible-sm element-height-30"></div>
+                                <div class="visible-md element-height-30"></div>
+                                <div class="visible-lg element-height-30"></div>
+                            </div> <i class="fa fa-thumbs-up text-light" style="font-size:42px"></i>
+                            <div class="counter text-center element-top-10 text-light os-animation" data-count="101" data-format="(,ddd)" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                            <span class="value odometer-counter super regular">0</span> </div>
+                            <div class="divider-border divider-border-center element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s" style="height:3px;">
+                                <div class="divider-border-inner" style="background:rgba(255, 255, 255, 0.81); width:60px;"> </div>
+                            </div>
+                            <h3 class="text-center text-light os-animation normal" data-os-animation="fadeIn" data-os-animation-delay="0.1s">
+                        Completed Projects
+                    </h3>
+                            <div class="divider-wrapper">
+                                <div class="visible-xs element-height-30"></div>
+                                <div class="visible-sm element-height-30"></div>
+                                <div class="visible-md element-height-30"></div>
+                                <div class="visible-lg element-height-30"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 text-center" style="background:rgba(0, 0, 0, 0.15);">
+                            <div class="divider-wrapper">
+                                <div class="visible-xs element-height-30"></div>
+                                <div class="visible-sm element-height-30"></div>
+                                <div class="visible-md element-height-30"></div>
+                                <div class="visible-lg element-height-30"></div>
+                            </div> <i class="fa fa-child text-light" style="font-size:42px"></i>
+                            <div class="counter text-center element-top-10 text-light os-animation" data-count="7,782" data-format="(,ddd)" data-os-animation="fadeIn" data-os-animation-delay="0.3s">
+                            <span class="value odometer-counter super regular">0</span> </div>
+                            <div class="divider-border divider-border-center element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.4s" style="height:3px;">
+                                <div class="divider-border-inner" style="background:rgba(255, 255, 255, 0.81); width:60px;"> </div>
+                            </div>
+                            <h3 class="text-center text-light os-animation normal" data-os-animation="fadeIn" data-os-animation-delay="0.4s">
+                        Happy Customers
+                    </h3>
+                            <div class="divider-wrapper">
+                                <div class="visible-xs element-height-30"></div>
+                                <div class="visible-sm element-height-30"></div>
+                                <div class="visible-md element-height-30"></div>
+                                <div class="visible-lg element-height-30"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 text-center" style="background:rgba(0, 0, 0, 0.1);">
+                            <div class="divider-wrapper">
+                                <div class="visible-xs element-height-30"></div>
+                                <div class="visible-sm element-height-30"></div>
+                                <div class="visible-md element-height-30"></div>
+                                <div class="visible-lg element-height-30"></div>
+                            </div> <i class="fa fa-tachometer text-light" style="font-size:42px"></i>
+                            <div class="counter text-center element-top-10 text-light os-animation" data-count="1580" data-format="(,ddd)" data-os-animation="fadeIn" data-os-animation-delay="0.6s">
+                            <span class="value odometer-counter super regular">0</span> </div>
+                            <div class="divider-border divider-border-center element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.7s" style="height:3px;">
+                                <div class="divider-border-inner" style="background:rgba(255, 255, 255, 0.81); width:60px;"> </div>
+                            </div>
+                            <h3 class="text-center text-light os-animation normal" data-os-animation="fadeIn" data-os-animation-delay="0.7s">
+                        Lines per hour
+                    </h3>
+                            <div class="divider-wrapper">
+                                <div class="visible-xs element-height-30"></div>
+                                <div class="visible-sm element-height-30"></div>
+                                <div class="visible-md element-height-30"></div>
+                                <div class="visible-lg element-height-30"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 text-center" style="background:rgba(0, 0, 0, 0.05);">
+                            <div class="divider-wrapper">
+                                <div class="visible-xs element-height-30"></div>
+                                <div class="visible-sm element-height-30"></div>
+                                <div class="visible-md element-height-30"></div>
+                                <div class="visible-lg element-height-30"></div>
+                            </div> <i class="fa fa-coffee text-light" style="font-size:42px"></i>
+                            <div class="counter text-center element-top-10 text-light os-animation" data-count="80" data-format="(,ddd)" data-os-animation="fadeIn" data-os-animation-delay="0.9s">
+                            <span class="value odometer-counter super regular">0</span> </div>
+                            <div class="divider-border divider-border-center element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="1s" style="height:3px;">
+                                <div class="divider-border-inner" style="background:rgba(255, 255, 255, 0.81); width:60px;"> </div>
+                            </div>
+                            <h3 class="text-center text-light os-animation normal" data-os-animation="fadeIn" data-os-animation-delay="1s">
+                        Coffee Cups
+                    </h3>
+                            <div class="divider-wrapper">
+                                <div class="visible-xs element-height-30"></div>
+                                <div class="visible-sm element-height-30"></div>
+                                <div class="visible-md element-height-30"></div>
+                                <div class="visible-lg element-height-30"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="text-center element-top-70 os-animation big" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                        Our team
+                    </h1>
+                            <div class="divider-border divider-border-center element-top-10 element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s" style="height:3px;">
+                                <div class="divider-border-inner" style="width:60px;"> </div>
+                            </div>
+                            <p class="lead text-center center element-bottom-40 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.2s"> Time to meet our team of technology and business professionals.
+                                <br> Let us help your business reach it&#8217;s potential.</p>
+                            <div class="row staff-list-container list-container element-bottom-50">
+                                <div class="figure col-md-3 fade-in element-bottom-20 figcaption-bottom text-left fade-in os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s">
+                                    <div class="figure-image"> <img alt="Brandon Reed" src="assets/images/corporate/team01-notinclude.jpg">
+                                        <div class="figure-overlay">
+                                            <div class="figure-overlay-container">
+                                                <div class="figure-caption text-center">
+                                                    <ul class="figure-overlay-icons social-icons social-simple">
+                                                        <li>
+                                                            <a href="#" target="_self"> <i class="fa fa-facebook"></i> </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" target="_self"> <i class="fa fa-twitter"></i> </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" target="_self"> <i class="fa fa-behance"></i> </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="figure-caption text-left">
+                                        <h3 class="figure-caption-title">
+                                    <strong>Brandon Reed</strong>
+                                    <span>CEO</span>
+                                </h3>
+                                        <p class="figure-caption-description"> Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate users.</p>
+                                    </div>
+                                </div>
+                                <div class="figure col-md-3 fade-in element-bottom-20 figcaption-bottom text-left fade-in os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.2s">
+                                    <div class="figure-image"> <img alt="Amanda Hayes" src="assets/images/corporate/team02-notinclude.jpg">
+                                        <div class="figure-overlay">
+                                            <div class="figure-overlay-container">
+                                                <div class="figure-caption text-center">
+                                                    <ul class="figure-overlay-icons social-icons social-simple">
+                                                        <li>
+                                                            <a href="#" target="_self"> <i class="fa fa-facebook"></i> </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" target="_self"> <i class="fa fa-twitter"></i> </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" target="_self"> <i class="fa fa-google-plus"></i> </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="figure-caption text-left">
+                                        <h3 class="figure-caption-title">
+                                    <strong>Amanda
+                                    Hayes</strong> <span>Director</span>
+                                </h3>
+                                        <p class="figure-caption-description"> Efficiently unleash cross-media information without cross-media value. Quickly maximize deliverables schemas.</p>
+                                    </div>
+                                </div>
+                                <div class="figure col-md-3 fade-in element-bottom-20 figcaption-bottom text-left fade-in os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.3s">
+                                    <div class="figure-image"> <img alt="Donald Coleman" src="assets/images/corporate/team03-notinclude.jpg">
+                                        <div class="figure-overlay">
+                                            <div class="figure-overlay-container">
+                                                <div class="figure-caption text-center">
+                                                    <ul class="figure-overlay-icons social-icons social-simple">
+                                                        <li>
+                                                            <a href="#" target="_self"> <i class="fa fa-git"></i> </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" target="_self"> <i class="fa fa-twitter"></i> </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" target="_self"> <i class="fa fa-google-plus"></i> </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="figure-caption text-left">
+                                        <h3 class="figure-caption-title">
+                                    <strong>Donald
+                                    Coleman</strong> <span>Developer</span>
+                                </h3>
+                                        <p class="figure-caption-description"> Completely synergize resource sucking relationships premier niche markets. Professionally cultivate customer.</p>
+                                    </div>
+                                </div>
+                                <div class="figure col-md-3 fade-in element-bottom-20 figcaption-bottom text-left fade-in os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.4s">
+                                    <div class="figure-image"> <img alt="Shirley King" src="assets/images/corporate/team04-notinclude.jpg">
+                                        <div class="figure-overlay">
+                                            <div class="figure-overlay-container">
+                                                <div class="figure-caption text-center">
+                                                    <ul class="figure-overlay-icons social-icons social-simple">
+                                                        <li>
+                                                            <a href="#" target="_self"> <i class="fa fa-facebook"></i> </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" target="_self"> <i class="fa fa-twitter"></i> </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" target="_self"> <i class="fa fa-dribbble"></i> </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" target="_self"> <i class="fa fa-behance"></i> </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="figure-caption text-left">
+                                        <h3 class="figure-caption-title">
+                                <strong>Shirley King</strong>
+                                <span>Designer</span></h3>
+                                        <p class="figure-caption-description"> Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly testing procedures.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="background-overlay" style="background-color: rgba(0,192,225,1);"></div>
+                <div class="container-fullwidth container-vertical-middle">
+                    <div class="row vertical-middle">
+                        <div class="col-md-6" style="background:#f0f0f0;">
+                            <div class="text-center flexslider feature-slider" data-flex-animation="fade" data-flex-controls="hide" data-flex-controls-position="outside" data-flex-controlsalign="center" data-flex-directions="hide" data-flex-slideshow="true"
+                            data-flex-speed="7000" data-os-animation="none" data-os-animation-delay="0s" id="flexslider-818">
+                                <ul class="slides">
+                                    <li>
+                                        <blockquote class="blockquote-simple">
+                                            <h1>Lisa Hughes</h1> <img alt="team16-notinclude" class="attachment-thumbnail" height="150" src="assets/images/corporate/team16-notinclude.jpg" width="150">
+                                            <footer> <cite title="Technolab">Technolab</cite> </footer>
+                                        </blockquote>
+                                    </li>
+                                    <li>
+                                        <blockquote class="blockquote-simple">
+                                            <h1>Marie Clark</h1> <img alt="team15-notinclude" class="attachment-thumbnail" height="150" src="assets/images/corporate/team15-notinclude.jpg" width="150">
+                                            <footer> <cite title="Streetdax">Streetdax</cite> </footer>
+                                        </blockquote>
+                                    </li>
+                                    <li>
+                                        <blockquote class="blockquote-simple">
+                                            <h1>Scott Adams</h1> <img alt="team13-notinclude" class="attachment-thumbnail" height="150" src="assets/images/corporate/team13-notinclude.jpg" width="150">
+                                            <footer> <cite title="Trisbam">Trisbam</cite> </footer>
+                                        </blockquote>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="element-top-80 element-bottom-80 text-center text-light flexslider feature-slider" data-flex-animation="slide" data-flex-controls="hide" data-flex-controls-position="outside" data-flex-controlsalign="center" data-flex-directions="hide"
+                            data-flex-slideshow="true" data-flex-speed="7000" data-os-animation="none" data-os-animation-delay="0s" id="flexslider-39">
+                                <ul class="slides">
+                                    <li>
+                                        <blockquote>
+                                            <p>This theme is super easy to customise and the support team is just awesome. They helped me add a few design and styling changes and guided me to customise my theme. They were very knowledgable and fast. Thanks
+                                                again! This is the best theme and support money can buy!</p>
+                                        </blockquote>
+                                    </li>
+                                    <li>
+                                        <blockquote>
+                                            <p>After purchasing all of the top rated theme I find this theme to be the most intuitive. Everything is right where it's supposed to be and makes use of the best plugin combinations I have ever seen. Truly, there
+                                                are no words to describe how happy I am with this theme! Recommended</p>
+                                        </blockquote>
+                                    </li>
+                                    <li>
+                                        <blockquote>
+                                            <p>This Theme is just awesome. It is so easy to create a gorgeous looking sites. I would also like to mention their excellent and superfast support. It never took more than 2-3hours to have the correct solution.
+                                                I'm going to buy more themes of them, sure! Keep up the good work.</p>
+                                        </blockquote>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="background-overlay grid-overlay-0" style="background-color: rgba(255,255,255,1);"></div>
+                <div class="container-fullwidth">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="text-center element-top-70 os-animation big" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                        Our Clients
+                    </h1>
+                            <div class="divider-border divider-border-center element-top-10 element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s" style="height:3px;">
+                                <div class="divider-border-inner" style="width:60px;"> </div>
+                            </div>
+                            <p class="lead text-center center element-bottom-40 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.2s"> We work close with our clients projets
+                                <br> to provide a unique experience</p>
+                            <div class="flexslider flex-controls-bottom element-top-20 element-bottom-60" data-flex-animation="slide" data-flex-captionhorizontal="left" data-flex-controls="hide" data-flex-controlsalign="center"
+                            data-flex-controlsposition="inside" data-flex-controlsvertical="bottom" data-flex-directions="hide" data-flex-duration="600" data-flex-itemwidth="258" data-flex-sliderdirection="horizontal" data-flex-slideshow="true" data-flex-speed="7000"
+                            data-os-animation="none" data-os-animation-delay="0s" id="flexslider-74">
+                                <ul class="slides">
+                                    <li>
+                                        <figure> <img alt="client1" data-original-title="Red-fan" data-toggle="tooltip" height="200" src="assets/images/corporate/client1.png" width="400"> </figure>
+                                    </li>
+                                    <li>
+                                        <figure> <img alt="client2" data-original-title="Freetax" data-toggle="tooltip" height="200" src="assets/images/corporate/client2.png" width="400"> </figure>
+                                    </li>
+                                    <li>
+                                        <figure> <img alt="client5" data-original-title="Remedia" data-toggle="tooltip" height="200" src="assets/images/corporate/client5.png" width="400"> </figure>
+                                    </li>
+                                    <li>
+                                        <figure> <img alt="client4" data-original-title="Streetway" data-toggle="tooltip" height="200" src="assets/images/corporate/client4.png"> </figure>
+                                    </li>
+                                    <li>
+                                        <figure> <img alt="client3" data-original-title="Scotex" data-toggle="tooltip" height="200" src="assets/images/corporate/client3.png" width="400"> </figure>
+                                    </li>
+                                    <li>
+                                        <figure> <img alt="client7" data-original-title="Moveit" data-toggle="tooltip" height="200" src="assets/images/corporate/client7.png" width="400"> </figure>
+                                    </li>
+                                    <li>
+                                        <figure> <img alt="client6" data-original-title="Redlex" data-toggle="tooltip" height="200" src="assets/images/corporate/client6.png" width="400"> </figure>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="background-overlay grid-overlay-0" style="background-color: rgba(250,250,250,1);"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="text-center element-top-70 os-animation big" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                        Latest news
+                    </h1>
+                            <div class="divider-border divider-border-center element-top-10 element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s" style="height:3px;">
+                                <div class="divider-border-inner" style="width:60px;"> </div>
+                            </div>
+                            <p class="lead text-center center element-bottom-40 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.2s"> Want to catch up on whats been happening lately?
+                                <br> Take a look at the latest goings on at Lambda.</p>
+                            <div class="element-bottom-50 recent-simple-os-container row">
+                                <div class="col-md-4" data-os-animation="none" data-os-animation-delay="0s">
+                                    <article class="post-grid post-grid-overlay element-bottom-20 text-left" style="background-image: url(assets/images/corporate/blog011.jpg)">
+                                        <a href="corporate-standard-post.html">
+                                            <div class="post-grid-content">
+                                                <h3 class="post-grid-content-title">The
+                                        know how of branding</h3>
+                                                <div class="post-grid-content-footer"> Langan John , September 25, 2014 </div>
+                                            </div>
+                                        </a>
+                                    </article>
+                                </div>
+                                <div class="col-md-4" data-os-animation="none" data-os-animation-delay="0s">
+                                    <article class="post-grid post-grid-overlay element-bottom-20 text-left" style="background-image: url(assets/images/corporate/blog02.jpg)">
+                                        <a href="corporate-standard-post.html">
+                                            <div class="post-grid-content">
+                                                <h3 class="post-grid-content-title">A
+                                        corporare design to remember</h3>
+                                                <div class="post-grid-content-footer"> Pantazis Christos , September 25, 2014 </div>
+                                            </div>
+                                        </a>
+                                    </article>
+                                </div>
+                                <div class="col-md-4" data-os-animation="none" data-os-animation-delay="0s">
+                                    <article class="post-grid post-grid-overlay element-bottom-20 text-left" style="background-image: url(assets/images/corporate/blog03.jpg)">
+                                        <a href="corporate-standard-post.html">
+                                            <div class="post-grid-content">
+                                                <h3 class="post-grid-content-title">The
+                                        blog fundamentals</h3>
+                                                <div class="post-grid-content-footer"> Proistakis Manos , September 25, 2014 </div>
+                                            </div>
+                                        </a>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+        <footer id="footer">
+            <section class="section">
+                <div class="container">
+                    <div class="row element-top-40 element-bottom-40 footer-columns-4">
+                        <div class="col-sm-3">
+                            <div class="sidebar-widget widget_text" id="text-2">
+                                <h3 class="sidebar-header">About Us</h3>
+                                <div class="textwidget">
+                                    <p>Create stunning pages with Lambda amazing style! Functionality and usability combine to let you design your pages.</p>Get Lambda and start right away. </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="sidebar-widget widget_recent_entries">
+                                <h3 class="sidebar-header">Recent posts</h3>
+                                <ul>
+                                    <li class="clearfix">
+                                        <div class="post-icon">
+                                            <a href="corporate-standard-post.html" title="The know how of branding"> <img alt="blog01" class="attachment-thumbnail wp-post-image" height="150" src="assets/images/corporate/blog011-150x150.jpg" width="150"> </a>
+                                        </div> <a href="corporate-standard-post.html" title="The know how of branding">The know
+                                how of branding</a> <small class="post-date">September 25, 2014</small> </li>
+                                    <li class="clearfix">
+                                        <div class="post-icon">
+                                            <a href="corporate-standard-post.html" title="A corporare design to remember"> <img alt="blog02" class="attachment-thumbnail wp-post-image" height="150" src="assets/images/corporate/blog02-150x150.jpg" width="150"> </a>
+                                        </div> <a href="corporate-standard-post.html" title="A corporare design to remember">A
+                                corporare design to remember</a> <small class="post-date">September 25,
+                                2014</small> </li>
+                                    <li class="clearfix">
+                                        <div class="post-icon">
+                                            <a href="corporate-standard-post.html" title="The blog fundamentals"> <img alt="blog03" class="attachment-thumbnail wp-post-image" height="150" src="assets/images/corporate/blog03-150x150.jpg" width="150"> </a>
+                                        </div> <a href="corporate-standard-post.html" title="The blog fundamentals">The blog
+                                fundamentals</a> <small class="post-date">September 25, 2014</small> </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="sidebar-widget widget_categories">
+                                <h3 class="sidebar-header">Categories</h3>
+                                <ul>
+                                    <li> <a href="corporate-no-sidebar.html">
+                                    Arts &amp; Culture
+                                </a> </li>
+                                    <li> <a href="corporate-no-sidebar.html">
+                                    Mobile
+                                </a> </li>
+                                    <li> <a href="corporate-no-sidebar.html">
+                                    Reviews
+                                </a> </li>
+                                    <li> <a href="corporate-no-sidebar.html">
+                                    Sports
+                                </a> </li>
+                                    <li> <a href="corporate-no-sidebar.html">
+                                    Tech
+                                </a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="sidebar-widget widget_text">
+                                <h3 class="sidebar-header">Our Headquarters</h3>
+                                <div class="textwidget"><img alt="headquarters" src="assets/images/corporate/headquarters.png"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section subfooter">
+                <div class="container">
+                    <div class="row element-top-10 element-bottom-10 footer-columns-2">
+                        <div class="col-sm-6">
+                            <div class="sidebar-widget widget_text">
+                                <div class="textwidget"> Lambda Html Theme. &copy; Oxygenna 2015 </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="sidebar-widget widget_social">
+                                <ul class="unstyled inline social-icons social-simple social-normal">
+                                    <li>
+                                        <a data-iconcolor="#3b5998" href="corporate-index.html"> <i class="fa fa-facebook"></i> </a>
+                                    </li>
+                                    <li>
+                                        <a data-iconcolor="#00acee" href="corporate-index.html"> <i class="fa fa-twitter"></i> </a>
+                                    </li>
+                                    <li>
+                                        <a data-iconcolor="#5FB0D5" href="corporate-index.html"> <i class="fa fa-linkedin"></i> </a>
+                                    </li>
+                                    <li>
+                                        <a data-iconcolor="#E45135" href="corporate-index.html"> <i class="fa fa-google-plus"></i> </a>
+                                    </li>
+                                    <li>
+                                        <a data-iconcolor="#34526f" href="corporate-index.html"> <i class="fa fa-tumblr"></i> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </footer>
+    </div>
+    <a class="go-top go-top-circle" href="javascript:void(0)"> <i class="fa fa-angle-up"></i> </a>
+    <script type="text/javascript">
+        var oxyThemeData = {
+            navbarHeight: 100,
+            navbarScrolled: 90,
+            navbarScrolledPoint: 20,
+            menuClose: 'off',
+            scrollFinishedMessage: 'No more items to load.',
+            hoverMenu:
+            {
+                hoverActive: false,
+                hoverDelay: 1,
+                hoverFadeDelay: 200
+            },
+            siteLoader: 'on'
+        };
+    </script>
+    <script src="assets/js/theme.min.js"></script>
+    <script src="assets/js/revolution.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function()
+        {
+            jQuery('.tp-banner').show().revolution(
+            {
+                delay: 7000,
+                startwidth: 1170,
+                startheight: 480,
+                onHoverStop: "on", // Stop Banner Timer at Hover on Slide on/off
+                thumbWidth: 100, // Thumb With and Height and Amount (only if navigation Tyope set to thumb !)
+                thumbHeight: 50,
+                thumbAmount: 3,
+                hideThumbs: 0,
+                navigationType: "bullet", // bullet, thumb, none
+                navigationArrows: "solo", // nexttobullets, solo (old name verticalcentered), none
+                navigationStyle: "round", // round,square,navbar,round-old,square-old,navbar-old, or any from the list in the docu (choose between 50+ different item), custom
+                navigationHAlign: "center", // Vertical Align top,center,bottom
+                navigationVAlign: "bottom", // Horizontal Align left,center,right
+                navigationHOffset: 0,
+                navigationVOffset: 20,
+                soloArrowLeftHalign: "left",
+                soloArrowLeftValign: "center",
+                soloArrowLeftHOffset: 20,
+                soloArrowLeftVOffset: 0,
+                soloArrowRightHalign: "right",
+                soloArrowRightValign: "center",
+                soloArrowRightHOffset: 20,
+                soloArrowRightVOffset: 0,
+                touchenabled: "on", // Enable Swipe Function : on/off
+                stopAtSlide: -1, // Stop Timer if Slide "x" has been Reached. If stopAfterLoops set to 0, then it stops already in the first Loop at slide X which defined. -1 means do not stop at any slide. stopAfterLoops has no sinn in this case.
+                stopAfterLoops: -1, // Stop Timer if All slides has been played "x" times. IT will stop at THe slide which is defined via stopAtSlide:x, if set to -1 slide never stop automatic
+                hideCaptionAtLimit: 0, // It Defines if a caption should be shown under a Screen Resolution ( Basod on The Width of Browser)
+                hideAllCaptionAtLilmit: 0, // Hide all The Captions if Width of Browser is less then this value
+                hideSliderAtLimit: 0, // Hide the whole slider, and stop also functions if Width of Browser is less than this value
+                fullWidth: "on",
+                shadow: 0
+            });
+        });
+    </script>
+</body>
+
+</html>

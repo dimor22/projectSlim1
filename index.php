@@ -73,7 +73,74 @@ $app->configureMode('production', function () use ($app) {
  */
 
 $app->get('/', function() use ($app, $twig) {
-	echo $app->render('corporate-index.html');
+	$pageData = [
+		'title' => 'Home Page',
+		'slides' => [
+			'assets/images/corporate/top-slider/photo1.jpg',
+			'assets/images/corporate/top-slider/photo2.jpg',
+			'assets/images/corporate/top-slider/photo3.jpg',
+			'assets/images/corporate/top-slider/photo4.jpg',
+		],
+		'work' => [
+			[
+				'data-title'    => 'Corporate animation',
+				'href'          => 'assets/images/corporate/latest-work/photo1.jpg',
+				'alt'           => 'Corporate animation',
+				'src'           => 'assets/images/corporate/latest-work/photo1.jpg',
+				'h3'            => 'Corporate animation'
+			],
+			[
+				'data-title'    => 'Freshquote co',
+				'href'          => 'assets/images/corporate/latest-work/photo2.jpg',
+				'alt'           => 'Freshquote co',
+				'src'           => 'assets/images/corporate/latest-work/photo2.jpg',
+				'h3'            => 'Freshquote co'
+			],
+			[
+				'data-title'    => 'Rapid Longitude branding',
+				'href'          => 'assets/images/corporate/latest-work/photo3.jpg',
+				'alt'           => 'Rapid Longitude branding',
+				'src'           => 'assets/images/corporate/latest-work/photo3.jpg',
+				'h3'            => 'Rapid Longitude branding'
+			],
+			[
+				'data-title'    => 'Risky Heart magazine',
+				'href'          => 'assets/images/corporate/latest-work/photo4.jpg',
+				'alt'           => 'Risky Heart magazine',
+				'src'           => 'assets/images/corporate/latest-work/photo4.jpg',
+				'h3'            => 'Risky Heart magazine'
+			],
+			[
+				'data-title'    => 'Risky Heart magazine',
+				'href'          => 'assets/images/corporate/latest-work/photo5.jpg',
+				'alt'           => 'Risky Heart magazine',
+				'src'           => 'assets/images/corporate/latest-work/photo5.jpg',
+				'h3'            => 'Risky Heart magazine'
+			],
+			[
+				'data-title'    => 'Risky Heart magazine',
+				'href'          => 'assets/images/corporate/latest-work/photo6.jpg',
+				'alt'           => 'Risky Heart magazine',
+				'src'           => 'assets/images/corporate/latest-work/photo6.jpg',
+				'h3'            => 'Risky Heart magazine'
+			],
+			[
+				'data-title'    => 'Risky Heart magazine',
+				'href'          => 'assets/images/corporate/latest-work/photo7.jpg',
+				'alt'           => 'Risky Heart magazine',
+				'src'           => 'assets/images/corporate/latest-work/photo7.jpg',
+				'h3'            => 'Risky Heart magazine'
+			],
+			[
+				'data-title'    => 'Risky Heart magazine',
+				'href'          => 'assets/images/corporate/latest-work/photo8.jpg',
+				'alt'           => 'Risky Heart magazine',
+				'src'           => 'assets/images/corporate/latest-work/photo8.jpg',
+				'h3'            => 'Risky Heart magazine'
+			]
+		]
+	];
+	echo $app->render('corporate-index.twig', ['data' => $pageData]);
 })->name('home');
 
 $app->get('/hello/:name', function ($name) {
