@@ -68,14 +68,14 @@
             <nav class="collapse navbar-collapse main-navbar logo-navbar navbar-right">
                 <div class="menu-container">
                     <ul class="nav navbar-nav" id="menu-main">
-                        <li class="menu-item active  "> <a href="{{ siteUrl('/') }}">Home</a> </li>
+                        <li class="menu-item {{ state1|default('') }}  "> <a href="{{ siteUrl('/') }}">Home</a> </li>
                         {#<li class="menu-item"> <a href="/corporate-services.html">Appointments</a> </li>#}
                         {#<li class="menu-item"> <a href="/corporate-single-service.html">Gallery</a> </li>#}
                         {#<li class="menu-item"> <a href="/corporate-meet-the-team.html">Testimonials</a> </li>#}
                         {#<li class="menu-item"> <a href="/corporate-404.html">Services</a> </li>#}
                         {#<li class="menu-item"> <a href="/corporate-right-sidebar.html">Products/Materials</a> </li>#}
-                        <li class="menu-item"> <a href="{{ siteUrl('/about') }}">About</a> </li>
-                        <li class="menu-item"> <a href="{{ siteUrl('/contact') }}">Contact</a> </li>
+                        <li class="menu-item {{ state2|default('') }}"> <a href="{{ siteUrl('/about') }}">About</a> </li>
+                        <li class="menu-item {{ state3|default('') }}"> <a href="{{ siteUrl('/contact') }}">Contact</a> </li>
 
                     </ul>
                 </div>
@@ -548,7 +548,7 @@
                     <div class="col-sm-3">
                         <div class="sidebar-widget widget_text">
                             <h3 class="sidebar-header">Our Headquarters</h3>
-                            <div class="textwidget"><img alt="headquarters" src="assets/images/corporate/headquarters.png"></div>
+                            <div class="textwidget"><img alt="headquarters" src="assets/images/nova-logo.png"></div>
                         </div>
                     </div>
                 </div>
@@ -559,7 +559,8 @@
                 <div class="row element-top-10 element-bottom-10 footer-columns-2">
                     <div class="col-sm-6">
                         <div class="sidebar-widget widget_text">
-                            <div class="textwidget"> Lambda Html Theme. &copy; Oxygenna 2015 </div>
+                            <div class="textwidget"> Website Powered by <a href="https://www.linkedin.com/in/dlopezwd
+" target="_blank">DL</a> &copy; Nova Interiors 2016 </div>
                         </div>
                     </div>
                     <div class="col-sm-6">

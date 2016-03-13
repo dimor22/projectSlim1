@@ -260,7 +260,7 @@ $app->get('/', function() use ($app, $twig) {
 				'This Theme is just awesome. It is so easy to create a gorgeous looking sites. I would also like to mention their excellent and superfast support. It never took more than 2-3hours to have the correct solution. I\'m going to buy more themes of them, sure! Keep up the good work.'
 		]
 	];
-	echo $app->render('public_base.twig', ['data' => $pageData]);
+	echo $app->render('public_base.twig', ['data' => $pageData, 'state1'  => 'active']);
 })->name('home');
 
 $app->get('/hello/:name', function ($name) {
@@ -271,7 +271,7 @@ $app->get('/contact', function () use ($app) {
 	$pageData = [
 		'title' =>  'Contact Page'
 	];
-	echo $app->render('contact.twig', ['data'   =>  $pageData]);
+	echo $app->render('contact.twig', ['data'   =>  $pageData, 'state3'  => 'active']);
 })->name('contact');
 
 $app->get('/appointments', function () {
@@ -282,7 +282,7 @@ $app->get('/about', function () use ($app) {
 	$pageData = [
 		'title' =>  'About Page'
 	];
-	echo $app->render('about.twig', ['data'   =>  $pageData]);
+	echo $app->render('about.twig', ['data'   =>  $pageData, 'state2'  => 'active']);
 })->name('about');
 
 $app->get('/products', function () {
