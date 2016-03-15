@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="nova">
+  <component name="PublishConfigData" serverName="nova" createEmptyFolders="true">
     <serverData>
       <paths name="mamp server">
         <serverdata>
@@ -12,7 +12,7 @@
       <paths name="nova">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/projectSlim1" local="$PROJECT_DIR$" web="/projectSlim1" />
           </mappings>
         </serverdata>
       </paths>

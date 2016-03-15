@@ -15,6 +15,8 @@ date_default_timezone_set('America/Los_Angeles');
 require_once 'vendor/idiorm/idiorm.php';
 require_once 'db_config.php';
 
+
+
 /**
  * TWIG - Template System
  */
@@ -371,7 +373,7 @@ $app->group('/admin', function () use ($app) {
 		echo $app->render('login.html.twig', ['form_action_link'=> $app->urlFor('admin')]);
 	})->name('login');
 
-	// Users Routes Group
+	// Users
 	$app->group('/users', function () use ($app) {
 
 		$app->get( '/', function () use ( $app ) {
@@ -473,7 +475,7 @@ $app->group('/admin', function () use ($app) {
 
 	});
 
-	// photos
+	// Photos
 	$app->group('/photos', function() use ($app) {
 
 		$app->get('/', function() use ($app){
