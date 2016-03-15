@@ -7,7 +7,7 @@
         <section class="section">
             <div class="background-media" data-0-top-bottom="background-position: 50% 50px" data-start="background-position: 50% -31px" style="background-image: url(assets/images/corporate/p03.jpg); background-repeat:no-repeat; background-size:cover; background-attachment:fixed; background-position: 50% 0%;">
             </div>
-            <div class="background-overlay" style="background-color: rgba(1,192,225,0.8);"></div>
+            <div class="background-overlay" style="background-color: rgba(57,139,202,0.8);"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-2 text-center"></div>
@@ -83,9 +83,9 @@
             </div>
         </section>
         <section class="section">
-            <div class="background-media" data-0-top-bottom="background-position: 50% 50px" data-start="background-position: 50% -31px" style="background-image: url(assets/images/corporate/blog06.jpg); background-repeat:no-repeat; background-size:cover; background-attachment:fixed; background-position: 50% 0%;">
+            <div class="background-media" data-0-top-bottom="background-position: 50% 50px" data-start="background-position: 50% -31px" style="background-image: url(assets/images/corporate/top-slider/photo3.jpg); background-repeat:no-repeat; background-size:cover; background-attachment:fixed; background-position: 50% 0%;">
             </div>
-            <div class="background-overlay grid-overlay-0" style="background-color: rgba(3,194,227,0.9);"></div>
+            <div class="background-overlay grid-overlay-0" style="background-color: rgba(57,139,202,0.9);"></div>
             <div class="container-fullwidth container-vertical-middle">
                 <div class="row vertical-middle">
                     <div class="col-md-3 text-center" style="background:rgba(0, 0, 0, 0.2);">
@@ -158,3 +158,24 @@
         </section>
     </article>
 {% endblock content %}
+
+{% block extrajs %}
+
+    <script>window.map = {
+            map_type: 'ROADMAP',
+            map_zoom: 15,
+            map_style: 'blackwhite',
+            map_scrollable: 'on',
+            marker: 'show',
+            label: ['London Royal','Athens Bistro'],
+            address: '',
+            latlng : ['51.511084, -0.133202','51.506623, -0.111916'],
+            center_latlng: '',
+            markerURL: 'assets/images/marker.png',
+            auto_center: true,
+        };</script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="assets/js/map.min.js"></script>
+
+{% endblock %}

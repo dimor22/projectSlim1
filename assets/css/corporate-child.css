@@ -5,3 +5,7 @@ element.style {
 a.navbar-brand {
     padding: 15px 0px;
 }
+
+.post-grid-overlay {
+    background-color: rgba(57,139,202, 0.78);
+}
