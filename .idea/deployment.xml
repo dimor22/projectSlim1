@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="nova" createEmptyFolders="true">
+  <component name="PublishConfigData" serverName="nova" createEmptyFolders="true" uploadOnCheckin="3188ec4b-dd69-4447-987c-3d5098429aac">
     <serverData>
       <paths name="mamp server">
         <serverdata>
@@ -17,5 +17,6 @@
         </serverdata>
       </paths>
     </serverData>
+    <option name="myUploadOnCheckinName" value="nova" />
   </component>
 </project>

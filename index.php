@@ -293,7 +293,7 @@ $app->get('/products', function () use ($app) {
 });
 
 $app->get('/services', function () use ($app) {
-	$app->render('404.html.twig');
+	$app->render('services.twig');
 });
 
 $app->get('/testimonials', function () use ($app) {
