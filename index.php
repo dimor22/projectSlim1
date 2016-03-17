@@ -301,7 +301,7 @@ $app->get('/testimonials', function () use ($app) {
 });
 
 $app->get('/gallery', function () use ($app) {
-	$app->render('404.html.twig');
+	$app->render('gallery.twig');
 });
 
 
