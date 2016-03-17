@@ -23,9 +23,11 @@
     <link rel="icon" type="image/png" href="assets/images/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="assets/images/favicons/favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/png" href="assets/images/favicons/favicon-16x16.png" sizes="16x16">
-    <link rel="shortcut icon" href="assets/images/favicons/favicon.ico"> </head>
+    <link rel="shortcut icon" href="assets/images/favicons/favicon.ico">
+</head>
 
 <body class="pace-on pace-counter">
+{#<h1>{{ me }} AND {{ host_name }}</h1>#}
 <div class="pace-overlay"></div>
 <div class="top-bar">
     <div class="container">
@@ -69,11 +71,11 @@
                 <div class="menu-container">
                     <ul class="nav navbar-nav" id="menu-main">
                         <li class="menu-item {{ state1|default('') }}  "> <a href="{{ siteUrl('/') }}">Home</a> </li>
-                        {#<li class="menu-item"> <a href="/corporate-services.html">Appointments</a> </li>#}
-                        {#<li class="menu-item"> <a href="/corporate-single-service.html">Gallery</a> </li>#}
-                        {#<li class="menu-item"> <a href="/corporate-meet-the-team.html">Testimonials</a> </li>#}
-                        {#<li class="menu-item"> <a href="/corporate-404.html">Services</a> </li>#}
-                        {#<li class="menu-item"> <a href="/corporate-right-sidebar.html">Products/Materials</a> </li>#}
+                        <li class="menu-item"> <a href="{{ siteUrl('/appointments') }}">Appointments</a> </li>
+                        <li class="menu-item"> <a href="{{ siteUrl('/gallery') }}">Gallery</a> </li>
+                        <li class="menu-item"> <a href="{{ siteUrl('/testimonials') }}">Testimonials</a> </li>
+                        <li class="menu-item"> <a href="{{ siteUrl('/services') }}">Services</a> </li>
+                        <li class="menu-item"> <a href="{{ siteUrl('/materials') }}">Products/Materials</a> </li>
                         <li class="menu-item {{ state2|default('') }}"> <a href="{{ siteUrl('/about') }}">About</a> </li>
                         <li class="menu-item {{ state3|default('') }}"> <a href="{{ siteUrl('/contact') }}">Contact</a> </li>
 
@@ -435,122 +437,45 @@
                 </div>
             </div>
         </section>
-        <section class="section">
-            <div class="background-overlay grid-overlay-0" style="background-color: rgba(250,250,250,1);"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="text-center element-top-70 os-animation big" data-os-animation="fadeIn" data-os-animation-delay="0s">
-                            Latest news
-                        </h1>
-                        <div class="divider-border divider-border-center element-top-10 element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s" style="height:3px;">
-                            <div class="divider-border-inner" style="width:60px;"> </div>
-                        </div>
-                        <p class="lead text-center center element-bottom-40 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.2s"> Want to catch up on whats been happening lately?
-                            <br> Take a look at the latest goings on at Lambda.</p>
-                        <div class="element-bottom-50 recent-simple-os-container row">
-                            <div class="col-md-4" data-os-animation="none" data-os-animation-delay="0s">
-                                <article class="post-grid post-grid-overlay element-bottom-20 text-left" style="background-image: url(assets/images/corporate/blog011.jpg)">
-                                    <a href="corporate-standard-post.html">
-                                        <div class="post-grid-content">
-                                            <h3 class="post-grid-content-title">The
-                                                know how of branding</h3>
-                                            <div class="post-grid-content-footer"> Langan John , September 25, 2014 </div>
-                                        </div>
-                                    </a>
-                                </article>
-                            </div>
-                            <div class="col-md-4" data-os-animation="none" data-os-animation-delay="0s">
-                                <article class="post-grid post-grid-overlay element-bottom-20 text-left" style="background-image: url(assets/images/corporate/blog02.jpg)">
-                                    <a href="corporate-standard-post.html">
-                                        <div class="post-grid-content">
-                                            <h3 class="post-grid-content-title">A
-                                                corporare design to remember</h3>
-                                            <div class="post-grid-content-footer"> Pantazis Christos , September 25, 2014 </div>
-                                        </div>
-                                    </a>
-                                </article>
-                            </div>
-                            <div class="col-md-4" data-os-animation="none" data-os-animation-delay="0s">
-                                <article class="post-grid post-grid-overlay element-bottom-20 text-left" style="background-image: url(assets/images/corporate/blog03.jpg)">
-                                    <a href="corporate-standard-post.html">
-                                        <div class="post-grid-content">
-                                            <h3 class="post-grid-content-title">The
-                                                blog fundamentals</h3>
-                                            <div class="post-grid-content-footer"> Proistakis Manos , September 25, 2014 </div>
-                                        </div>
-                                    </a>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+
     </article>
     {% endblock content %}
     <footer id="footer">
         <section class="section">
             <div class="container">
                 <div class="row element-top-40 element-bottom-40 footer-columns-4">
-                    <div class="col-sm-3">
-                        <div class="sidebar-widget widget_text" id="text-2">
-                            <h3 class="sidebar-header">About Us</h3>
-                            <div class="textwidget">
-                                <p>Create stunning pages with Lambda amazing style! Functionality and usability combine to let you design your pages.</p>Get Lambda and start right away. </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="sidebar-widget widget_recent_entries">
-                            <h3 class="sidebar-header">Recent posts</h3>
-                            <ul>
-                                <li class="clearfix">
-                                    <div class="post-icon">
-                                        <a href="corporate-standard-post.html" title="The know how of branding"> <img alt="blog01" class="attachment-thumbnail wp-post-image" height="150" src="assets/images/corporate/blog011-150x150.jpg" width="150"> </a>
-                                    </div> <a href="corporate-standard-post.html" title="The know how of branding">The know
-                                        how of branding</a> <small class="post-date">September 25, 2014</small> </li>
-                                <li class="clearfix">
-                                    <div class="post-icon">
-                                        <a href="corporate-standard-post.html" title="A corporare design to remember"> <img alt="blog02" class="attachment-thumbnail wp-post-image" height="150" src="assets/images/corporate/blog02-150x150.jpg" width="150"> </a>
-                                    </div> <a href="corporate-standard-post.html" title="A corporare design to remember">A
-                                        corporare design to remember</a> <small class="post-date">September 25,
-                                        2014</small> </li>
-                                <li class="clearfix">
-                                    <div class="post-icon">
-                                        <a href="corporate-standard-post.html" title="The blog fundamentals"> <img alt="blog03" class="attachment-thumbnail wp-post-image" height="150" src="assets/images/corporate/blog03-150x150.jpg" width="150"> </a>
-                                    </div> <a href="corporate-standard-post.html" title="The blog fundamentals">The blog
-                                        fundamentals</a> <small class="post-date">September 25, 2014</small> </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="sidebar-widget widget_categories">
-                            <h3 class="sidebar-header">Categories</h3>
-                            <ul>
-                                <li> <a href="corporate-no-sidebar.html">
-                                        Arts &amp; Culture
-                                    </a> </li>
-                                <li> <a href="corporate-no-sidebar.html">
-                                        Mobile
-                                    </a> </li>
-                                <li> <a href="corporate-no-sidebar.html">
-                                        Reviews
-                                    </a> </li>
-                                <li> <a href="corporate-no-sidebar.html">
-                                        Sports
-                                    </a> </li>
-                                <li> <a href="corporate-no-sidebar.html">
-                                        Tech
-                                    </a> </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <div class="sidebar-widget widget_text">
-                            <h3 class="sidebar-header">Our Headquarters</h3>
                             <div class="textwidget"><img alt="headquarters" src="assets/images/nova-logo.png"></div>
                         </div>
                     </div>
+                    <div class="col-sm-4">
+                        <div class="sidebar-widget widget_text" id="text-2">
+                            <h3 class="sidebar-header">About Us</h3>
+                            <div class="textwidget">
+                                <p>Nova interiors is a family owned and operated company that has been stablish in Las Vegas .  Serving homeowners and contractors with remodels and new construction projects. We specialize in custom floor and wall covering of all types, sizes and designs. </p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="sidebar-widget widget_categories">
+                            <h3 class="sidebar-header">MENU</h3>
+                            <ul>
+                                <li> <a href="{{ siteUrl('/appointments') }}">
+                                        Appointments
+                                    </a> </li>
+                                <li> <a href="{{ siteUrl('/gallery') }}">
+                                        Gallery
+                                    </a> </li>
+                                <li> <a href="{{ siteUrl('/testimonials') }}">
+                                        Testimonials
+                                    </a> </li>
+                                <li> <a href="{{ siteUrl('/services') }}">
+                                        Services
+                                    </a> </li>
+                            </ul>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
