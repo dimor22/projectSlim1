@@ -266,10 +266,6 @@ $app->get('/', function() use ($app, $twig) {
 	echo $app->render('public_base.twig', ['data' => $pageData, 'state1'  => 'active']);
 })->name('home');
 
-$app->get('/hello/:name', function ($name) {
-	echo "Hello, $name";
-});
-
 $app->get('/contact', function () use ($app) {
 	$pageData = [
 		'title' =>  'Contact Page'
@@ -293,15 +289,24 @@ $app->get('/products', function () use ($app) {
 });
 
 $app->get('/services', function () use ($app) {
-	$app->render('services.twig');
+	$pageData = [
+		'title' =>  'Services Page'
+	];
+	$app->render('services.twig', ['data'   =>  $pageData, 'state4'  => 'active']);
 });
 
 $app->get('/testimonials', function () use ($app) {
-	$app->render('testimonials.twig');
+	$pageData = [
+		'title' =>  'Testimonial Page'
+	];
+	$app->render('testimonials.twig',  ['data'   =>  $pageData, 'state5'  => 'active']);
 });
 
 $app->get('/gallery', function () use ($app) {
-	$app->render('gallery.twig');
+	$pageData = [
+		'title' =>  'Gallery Page'
+	];
+	$app->render('gallery.twig', ['data'   =>  $pageData, 'state6'  => 'active']);
 });
 
 

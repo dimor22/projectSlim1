@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-    <title>{% block title %}{{ data.title }}{% endblock title %}</title>
+    <title>{% block title %}{{ data.title }} - Nova Interiors{% endblock title %}</title>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link href="//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,900%7CGentium+Basic:400italic&amp;subset=latin,latin" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="assets/css/extras.min.css">
@@ -72,9 +72,9 @@
                     <ul class="nav navbar-nav" id="menu-main">
                         <li class="menu-item {{ state1|default('') }}  "> <a href="{{ siteUrl('/') }}">Home</a> </li>
                         <li class="menu-item"> <a href="{{ siteUrl('/appointments') }}">Appointments</a> </li>
-                        <li class="menu-item"> <a href="{{ siteUrl('/gallery') }}">Gallery</a> </li>
-                        <li class="menu-item"> <a href="{{ siteUrl('/testimonials') }}">Testimonials</a> </li>
-                        <li class="menu-item"> <a href="{{ siteUrl('/services') }}">Services</a> </li>
+                        <li class="menu-item {{ state6|default('') }}"> <a href="{{ siteUrl('/gallery') }}">Gallery</a> </li>
+                        <li class="menu-item {{ state5|default('') }}"> <a href="{{ siteUrl('/testimonials') }}">Testimonials</a> </li>
+                        <li class="menu-item {{ state4|default('') }}"> <a href="{{ siteUrl('/services') }}">Services</a> </li>
                         <li class="menu-item"> <a href="{{ siteUrl('/materials') }}">Products/Materials</a> </li>
                         <li class="menu-item {{ state2|default('') }}"> <a href="{{ siteUrl('/about') }}">About</a> </li>
                         <li class="menu-item {{ state3|default('') }}"> <a href="{{ siteUrl('/contact') }}">Contact</a> </li>
