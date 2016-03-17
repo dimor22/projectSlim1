@@ -297,7 +297,7 @@ $app->get('/services', function () use ($app) {
 });
 
 $app->get('/testimonials', function () use ($app) {
-	$app->render('404.html.twig');
+	$app->render('testimonials.twig');
 });
 
 $app->get('/gallery', function () use ($app) {
