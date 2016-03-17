@@ -274,7 +274,11 @@ $app->get('/contact', function () use ($app) {
 })->name('contact');
 
 $app->get('/appointments', function () use ($app) {
-	$app->render('404.html.twig');
+	$pageData = [
+		'title' =>  'Appointments Page'
+	];
+
+	$app->render('404.html.twig', ['data'   =>  $pageData, 'state7'  => 'active']);
 });
 
 $app->get('/about', function () use ($app) {
@@ -285,7 +289,11 @@ $app->get('/about', function () use ($app) {
 })->name('about');
 
 $app->get('/products', function () use ($app) {
-	$app->render('404.html.twig');
+	$pageData = [
+		'title' =>  'Products Page'
+	];
+
+	$app->render('404.html.twig', ['data'   =>  $pageData, 'state8'  => 'active']);
 });
 
 $app->get('/services', function () use ($app) {

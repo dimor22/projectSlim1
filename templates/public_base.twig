@@ -71,11 +71,11 @@
                 <div class="menu-container">
                     <ul class="nav navbar-nav" id="menu-main">
                         <li class="menu-item {{ state1|default('') }}  "> <a href="{{ siteUrl('/') }}">Home</a> </li>
-                        <li class="menu-item"> <a href="{{ siteUrl('/appointments') }}">Appointments</a> </li>
+                        <li class="menu-item {{ state7|default('') }}"> <a href="{{ siteUrl('/appointments') }}">Appointments</a> </li>
                         <li class="menu-item {{ state6|default('') }}"> <a href="{{ siteUrl('/gallery') }}">Gallery</a> </li>
                         <li class="menu-item {{ state5|default('') }}"> <a href="{{ siteUrl('/testimonials') }}">Testimonials</a> </li>
                         <li class="menu-item {{ state4|default('') }}"> <a href="{{ siteUrl('/services') }}">Services</a> </li>
-                        <li class="menu-item"> <a href="{{ siteUrl('/materials') }}">Products/Materials</a> </li>
+                        <li class="menu-item {{ state8|default('') }}"> <a href="{{ siteUrl('/materials') }}">Products/Materials</a> </li>
                         <li class="menu-item {{ state2|default('') }}"> <a href="{{ siteUrl('/about') }}">About</a> </li>
                         <li class="menu-item {{ state3|default('') }}"> <a href="{{ siteUrl('/contact') }}">Contact</a> </li>
 
