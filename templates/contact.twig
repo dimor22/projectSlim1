@@ -25,6 +25,51 @@
             </div>
         </section>
         <section class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-center element-top-70 os-animation big" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                            Our team
+                        </h1>
+                        <div class="divider-border divider-border-center element-top-10 element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s" style="height:3px;">
+                            <div class="divider-border-inner" style="width:60px;"> </div>
+                        </div>
+                        <p class="lead text-center center element-bottom-40 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.2s"> Time to meet our team of technology and business professionals.
+                            <br> Let us help your business reach it&#8217;s potential.</p>
+                        <div class="row staff-list-container list-container element-bottom-50">
+                            {% for person in data.team %}
+                                <div class="figure col-md-3 fade-in element-bottom-20 figcaption-bottom text-left fade-in os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s">
+                                    <div class="figure-image"> <img alt="{{ person.alt }}" src="{{ person.src }}">
+                                        <div class="figure-overlay">
+                                            <div class="figure-overlay-container">
+                                                <div class="figure-caption text-center">
+                                                    <ul class="figure-overlay-icons social-icons social-simple">
+                                                        {% for media in person.social %}
+                                                            <li>
+                                                                <a href="{{ media.href }}" target="_self"> <i class="fa fa-{{ media.name }}"></i> </a>
+                                                            </li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="figure-caption text-left">
+                                        <h3 class="figure-caption-title">
+                                            <strong>{{ person.strong }}</strong>
+                                            <span>{{ person.span }}</span>
+                                        </h3>
+                                        <p class="figure-caption-description">{{ person.p }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
             <div class="background-overlay" style="background-color: rgba(255,255,255,0);"></div>
             <div class="container">
                 <div class="row">

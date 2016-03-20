@@ -29,7 +29,3 @@ function getGalleryPhotos ( $album ){
 
 	return $gallery;
 }
-
-function checkHost(){
-	return $_SERVER['SERVER_NAME'];
-}

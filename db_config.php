@@ -5,7 +5,7 @@
  */
 
 // Autodetect remote or local host
-if (checkHost() == 'localhost') {
+if ($_SERVER['SERVER_NAME'] == 'localhost') {
 	// Local CONSTANT variables
 	require_once 'development.php';
 } else {
