@@ -44,7 +44,7 @@ $app->hook('slim.before', function () use ($app) {
 		$app->view->appendData(['adminPhoto' => $_SESSION['adminPhoto']]);
 		$app->view->appendData(['photoInfo' => 'Square photo for best results (min. 160 x 160)']);
 	}
-	$app->view->appendData(['header_email' => 'info@novainteriors.com']);
+	$app->view->appendData(['header_email' => 'info@novainteriorslv.com']);
 	$app->view->appendData(['header_phone' => '702-241-1491']);
 
 });
@@ -88,60 +88,60 @@ $app->get('/', function() use ($app, $twig) {
 		],
 		'work'      => [
 			[
-				'data-title'    => 'Corporate animation',
+				'data-title'    => 'NOVA INTERIORS',
 				'href'          => 'assets/images/corporate/latest-work/photo1.jpg',
-				'alt'           => 'Corporate animation',
+				'alt'           => 'NOVA INTERIORS',
 				'src'           => 'assets/images/corporate/latest-work/photo1.jpg',
-				'h3'            => 'Corporate animation'
+				'h3'            => 'NOVA INTERIORS'
 			],
 			[
-				'data-title'    => 'Freshquote co',
+				'data-title'    => 'NOVA INTERIORS',
 				'href'          => 'assets/images/corporate/latest-work/photo2.jpg',
-				'alt'           => 'Freshquote co',
+				'alt'           => 'NOVA INTERIORS',
 				'src'           => 'assets/images/corporate/latest-work/photo2.jpg',
-				'h3'            => 'Freshquote co'
+				'h3'            => 'NOVA INTERIORS'
 			],
 			[
-				'data-title'    => 'Rapid Longitude branding',
+				'data-title'    => 'NOVA INTERIORS',
 				'href'          => 'assets/images/corporate/latest-work/photo3.jpg',
-				'alt'           => 'Rapid Longitude branding',
+				'alt'           => 'NOVA INTERIORS',
 				'src'           => 'assets/images/corporate/latest-work/photo3.jpg',
-				'h3'            => 'Rapid Longitude branding'
+				'h3'            => 'NOVA INTERIORS'
 			],
 			[
-				'data-title'    => 'Risky Heart magazine',
+				'data-title'    => 'NOVA INTERIORS',
 				'href'          => 'assets/images/corporate/latest-work/photo4.jpg',
-				'alt'           => 'Risky Heart magazine',
+				'alt'           => 'NOVA INTERIORS',
 				'src'           => 'assets/images/corporate/latest-work/photo4.jpg',
-				'h3'            => 'Risky Heart magazine'
+				'h3'            => 'NOVA INTERIORS'
 			],
 			[
-				'data-title'    => 'Risky Heart magazine',
+				'data-title'    => 'NOVA INTERIORS',
 				'href'          => 'assets/images/corporate/latest-work/photo5.jpg',
-				'alt'           => 'Risky Heart magazine',
+				'alt'           => 'NOVA INTERIORS',
 				'src'           => 'assets/images/corporate/latest-work/photo5.jpg',
-				'h3'            => 'Risky Heart magazine'
+				'h3'            => 'NOVA INTERIORS'
 			],
 			[
-				'data-title'    => 'Risky Heart magazine',
+				'data-title'    => 'NOVA INTERIORS',
 				'href'          => 'assets/images/corporate/latest-work/photo6.jpg',
-				'alt'           => 'Risky Heart magazine',
+				'alt'           => 'NOVA INTERIORS',
 				'src'           => 'assets/images/corporate/latest-work/photo6.jpg',
-				'h3'            => 'Risky Heart magazine'
+				'h3'            => 'NOVA INTERIORS'
 			],
 			[
-				'data-title'    => 'Risky Heart magazine',
+				'data-title'    => 'NOVA INTERIORS',
 				'href'          => 'assets/images/corporate/latest-work/photo7.jpg',
-				'alt'           => 'Risky Heart magazine',
+				'alt'           => 'NOVA INTERIORS',
 				'src'           => 'assets/images/corporate/latest-work/photo7.jpg',
-				'h3'            => 'Risky Heart magazine'
+				'h3'            => 'NOVA INTERIORS'
 			],
 			[
-				'data-title'    => 'Risky Heart magazine',
+				'data-title'    => 'NOVA INTERIORS',
 				'href'          => 'assets/images/corporate/latest-work/photo8.jpg',
-				'alt'           => 'Risky Heart magazine',
+				'alt'           => 'NOVA INTERIORS',
 				'src'           => 'assets/images/corporate/latest-work/photo8.jpg',
-				'h3'            => 'Risky Heart magazine'
+				'h3'            => 'NOVA INTERIORS'
 			]
 		],
 		'team'      => [
@@ -335,28 +335,6 @@ $app->get('/contact', function () use ($app) {
 				'strong'    =>  'Donald Coleman',
 				'span'      =>  'Developer',
 				'p'         =>  ' Completely synergize resource sucking relationships premier niche markets. Professionally cultivate customer.'
-			],
-			[
-				'delay' =>  '0.4s',
-				'alt'   =>  'Shirley King',
-				'src'   =>  'assets/images/corporate/team04-notinclude.jpg',
-				'social'    =>  [
-					[
-						'name'  =>  'facebook',
-						'href'  =>  '#'
-					],
-					[
-						'name'  =>  'twitter',
-						'href'  =>  '#'
-					],
-					[
-						'name'  =>  'behance',
-						'href'  =>  '#'
-					]
-				],
-				'strong'    =>  'Shirley King',
-				'span'      =>  'Designer',
-				'p'         =>  ' Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly testing procedures.'
 			]
 		],
 	];
@@ -368,7 +346,7 @@ $app->get('/appointments', function () use ($app) {
 		'title' =>  'Appointments Page'
 	];
 
-	$app->render('404.html.twig', ['data'   =>  $pageData, 'state7'  => 'active']);
+	$app->render('appointments.twig', ['data'   =>  $pageData, 'state7'  => 'active']);
 });
 
 $app->get('/about', function () use ($app) {

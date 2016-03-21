@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/theme.css">
     <link rel="stylesheet" href="assets/css/corporate.css">
+    {% block extra_css %}{% endblock extra_css %}
     <link rel="stylesheet" href="assets/css/corporate-child.css">
     <link rel="apple-touch-icon" sizes="57x57" href="assets/images/favicons/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="assets/images/favicons/apple-icon-60x60.png">
@@ -24,6 +25,10 @@
     <link rel="icon" type="image/png" href="assets/images/favicons/favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/png" href="assets/images/favicons/favicon-16x16.png" sizes="16x16">
     <link rel="shortcut icon" href="assets/images/favicons/favicon.ico">
+
+
+
+    {% block beforejs %}{% endblock beforejs %}
 </head>
 
 <body class="pace-on pace-counter">
@@ -477,7 +482,7 @@
     });
 </script>
 
-{% block extrajs %}{% endblock %}
+{% block extrajs %}{% endblock extrajs%}
 </body>
 
 </html>

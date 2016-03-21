@@ -2,8 +2,169 @@
 
 {% block title %}{{ data.title }}{% endblock title %}
 
+{% block extra_css %}
+    <link href="public/airdatepicker/css/datepicker.css" rel="stylesheet" type="text/css">
+{% endblock extra_css %}
+
+
+{% block beforejs %}
+
+{% endblock beforejs %}
+
+
 {% block content %}
-NOthing yet
+    <section class="section">
+        <div class="background-media" style="background-image: url('assets/images/corporate/c01.jpg'); background-repeat:no-repeat; background-size:cover; background-attachment:fixed; background-position: 50% 0%;" data-start="background-position: 50% -31px"
+             data-0-top-bottom="background-position: 50% 50px"></div>
+        <div class="background-overlay grid-overlay-0" style="background-color: rgba(57,139,202,0.8);"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 text-center"></div>
+                <div class="col-md-8 text-center">
+                    <h1 class="element-top-70 text-light os-animation normal default" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                        FREE In-Home Estimate
+                    </h1>
+                    <div class="divider-border divider-border-center element-top-10 element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s" style="height:3px;">
+                        <div class="divider-border-inner" style="background:#ffffff; width:60px;"></div>
+                    </div>
+                    <p class="lead text-center center  text-light  element-bottom-70" data-os-animation="none" data-os-animation-delay="0s">  Make an appointment now and we'll give you a FREE In-Home Estimate. </p>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>Estimates only available in Las Vegas NV</p>
+                </div>
+            </div>
+            <!-- APPT PROGRESS -->
+            <div id="appt-progress" class="text-center">
+                <div class="btn-group" role="group" aria-label="...">
+                    <button type="button" class="btn btn-success">Step 1</button>
+                    <button type="button" class="btn btn-success">Step 2</button>
+                    <button type="button" class="btn btn-success">Step 3</button>
+                </div>
+            </div>
+            <!-- APPOINTMENT -->
+            <div id="step1" class="row text-center">
+                <div class="col-md-4">
+                    <h1>Date</h1>
+
+                    <div id="calendar" class="datepicker-here" data-position="right top" data-language='en' data-inline="true"></div>
+                </div>
+                <div class="col-md-4">
+                    <div id="times" class="appt-list">
+                        <h1>Time</h1>
+                        <ul>
+                            <li><a href="#" class="btn btn-default" disabled="disabled">9:00 - 11:00 AM</a></li>
+                            <li><a href="#" class="btn btn-success">11:00 - 1:00 PM</a></li>
+                            <li><a href="#" class="btn btn-success">1:00 - 3:00 PM</a></li>
+                            <li><a href="#" class="btn btn-default" disabled="disabled">3:00 - 5:00 PM</a></li>
+                            <li><a href="#" class="btn btn-success">5:00 - 7:00 PM</a></li>
+                            <li><a href="#" class="btn btn-success">7:00 - 9:00 PM</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div id="product" class="appt-list">
+                        <h1>Product</h1>
+                        <ul>
+                            <li class="btn btn-info">FLOOR</li>
+                            <li class="btn btn-info">KITCHEN</li>
+                            <li class="btn btn-info">BATHROOM</li>
+                            <li class="btn btn-info">LIVINGROOM</li>
+                            <li class="btn btn-info">PATIO</li>
+                            <li class="btn btn-info">BEDROOM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- CONTACT INFO -->
+            <div id="step2" class="row text-center">
+                <div class="col-md-12">
+                    <h1>Your Info</h1>
+                    <form>
+                        <div class="form-group">
+                            <label for="appt-name">Name</label>
+                            <input type="text" name="appt-name" class="form-control" id="appt-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="appt-phone">Phone</label>
+                            <input type="text" name="appt-phone" class="form-control" id="appt-phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="appt-address">Address</label>
+                            <input type="text" name="appt-address" class="form-control" id="appt-address">
+                        </div>
+                        <div class="form-group">
+                            <label for="appt-city">City</label>
+                            <input type="text" name="appt-city" class="form-control" id="appt-city">
+                        </div>
+                        <div class="form-group">
+                            <label for="appt-zip">Zip</label>
+                            <input type="text" name="appt-zip" class="form-control" id="appt-zip">
+                        </div>
+                        <div class="form-group">
+                            <label for="appt-email">Email</label>
+                            <input type="text" name="appt-email" class="form-control" id="appt-email">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+
+                </div>
+            </div>
+            <!-- REVIEW -->
+            <div id="step3" class="row text-center">
+                <h1>Review and Send</h1>
+                <div class="col-md-6">
+                    <h1>Appointment</h1>
+                    <p>Date: <strong>3/25/2015</strong>
+                    <br /> At: <strong>1:00 - 3:00 PM</strong></p>
+                </div>
+                <div class="col-md-6">
+                        <h1>Contact Info</h1>
+                        <address>
+                            <strong>Twitter, Inc.</strong><br>
+                            1355 Market Street, Suite 900<br>
+                            San Francisco, CA 94103<br>
+                            <abbr title="Phone">P:</abbr> (123) 456-7890
+                        </address>
+
+                        <address>
+                            <strong>Full Name</strong><br>
+                            <a href="mailto:#">first.last@example.com</a>
+                        </address>
+                </div>
+            </div>
+
+        </div>
+    </section>
 {% endblock content %}
 
-{% block extrajs %}{% endblock %}
+{% block extrajs %}
+
+    // Calendar
+    <script src="public/airdatepicker/js/datepicker.min.js"></script>
+    <script src="public/airdatepicker/js/i18n/datepicker.en.js"></script>
+
+    <script>
+
+        function showTimes(){
+            $('.appt-list').toggle();
+        }
+        $('.datepicker-here').datepicker({
+            language: 'en',
+            minDate: new Date(), // Now can select only dates, which goes after today
+            todayButton: true,
+            onSelect: function () {
+                showTimes();
+            }
+        });
+
+    </script>
+
+
+{% endblock extrajs %}

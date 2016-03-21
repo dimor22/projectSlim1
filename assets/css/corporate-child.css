@@ -9,3 +9,7 @@ a.navbar-brand {
 .post-grid-overlay {
     background-color: rgba(57,139,202, 0.78);
 }
+
+.appt-list {
+    display: none;
+}
