@@ -28,15 +28,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="text-center element-top-70 os-animation big" data-os-animation="fadeIn" data-os-animation-delay="0s">
-                            Our team
-                        </h1>
-                        <div class="divider-border divider-border-center element-top-10 element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s" style="height:3px;">
-                            <div class="divider-border-inner" style="width:60px;"> </div>
-                        </div>
-                        <p class="lead text-center center element-bottom-40 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.2s"> Time to meet our team of technology and business professionals.
-                            <br> Let us help your business reach it&#8217;s potential.</p>
-                        <div class="row staff-list-container list-container element-bottom-50">
+
+                        <div class="row staff-list-container list-container element-bottom-50 element-top-30">
                             {% for person in data.team %}
                                 <div class="figure col-md-4 fade-in element-bottom-20 figcaption-bottom text-left fade-in os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s">
                                     <div class="figure-image"> <img alt="{{ person.alt }}" src="{{ person.src }}">

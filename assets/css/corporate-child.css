@@ -10,6 +10,32 @@ a.navbar-brand {
     background-color: rgba(57,139,202, 0.78);
 }
 
-.appt-list {
+#times, #product {
     display: none;
+}
+
+.appt-list li {
+    margin: 3px 2px;
+}
+
+input.form-control {
+    background: white;
+}
+
+div#calendar {
+    display: -webkit-inline-box;
+}
+.time-option:hover{
+    cursor: pointer;
+}
+.time-disabled{
+    background-color: #9f2114;
+    color:  white;
+}
+.time-disabled:hover{
+    cursor: not-allowed;
+    background-color: #9f2114;
+}
+td.time-option.time-disabled:hover {
+    background-color: #9f2114;
 }

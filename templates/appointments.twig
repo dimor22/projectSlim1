@@ -35,109 +35,175 @@
     </section>
     <section class="section">
         <div class="container">
-            <div class="row">
+            <div class="row" id="appt-top-page-title">
                 <div class="col-md-12 text-center">
-                    <p>Estimates only available in Las Vegas NV</p>
+                    <p class="lead text-center center element-top-30 element-bottom-30 os-animation animated fadeIn" data-os-animation="fadeIn" data-os-animation-delay="0.2s" style="animation-delay: 0.2s;"> Only available in Las Vegas NV.</p>
+                    <div class="divider-border divider-border-center element-bottom-30 os-animation animated fadeIn" data-os-animation="fadeIn" data-os-animation-delay="0.1s" style="height: 3px; animation-delay: 0.1s;">
+                        <div class="divider-border-inner" style="width:60px;"> </div>
+                    </div>
                 </div>
             </div>
             <!-- APPT PROGRESS -->
             <div id="appt-progress" class="text-center">
                 <div class="btn-group" role="group" aria-label="...">
-                    <button type="button" class="btn btn-success">Step 1</button>
-                    <button type="button" class="btn btn-success">Step 2</button>
-                    <button type="button" class="btn btn-success">Step 3</button>
+                    <button type="button" class="btn btn-success" id="p-step1">1 - Set Your Appointment </button>
+                    <button type="button" class="btn btn-default" id="p-step2">2 - Complete Your Information</button>
+                    <button type="button" class="btn btn-default" id="p-step3">3 - Review & Send</button>
                 </div>
             </div>
             <!-- APPOINTMENT -->
-            <div id="step1" class="row text-center">
+            <div id="step1" class="row text-center element-bottom-40">
                 <div class="col-md-4">
-                    <h1>Date</h1>
-
-                    <div id="calendar" class="datepicker-here" data-position="right top" data-language='en' data-inline="true"></div>
-                </div>
-                <div class="col-md-4">
-                    <div id="times" class="appt-list">
-                        <h1>Time</h1>
-                        <ul>
-                            <li><a href="#" class="btn btn-default" disabled="disabled">9:00 - 11:00 AM</a></li>
-                            <li><a href="#" class="btn btn-success">11:00 - 1:00 PM</a></li>
-                            <li><a href="#" class="btn btn-success">1:00 - 3:00 PM</a></li>
-                            <li><a href="#" class="btn btn-default" disabled="disabled">3:00 - 5:00 PM</a></li>
-                            <li><a href="#" class="btn btn-success">5:00 - 7:00 PM</a></li>
-                            <li><a href="#" class="btn btn-success">7:00 - 9:00 PM</a></li>
-                        </ul>
+                    <div class="panel panel-default  element-top-50 element-bottom-20 os-animation animated fadeInUp" data-os-animation="fadeInUp" data-os-animation-delay="0.6s" style="animation-delay: 0.6s;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Date</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-text-1 text-normal  element-top-0 element-bottom-0" data-os-animation="none" data-os-animation-delay="0s">
+                                <div id="calendar" class="datepicker-here text-center" data-position="right top" data-language='en' data-inline="true"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div id="product" class="appt-list">
-                        <h1>Product</h1>
-                        <ul>
-                            <li class="btn btn-info">FLOOR</li>
-                            <li class="btn btn-info">KITCHEN</li>
-                            <li class="btn btn-info">BATHROOM</li>
-                            <li class="btn btn-info">LIVINGROOM</li>
-                            <li class="btn btn-info">PATIO</li>
-                            <li class="btn btn-info">BEDROOM</li>
-                        </ul>
+                    <div id="times" class="panel panel-default  element-top-50 element-bottom-20 os-animation animated fadeInUp" data-os-animation="fadeInUp" data-os-animation-delay="0.6s" style="animation-delay: 0.6s;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Time</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-text-1 text-normal  element-top-0 element-bottom-0" data-os-animation="none" data-os-animation-delay="0s">
+                                <table class="table table-hover">
+                                    <tbody>
+                                    <tr>
+                                        <td class="time-option time-disabled">9:00 - 11:00 AM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-option">11:00 - 1:00 PM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-option">1:00 - 3:00 PM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-option time-disabled">3:00 - 5:00 PM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-option">5:00 - 7:00 PM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-option">7:00 - 9:00 PM</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div id="product" class="panel panel-default  element-top-50 element-bottom-20 os-animation animated fadeInUp" data-os-animation="fadeInUp" data-os-animation-delay="0.6s" style="animation-delay: 0.6s;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Product</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-text-1 text-normal  element-top-0 element-bottom-0" data-os-animation="none" data-os-animation-delay="0s">
+                                <ul>
+                                    <li class="btn btn-info product-option">FLOOR</li>
+                                    <li class="btn btn-info product-option">KITCHEN</li>
+                                    <li class="btn btn-info product-option">BATHROOM</li>
+                                    <li class="btn btn-info product-option">LIVINGROOM</li>
+                                    <li class="btn btn-info product-option">PATIO</li>
+                                    <li class="btn btn-info product-option">BEDROOM</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <!-- CONTACT INFO -->
-            <div id="step2" class="row text-center">
-                <div class="col-md-12">
-                    <h1>Your Info</h1>
-                    <form>
-                        <div class="form-group">
-                            <label for="appt-name">Name</label>
-                            <input type="text" name="appt-name" class="form-control" id="appt-name">
+            <div id="step2" class="row text-center element-bottom-40">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="panel panel-default  element-top-50 element-bottom-20 os-animation animated fadeInUp" data-os-animation="fadeInUp" data-os-animation-delay="0.6s" style="animation-delay: 0.6s;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Your Info</h3>
                         </div>
-                        <div class="form-group">
-                            <label for="appt-phone">Phone</label>
-                            <input type="text" name="appt-phone" class="form-control" id="appt-phone">
+                        <div class="panel-body">
+                            <div class="col-text-1 text-normal  element-top-0 element-bottom-0 form" data-os-animation="none" data-os-animation-delay="0s">
+                                <div class="form-group">
+                                    <label for="appt-name">Name</label>
+                                    <input type="text" name="appt-name" class="form-control" id="appt-name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="appt-phone">Phone</label>
+                                    <input type="text" name="appt-phone" class="form-control" id="appt-phone">
+                                </div>
+                                <div class="form-group">
+                                    <label for="appt-address">Address</label>
+                                    <input type="text" name="appt-address" class="form-control" id="appt-address">
+                                </div>
+                                <div class="form-group">
+                                    <label for="appt-city">City</label>
+                                    <input type="text" name="appt-city" class="form-control" id="appt-city">
+                                </div>
+                                <div class="form-group">
+                                    <label for="appt-zip">Zip</label>
+                                    <input type="text" name="appt-zip" class="form-control" id="appt-zip">
+                                </div>
+                                <div class="form-group">
+                                    <label for="appt-email">Email</label>
+                                    <input type="text" name="appt-email" class="form-control" id="appt-email">
+                                </div>
+                                <a href="#appt-progress" class="btn btn-default" id="submit-info">Next <i class="fa fa-check-square-o" data-animation="none"></i></a>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="appt-address">Address</label>
-                            <input type="text" name="appt-address" class="form-control" id="appt-address">
-                        </div>
-                        <div class="form-group">
-                            <label for="appt-city">City</label>
-                            <input type="text" name="appt-city" class="form-control" id="appt-city">
-                        </div>
-                        <div class="form-group">
-                            <label for="appt-zip">Zip</label>
-                            <input type="text" name="appt-zip" class="form-control" id="appt-zip">
-                        </div>
-                        <div class="form-group">
-                            <label for="appt-email">Email</label>
-                            <input type="text" name="appt-email" class="form-control" id="appt-email">
-                        </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </form>
-
+                    </div>
                 </div>
+                <div class="col-md-2"></div>
+
             </div>
             <!-- REVIEW -->
-            <div id="step3" class="row text-center">
+            <div id="step3" class="row text-center element-bottom-40">
                 <h1>Review and Send</h1>
                 <div class="col-md-6">
-                    <h1>Appointment</h1>
-                    <p>Date: <strong>3/25/2015</strong>
-                    <br /> At: <strong>1:00 - 3:00 PM</strong></p>
+                    <div class="panel panel-success  element-top-50 element-bottom-20 os-animation animated fadeInUp" data-os-animation="fadeInUp" data-os-animation-delay="0.6s" style="animation-delay: 0.6s;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Appointment</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-text-1 text-normal  element-top-0 element-bottom-0" data-os-animation="none" data-os-animation-delay="0s">
+                                <p>Date: <strong>3/25/2015</strong>
+                                    <br /> At: <strong>1:00 - 3:00 PM</strong>
+                                    <br /> Interested In: <strong>Kitchen</strong><br /><br /><br /></p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="col-md-6">
-                        <h1>Contact Info</h1>
-                        <address>
-                            <strong>Twitter, Inc.</strong><br>
-                            1355 Market Street, Suite 900<br>
-                            San Francisco, CA 94103<br>
-                            <abbr title="Phone">P:</abbr> (123) 456-7890
-                        </address>
-
-                        <address>
-                            <strong>Full Name</strong><br>
-                            <a href="mailto:#">first.last@example.com</a>
-                        </address>
+                    <div class="panel panel-success  element-top-50 element-bottom-20 os-animation animated fadeInUp" data-os-animation="fadeInUp" data-os-animation-delay="0.6s" style="animation-delay: 0.6s;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Contact Info</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-text-1 text-normal  element-top-0 element-bottom-0" data-os-animation="none" data-os-animation-delay="0s">
+                                <address>
+                                    <strong>Perico Andres</strong>
+                                    <br /><strong>1355 Market Street, Suite 900</strong>
+                                    <br />San Francisco, CA 94103
+                                    <br /><abbr title="Phone">P:</abbr> (123) 456-7890
+                                    <br /><a href="mailto:#">first.last@example.com</a>
+                                </address>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <button type="text" class="btn btn-default" id="submit-appt">Send  <i class="fa fa-envelope-o" data-animation="none"></i></button>
+
+            </div>
+            <!-- THANKYOU MESSAGE -->
+            <div id="step4" class="row text-center element-bottom-40">
+                <p class="lead text-center center element-top-30 element-bottom-30 os-animation animated fadeIn" data-os-animation="fadeIn" data-os-animation-delay="0.2s" style="animation-delay: 0.2s;">Thank you for completing our FREE In-home Estimate Appointment.<br />
+                    We look forward to giving you our best and most professional assessment. </p>
+                <a href="{{ siteUrl('/appointments') }}" class="btn btn-default btn-icon-right" id="submit-info">Like Us On Facebook <i class="fa fa-thumbs-o-up" data-animation="none"></i></a>
             </div>
 
         </div>
@@ -152,19 +218,157 @@
 
     <script>
 
-        function showTimes(){
-            $('.appt-list').toggle();
-        }
+        // APPT OBJ
+        var appt = {
+            date: '',
+            time: '',
+            product: '',
+            info: {
+                name: '',
+                phone: '',
+                address: '',
+                city: '',
+                zip: '',
+                email: ''
+            },
+            init: function () {
+                // show only step 1
+                $('#step2, #step3, #step4').hide();
+                // show product when a time is selected
+                $('.time-option').click(function () {
+                    if (! $(this).hasClass('time-disabled')) {
+                        appt.showProduct();
+                    };
+                });
+                // go to step 2 when a product is selected
+                $('.product-option').click(function () {
+                    // check step 1 data is saved
+                    // go step 2
+                    appt.goStep2();
+                    appt.updateNavigation(2);
+                });
+                // go to step 3 when info is entered
+                $('#submit-info').click(function () {
+                    // validate form
+                    appt.goStep3();
+                    appt.updateNavigation(3);
+                });
+                // show thank you page when info is been reviewed and sent
+                $('#submit-appt').click(function () {
+                    // save appt
+                    // hide progress
+                    $('#appt-progress').hide();
+                    $('#appt-top-page-title').hide();
+                    // display thank you message
+                    appt.goStep4();
+                });
+
+                //APPT NAVIGATION MENU
+                $('#p-step1').click(function () {
+                    appt.goStep1();
+                    appt.updateNavigation(1);
+                });
+                $('#p-step2').click(function () {
+                    appt.goStep2();
+                    appt.updateNavigation(2);
+                });
+                $('#p-step3').click(function () {
+                    appt.goStep3();
+                    appt.updateNavigation(3);
+                });
+
+            },
+            goStep1: function () {
+                $('#step2, #step3, #step4').hide();
+                $('#step1').show();
+            },
+            goStep2: function () {
+                $('#step1, #step3, #step4').hide();
+                $('#step2').show();
+            },
+            goStep3: function () {
+                $('#step1, #step2, #step4').hide();
+                $('#step3').show();
+            },
+            goStep4: function () {
+                $('#step1, #step2, #step3').hide();
+                $('#step4').show();
+            },
+            updateNavigation: function (stepNumber) {
+                switch(stepNumber) {
+                    case 1:
+                        $('#p-step1').attr('class', 'btn btn-success');
+                        $('#p-step2').attr('class', 'btn btn-default');
+                        $('#p-step3').attr('class', 'btn btn-default');
+                        break;
+                    case 2:
+                        $('#p-step1').attr('class', 'btn btn-default');
+                        $('#p-step2').attr('class', 'btn btn-success');
+                        $('#p-step3').attr('class', 'btn btn-default');
+                        break;
+                    case 3:
+                        $('#p-step1').attr('class', 'btn btn-default');
+                        $('#p-step2').attr('class', 'btn btn-default');
+                        $('#p-step3').attr('class', 'btn btn-success');
+                        break;
+                }
+            },
+            resetStep1: function () {
+                $('#times, #product').hide();
+            },
+            showTimes: function(){
+                $('#times').show();
+            },
+            showProduct: function(){
+                $('#product').show();
+            },
+            setDate: function (date) {
+                this.date = date;
+            },
+            getDatesAvailables: function (date) {
+                // ajax call
+            },
+            setTime: function (time) {
+                this.time = time;
+            },
+            getProductList: function () {
+                //ajax call
+            },
+            setProduct: function (product) {
+                this.product = product;
+            },
+            setInfo: function (info) {
+                this.info.name = info.name;
+                this.info.phone = info.phone;
+                this.info.address = info.address;
+                this.info.city = info.city;
+                this.info.zip = info.zip;
+                this.info.email = info.email;
+            },
+            saveAppt: function (apptId) {
+                 //ajax call
+            },
+            resetApptSystem: function () {
+
+            },
+            deleteAppt: function (apptId) {
+                //ajax call
+            }
+        };
+
+        appt.init();
+
+        // DATEPICKER SETTINGS
         $('.datepicker-here').datepicker({
             language: 'en',
             minDate: new Date(), // Now can select only dates, which goes after today
             todayButton: true,
             onSelect: function () {
-                showTimes();
+                appt.resetStep1();
+                appt.showTimes();
             }
         });
 
     </script>
-
 
 {% endblock extrajs %}
