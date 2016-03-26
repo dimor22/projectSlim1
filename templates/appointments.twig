@@ -13,7 +13,7 @@
 
 
 {% block content %}
-    <section class="section">
+    <section class="section" id="appt-page-top">
         <div class="background-media" style="background-image: url('assets/images/corporate/c01.jpg'); background-repeat:no-repeat; background-size:cover; background-attachment:fixed; background-position: 50% 0%;" data-start="background-position: 50% -31px"
              data-0-top-bottom="background-position: 50% 50px"></div>
         <div class="background-overlay grid-overlay-0" style="background-color: rgba(57,139,202,0.8);"></div>
@@ -46,8 +46,8 @@
             <!-- APPT PROGRESS -->
             <div id="appt-progress" class="text-center">
                 <div class="btn-group" role="group" aria-label="...">
-                    <button type="button" class="btn btn-success" id="p-step1">1 - Set Your Appointment </button>
-                    <button type="button" class="btn btn-default" id="p-step2">2 - Complete Your Information</button>
+                    <button type="button" class="btn btn-success" id="p-step1">1 - Choose a Date & Time</button>
+                    <button type="button" class="btn btn-default" id="p-step2">2 - Contact Information</button>
                     <button type="button" class="btn btn-default" id="p-step3">3 - Review & Send</button>
                 </div>
             </div>
@@ -101,18 +101,32 @@
                 <div class="col-md-4">
                     <div id="product" class="panel panel-default  element-top-50 element-bottom-20 os-animation animated fadeInUp" data-os-animation="fadeInUp" data-os-animation-delay="0.6s" style="animation-delay: 0.6s;">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Product</h3>
+                            <h3 class="panel-title">Product Interest</h3>
                         </div>
                         <div class="panel-body">
                             <div class="col-text-1 text-normal  element-top-0 element-bottom-0" data-os-animation="none" data-os-animation-delay="0s">
-                                <ul>
-                                    <li class="btn btn-info product-option">FLOOR</li>
-                                    <li class="btn btn-info product-option">KITCHEN</li>
-                                    <li class="btn btn-info product-option">BATHROOM</li>
-                                    <li class="btn btn-info product-option">LIVINGROOM</li>
-                                    <li class="btn btn-info product-option">PATIO</li>
-                                    <li class="btn btn-info product-option">BEDROOM</li>
-                                </ul>
+                                <table class="table table-hover">
+                                    <tbody>
+                                    <tr>
+                                        <td class="product-option">FLOOR</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="product-option">KITCHEN</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="product-option">BATHROOM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="product-option">LIVINGROOM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="product-option">PATIO</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="product-option">BEDROOM</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -122,19 +136,23 @@
             <div id="step2" class="row text-center element-bottom-40">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
+                    <div id="info-form-error" class="alert alert-danger element-top-30 element-bottom-5 os-animation animated fadeInUp" data-os-animation="fadeInUp" data-os-animation-delay="0.6s" style="animation-delay: 0.6s;">
+                        <strong>Form Incomplete!</strong>
+                        All fields are required except email - Please try again.
+                    </div>
                     <div class="panel panel-default  element-top-50 element-bottom-20 os-animation animated fadeInUp" data-os-animation="fadeInUp" data-os-animation-delay="0.6s" style="animation-delay: 0.6s;">
                         <div class="panel-heading">
                             <h3 class="panel-title">Your Info</h3>
                         </div>
                         <div class="panel-body">
-                            <div class="col-text-1 text-normal  element-top-0 element-bottom-0 form" data-os-animation="none" data-os-animation-delay="0s">
+                            <div id="info-form" class="col-text-1 text-normal  element-top-0 element-bottom-0 form" data-os-animation="none" data-os-animation-delay="0s">
                                 <div class="form-group">
                                     <label for="appt-name">Name</label>
                                     <input type="text" name="appt-name" class="form-control" id="appt-name">
                                 </div>
                                 <div class="form-group">
                                     <label for="appt-phone">Phone</label>
-                                    <input type="text" name="appt-phone" class="form-control" id="appt-phone">
+                                    <input type="text" name="appt-phone" class="form-control" id="appt-phone" placeholder="123-123-1234">
                                 </div>
                                 <div class="form-group">
                                     <label for="appt-address">Address</label>
@@ -145,14 +163,18 @@
                                     <input type="text" name="appt-city" class="form-control" id="appt-city">
                                 </div>
                                 <div class="form-group">
+                                    <label for="appt-state">State</label>
+                                    <input type="text" name="appt-state" class="form-control" id="appt-state">
+                                </div>
+                                <div class="form-group">
                                     <label for="appt-zip">Zip</label>
                                     <input type="text" name="appt-zip" class="form-control" id="appt-zip">
                                 </div>
                                 <div class="form-group">
                                     <label for="appt-email">Email</label>
-                                    <input type="text" name="appt-email" class="form-control" id="appt-email">
+                                    <input type="email" name="appt-email" class="form-control" id="appt-email" placeholder="Email is optional">
                                 </div>
-                                <a href="#appt-progress" class="btn btn-default" id="submit-info">Next <i class="fa fa-check-square-o" data-animation="none"></i></a>
+                                <a href="#appt-top-page-title" class="btn btn-default scroll-to-id" id="submit-info" data-os-animation-delay="0.2s">Review <i class="fa fa-check-square-o" data-animation="none"></i></a>
                             </div>
                         </div>
                     </div>
@@ -170,9 +192,9 @@
                         </div>
                         <div class="panel-body">
                             <div class="col-text-1 text-normal  element-top-0 element-bottom-0" data-os-animation="none" data-os-animation-delay="0s">
-                                <p>Date: <strong>3/25/2015</strong>
-                                    <br /> At: <strong>1:00 - 3:00 PM</strong>
-                                    <br /> Interested In: <strong>Kitchen</strong><br /><br /><br /></p>
+                                <p>Date: <strong id="review-date"></strong>
+                                    <br /> At: <strong id="review-time"></strong>
+                                    <br /> Product Interest: <strong id="review-product"></strong><br /><br /><br /></p>
                             </div>
                         </div>
                     </div>
@@ -186,17 +208,18 @@
                         <div class="panel-body">
                             <div class="col-text-1 text-normal  element-top-0 element-bottom-0" data-os-animation="none" data-os-animation-delay="0s">
                                 <address>
-                                    <strong>Perico Andres</strong>
-                                    <br /><strong>1355 Market Street, Suite 900</strong>
-                                    <br />San Francisco, CA 94103
-                                    <br /><abbr title="Phone">P:</abbr> (123) 456-7890
-                                    <br /><a href="mailto:#">first.last@example.com</a>
+                                    <strong id="review-name"></strong>
+                                    <br /><strong id="review-address"></strong>
+                                    <br /><span id="review-city"></span>, <span id="review-state"></span> <span id="review-zip"></span>
+                                    <br /><abbr title="Phone">P:</abbr> <span id="review-phone"></span>
+                                    <br /><a href="mailto:#"><span id="review-email"></span></a>
                                 </address>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button type="text" class="btn btn-default" id="submit-appt">Send  <i class="fa fa-envelope-o" data-animation="none"></i></button>
+
+                <a href="#appt-page-top" class="btn btn-default scroll-to-id" id="submit-appt" data-os-animation-delay="0.2s">Send  <i class="fa fa-envelope-o" data-animation="none"></i></a>
 
             </div>
             <!-- THANKYOU MESSAGE -->
@@ -212,11 +235,13 @@
 
 {% block extrajs %}
 
-    // Calendar
     <script src="public/airdatepicker/js/datepicker.min.js"></script>
     <script src="public/airdatepicker/js/i18n/datepicker.en.js"></script>
 
     <script>
+            function cl(output){
+                console.log(output);
+            }
 
         // APPT OBJ
         var appt = {
@@ -228,34 +253,91 @@
                 phone: '',
                 address: '',
                 city: '',
+                state: '',
                 zip: '',
                 email: ''
             },
             init: function () {
                 // show only step 1
                 $('#step2, #step3, #step4').hide();
+                $('#info-form-error').hide();
+//                var phoneDigitCounter = 0;
+//                $('#appt-phone').keydown(function () {
+//                    var input = $(this).val();
+//
+//
+//                    ++phoneDigitCounter;
+//                    cl(phoneDigitCounter);
+//
+//                    if( phoneDigitCounter == 3 ){
+//                        $(this).val(input + '-');
+//                    }
+//
+//                    if( phoneDigitCounter == 6 ){
+//                        $(this).val(input + '-');
+//                    }
+//                });
+//
+//                $('#appt-phone').keyup(function () {
+//                    var input = $(this).val();
+//
+//                    if ( ($.isNumeric(input))  ) {
+//                        phoneDigitCounter++;
+//                    }
+//
+//                    if(input.length == 0 || input.length > 9){
+//                        phoneDigitCounter = 0;
+//                        cl("number bigger than 9")
+//                    }
+//                })
+
                 // show product when a time is selected
                 $('.time-option').click(function () {
                     if (! $(this).hasClass('time-disabled')) {
+                        appt.setTime(this.innerHTML);
                         appt.showProduct();
                     };
                 });
                 // go to step 2 when a product is selected
                 $('.product-option').click(function () {
                     // check step 1 data is saved
-                    // go step 2
-                    appt.goStep2();
-                    appt.updateNavigation(2);
+                    appt.setProduct(this.innerHTML);
+                    if(appt.validateStep1()) {
+                        // go step 2
+                        appt.goStep2();
+                        appt.updateNavigation(2);
+                    }
                 });
                 // go to step 3 when info is entered
                 $('#submit-info').click(function () {
+                    appt.setInfo();
+
+                    $('#appt-phone').css('border', 'none');
+                    $('#appt-email').css('border', 'none');
+
                     // validate form
-                    appt.goStep3();
-                    appt.updateNavigation(3);
+                    if (appt.validateStep2()) {
+                        $('#info-form-error').hide();
+                        $('#appt-phone').css('border', 'none');
+                        $('#appt-email').css('border', 'none');
+                        appt.goStep3();
+                        $('#review-name').text(appt.info.name);
+                        $('#review-phone').text(appt.info.phone);
+                        $('#review-address').text(appt.info.address);
+                        $('#review-city').text(appt.info.city);
+                        $('#review-state').text(appt.info.state);
+                        $('#review-zip').text(appt.info.zip);
+                        $('#review-email').text(appt.info.email);
+                        appt.updateNavigation(3);
+                    } else {
+                        $('#info-form-error').show();
+                    }
+
                 });
                 // show thank you page when info is been reviewed and sent
                 $('#submit-appt').click(function () {
                     // save appt
+                    appt.saveAppt();
                     // hide progress
                     $('#appt-progress').hide();
                     $('#appt-top-page-title').hide();
@@ -283,16 +365,60 @@
                 $('#step1').show();
             },
             goStep2: function () {
-                $('#step1, #step3, #step4').hide();
-                $('#step2').show();
+                if (appt.validateStep1()){
+                    $('#step1, #step3, #step4').hide();
+                    $('#step2').show();
+                }
             },
             goStep3: function () {
-                $('#step1, #step2, #step4').hide();
-                $('#step3').show();
+                if (appt.validateStep2()) {
+                    $('#step1, #step2, #step4').hide();
+                    $('#step3').show();
+                    $('#review-date').text(appt.date);
+                    $('#review-time').text(appt.time);
+                    $('#review-product').text(appt.product);
+                }
+
             },
             goStep4: function () {
                 $('#step1, #step2, #step3').hide();
                 $('#step4').show();
+            },
+            validateStep1: function () {
+                if (appt.date.length > 0 && appt.time.length > 0 && appt.product.length > 0) {
+                    return true;
+                }
+                return false;
+            },
+            validateStep2: function () {
+                function validateEmail(email) {
+                    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                    return emailReg.test( email );
+                }
+                // validate phone number
+                if ( appt.info.phone.length != 10) {
+                    $('#appt-phone').css('border', '2px solid red');
+                }
+                var badEmail = false;
+                if (appt.info.email.length > 0 ) {
+                    if (! validateEmail(appt.info.email)) {
+                        $('#appt-email').css('border', '2px solid red');
+                        badEmail = true;
+                        cl('bad email')
+                    }
+                }
+
+                if (appt.info.name.length > 0 &&
+                    appt.info.phone.length == 10 &&
+                    appt.info.address.length > 0 &&
+                    appt.info.city.length > 0 &&
+                    appt.info.state.length > 0 &&
+                    appt.info.zip.length > 0 &&
+                    badEmail == false ){
+                    cl('good email')
+                    return true;
+                }
+                return false;
             },
             updateNavigation: function (stepNumber) {
                 switch(stepNumber) {
@@ -337,16 +463,37 @@
             setProduct: function (product) {
                 this.product = product;
             },
-            setInfo: function (info) {
-                this.info.name = info.name;
-                this.info.phone = info.phone;
-                this.info.address = info.address;
-                this.info.city = info.city;
-                this.info.zip = info.zip;
-                this.info.email = info.email;
+            setInfo: function () {
+                appt.info.name = $('#appt-name').val();
+                appt.info.phone = $('#appt-phone').val();
+                appt.info.address = $('#appt-address').val();
+                appt.info.city = $('#appt-city').val();
+                appt.info.state = $('#appt-state').val();
+                appt.info.zip = $('#appt-zip').val();
+                appt.info.email = $('#appt-email').val();
             },
             saveAppt: function (apptId) {
                  //ajax call
+                $.ajax({
+                    method: "POST",
+                    url: "src/Appointments.php",
+                    data: { action: "save",
+                            date: appt.date,
+                            time: appt.time,
+                            product: appt.product,
+                            name: appt.info.name,
+                            phone: appt.info.phone,
+                            address: appt.info.address,
+                            city: appt.info.city,
+                            state: appt.info.state,
+                            zip: appt.info.zip,
+                            email: appt.info.email
+                    },
+                    error: function(){ console.log('there was an error')},
+                    success: function(data){
+                        cl('Appointment Saved!');
+                    }
+                })
             },
             resetApptSystem: function () {
 
@@ -355,7 +502,6 @@
                 //ajax call
             }
         };
-
         appt.init();
 
         // DATEPICKER SETTINGS
@@ -363,12 +509,14 @@
             language: 'en',
             minDate: new Date(), // Now can select only dates, which goes after today
             todayButton: true,
-            onSelect: function () {
+            onSelect: function (formattedDate, date, inst) {
                 appt.resetStep1();
+                appt.setDate(formattedDate);
                 appt.showTimes();
             }
         });
 
     </script>
+
 
 {% endblock extrajs %}

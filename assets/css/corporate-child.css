@@ -39,3 +39,7 @@ div#calendar {
 td.time-option.time-disabled:hover {
     background-color: #9f2114;
 }
+
+div#info-form input {
+    text-align: center;
+}
