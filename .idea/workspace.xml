@@ -42,8 +42,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.21153846">
-              <caret line="527" column="11" selection-start-line="503" selection-start-column="8" selection-end-line="527" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.39358974">
+              <caret line="514" column="13" selection-start-line="507" selection-start-column="12" selection-end-line="514" selection-end-column="13" />
               <folding>
                 <element signature="e#1543#7927#1#PHP" expanded="false" />
                 <element signature="e#7967#9828#1#PHP" expanded="false" />
@@ -64,10 +64,11 @@
                 <element signature="e#12895#13050#1#PHP" expanded="false" />
                 <element signature="e#13091#14134#1#PHP" expanded="false" />
                 <element signature="e#14160#14367#1#PHP" expanded="false" />
-                <element signature="e#15280#15575#1#PHP" expanded="false" />
-                <element signature="e#15610#16096#1#PHP" expanded="false" />
-                <element signature="e#16142#19547#1#PHP" expanded="false" />
-                <element signature="e#19598#22229#1#PHP" expanded="false" />
+                <element signature="e#14817#15102#0#PHP" expanded="false" />
+                <element signature="e#15246#15541#1#PHP" expanded="false" />
+                <element signature="e#15576#16062#1#PHP" expanded="false" />
+                <element signature="e#16108#19513#1#PHP" expanded="false" />
+                <element signature="e#19564#22195#1#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -704,7 +705,13 @@
       <option name="project" value="LOCAL" />
       <updated>1459057950249</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="testing white page">
+      <created>1459057976108</created>
+      <option name="number" value="00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1459057976108</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1571,8 +1578,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21153846">
-          <caret line="527" column="11" selection-start-line="503" selection-start-column="8" selection-end-line="527" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.39358974">
+          <caret line="514" column="13" selection-start-line="507" selection-start-column="12" selection-end-line="514" selection-end-column="13" />
           <folding>
             <element signature="e#1543#7927#1#PHP" expanded="false" />
             <element signature="e#7967#9828#1#PHP" expanded="false" />
@@ -1593,10 +1600,11 @@
             <element signature="e#12895#13050#1#PHP" expanded="false" />
             <element signature="e#13091#14134#1#PHP" expanded="false" />
             <element signature="e#14160#14367#1#PHP" expanded="false" />
-            <element signature="e#15280#15575#1#PHP" expanded="false" />
-            <element signature="e#15610#16096#1#PHP" expanded="false" />
-            <element signature="e#16142#19547#1#PHP" expanded="false" />
-            <element signature="e#19598#22229#1#PHP" expanded="false" />
+            <element signature="e#14817#15102#0#PHP" expanded="false" />
+            <element signature="e#15246#15541#1#PHP" expanded="false" />
+            <element signature="e#15576#16062#1#PHP" expanded="false" />
+            <element signature="e#16108#19513#1#PHP" expanded="false" />
+            <element signature="e#19564#22195#1#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
