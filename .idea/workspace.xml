@@ -42,8 +42,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39358974">
-              <caret line="514" column="13" selection-start-line="507" selection-start-column="12" selection-end-line="514" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.1423077">
+              <caret line="507" column="0" selection-start-line="507" selection-start-column="0" selection-end-line="514" selection-end-column="13" />
               <folding>
                 <element signature="e#1543#7927#1#PHP" expanded="false" />
                 <element signature="e#7967#9828#1#PHP" expanded="false" />
@@ -64,11 +64,11 @@
                 <element signature="e#12895#13050#1#PHP" expanded="false" />
                 <element signature="e#13091#14134#1#PHP" expanded="false" />
                 <element signature="e#14160#14367#1#PHP" expanded="false" />
-                <element signature="e#14817#15102#0#PHP" expanded="false" />
-                <element signature="e#15246#15541#1#PHP" expanded="false" />
-                <element signature="e#15576#16062#1#PHP" expanded="false" />
-                <element signature="e#16108#19513#1#PHP" expanded="false" />
-                <element signature="e#19564#22195#1#PHP" expanded="false" />
+                <element signature="e#14801#15086#0#PHP" expanded="false" />
+                <element signature="e#15230#15525#1#PHP" expanded="false" />
+                <element signature="e#15560#16046#1#PHP" expanded="false" />
+                <element signature="e#16092#19497#1#PHP" expanded="false" />
+                <element signature="e#19548#22179#1#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -711,7 +711,13 @@
       <option name="project" value="LOCAL" />
       <updated>1459057976108</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="testing white page">
+      <created>1459058174127</created>
+      <option name="number" value="00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1459058174127</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1578,8 +1584,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39358974">
-          <caret line="514" column="13" selection-start-line="507" selection-start-column="12" selection-end-line="514" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.1423077">
+          <caret line="507" column="0" selection-start-line="507" selection-start-column="0" selection-end-line="514" selection-end-column="13" />
           <folding>
             <element signature="e#1543#7927#1#PHP" expanded="false" />
             <element signature="e#7967#9828#1#PHP" expanded="false" />
@@ -1600,11 +1606,11 @@
             <element signature="e#12895#13050#1#PHP" expanded="false" />
             <element signature="e#13091#14134#1#PHP" expanded="false" />
             <element signature="e#14160#14367#1#PHP" expanded="false" />
-            <element signature="e#14817#15102#0#PHP" expanded="false" />
-            <element signature="e#15246#15541#1#PHP" expanded="false" />
-            <element signature="e#15576#16062#1#PHP" expanded="false" />
-            <element signature="e#16108#19513#1#PHP" expanded="false" />
-            <element signature="e#19564#22195#1#PHP" expanded="false" />
+            <element signature="e#14801#15086#0#PHP" expanded="false" />
+            <element signature="e#15230#15525#1#PHP" expanded="false" />
+            <element signature="e#15560#16046#1#PHP" expanded="false" />
+            <element signature="e#16092#19497#1#PHP" expanded="false" />
+            <element signature="e#19548#22179#1#PHP" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -505,14 +505,14 @@ $app->group('/admin', function () use ($app) {
 
 			$user = ORM::for_table('users')->find_one($app->request->params('userId'));
 
-//			if(! empty($app->request->params('userFname')) ) {
-//				$_SESSION['adminName'] = $user->fname;
-//				if (! empty($app->request->params('userLname')) ){
-//					$_SESSION['adminName'] = $user->fname . ' ' . $user->lname;
-//				}
-//			} else {
-//				$_SESSION['adminName'] = $user->username;
-//			}
+			if(! empty($app->request->params('userFname')) ) {
+				$_SESSION['adminName'] = $user->fname;
+				if (! empty($app->request->params('userLname')) ){
+					$_SESSION['adminName'] = $user->fname . ' ' . $user->lname;
+				}
+			} else {
+				$_SESSION['adminName'] = $user->username;
+			}
 
 			$user->set([
 				'username'  =>  $app->request->params('userName'),
