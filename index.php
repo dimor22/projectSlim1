@@ -387,74 +387,74 @@ $app->get('/gallery', function () use ($app) {
 
 
 // Admin routes
-//$app->group('/admin', function () use ($app) {
-//
-//
-//	$app->get('/', function() use ($app) {
-//		if ( isset($_SESSION['adminName']) ) {
-//			$app->redirect('admin/dashboard');
-//		} else {
-//			$app->redirect('admin/login');
-//		}
-//	})->name('admin');
-//
-//	$app->get('/dashboard', function() use ($app) {
-//		echo $app->render('admin/dashboard.html.twig');
-//	})->name('dashboard');
-//
-//	/**
-//	 * Entrance Route to the ADMIN Dashboard
-//	 */
-//	$app->post('/', function() use ($app) {
-//		// Get User
-//		$username = $app->request()->params('username');
-//		$password = $app->request()->params('pwd');
-//		$user = ORM::for_table('users')->where('username', $username)->find_one();
-//
-//		// Validate User and Set Errors
-//		$is_admin = false;
-//		if ( $user ) {
-//			if ( $user->pwd == $password ) {
-//				$is_admin = true;
-//				if(! empty($user->fname) || ! empty($user->fname)) {
-//					$_SESSION['adminName'] = $user->fname . ' ' . $user->lname;
-//				} else {
-//					$_SESSION['adminName'] = $user->username;
-//				}
-//				$_SESSION['adminPhoto'] = $user->photo;
-//
-//				// I need to set these variables here for the first time
-//				$app->view->appendData(['adminName' => $_SESSION['adminName']]);
-//				$app->view->appendData(['adminPhoto' => $_SESSION['adminPhoto']]);
-//			} else {
-//				$app->flash('error', 'Invalid Password');
-//			}
-//		} else {
-//			$app->flash('error', 'User Not Found');
-//		}
-//
-//		// Render View
-//		if ( $is_admin ) {
-//			echo $app->render('admin/dashboard.html.twig');
-//		} else {
-//			$app->redirect('login');
-//		}
-//	});
-//
-//	// Log out
-//	$app->get('/logout', function() use ($app){
-//
-//		unset($_SESSION['adminName']);
-//		unset($_SESSION['adminPhoto']);
-//
-//		$app->redirect('../'); // back to home
-//	})->name('logout');
-//
-//	// Log in
-//	$app->get('/login', function() use ($app) {
-//		echo $app->render('login.html.twig', ['form_action_link'=> $app->urlFor('admin')]);
-//	})->name('login');
-//
+$app->group('/admin', function () use ($app) {
+
+
+	$app->get('/', function() use ($app) {
+		if ( isset($_SESSION['adminName']) ) {
+			$app->redirect('admin/dashboard');
+		} else {
+			$app->redirect('admin/login');
+		}
+	})->name('admin');
+
+	$app->get('/dashboard', function() use ($app) {
+		echo $app->render('admin/dashboard.html.twig');
+	})->name('dashboard');
+
+	/**
+	 * Entrance Route to the ADMIN Dashboard
+	 */
+	$app->post('/', function() use ($app) {
+		// Get User
+		$username = $app->request()->params('username');
+		$password = $app->request()->params('pwd');
+		$user = ORM::for_table('users')->where('username', $username)->find_one();
+
+		// Validate User and Set Errors
+		$is_admin = false;
+		if ( $user ) {
+			if ( $user->pwd == $password ) {
+				$is_admin = true;
+				if(! empty($user->fname) || ! empty($user->fname)) {
+					$_SESSION['adminName'] = $user->fname . ' ' . $user->lname;
+				} else {
+					$_SESSION['adminName'] = $user->username;
+				}
+				$_SESSION['adminPhoto'] = $user->photo;
+
+				// I need to set these variables here for the first time
+				$app->view->appendData(['adminName' => $_SESSION['adminName']]);
+				$app->view->appendData(['adminPhoto' => $_SESSION['adminPhoto']]);
+			} else {
+				$app->flash('error', 'Invalid Password');
+			}
+		} else {
+			$app->flash('error', 'User Not Found');
+		}
+
+		// Render View
+		if ( $is_admin ) {
+			echo $app->render('admin/dashboard.html.twig');
+		} else {
+			$app->redirect('login');
+		}
+	});
+
+	// Log out
+	$app->get('/logout', function() use ($app){
+
+		unset($_SESSION['adminName']);
+		unset($_SESSION['adminPhoto']);
+
+		$app->redirect('../'); // back to home
+	})->name('logout');
+
+	// Log in
+	$app->get('/login', function() use ($app) {
+		echo $app->render('login.html.twig', ['form_action_link'=> $app->urlFor('admin')]);
+	})->name('login');
+
 //	// Users
 //	$app->group('/users', function () use ($app) {
 //
@@ -747,8 +747,8 @@ $app->get('/gallery', function () use ($app) {
 //		});
 //
 //	});
-//
-//});
+
+});
 
 
 
