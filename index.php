@@ -464,36 +464,36 @@ $app->group('/admin', function () use ($app) {
 			echo $app->render( 'admin/users.html.twig', [ 'users' => $users ] );
 		} )->name( 'users' );
 
-//		$app->post( '/', function () use ( $app ) {
-//
-//			$user = ORM::for_table('users')->create();
-//
-//			$user->username = $app->request->params('userName');
-//			$user->email = $app->request->params('userEmail');
-//			$user->pwd = $app->request->params('userPassword');
-//			$user->fname = $app->request->params('userFname');
-//			$user->lname = $app->request->params('userLname');
-//			if ($_FILES['userPhoto']['size'] == 0){
-//				$user->photo = 'no_photo.jpg';
-//			} else {
-//				$user->photo = $_FILES["userPhoto"]["name"];
-//
-//				$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['userPhoto']['name'];
-//				$upload = move_uploaded_file($_FILES["userPhoto"]["tmp_name"], $uploadFile);
-//			}
-//			$user->phone = $app->request->params('userPhone');
-//
-//			$user->save();
-//
-//
-//			if(empty($_FILES['userPhoto']['name']) ) {
-//				$app->flash( 'success', 'User Created' );
-//			} elseif ( ! empty($_FILES['userPhoto']['name']) && $_FILES['userPhoto']['error'] != 0) {
-//				$app->flash( 'fail', 'Photo Upload failed' );
-//			}
-//			$app->redirect( './users' );
-//		} );
-//
+		$app->post( '/', function () use ( $app ) {
+
+			$user = ORM::for_table('users')->create();
+
+			$user->username = $app->request->params('userName');
+			$user->email = $app->request->params('userEmail');
+			$user->pwd = $app->request->params('userPassword');
+			$user->fname = $app->request->params('userFname');
+			$user->lname = $app->request->params('userLname');
+			if ($_FILES['userPhoto']['size'] == 0){
+				$user->photo = 'no_photo.jpg';
+			} else {
+				$user->photo = $_FILES["userPhoto"]["name"];
+
+				$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['userPhoto']['name'];
+				$upload = move_uploaded_file($_FILES["userPhoto"]["tmp_name"], $uploadFile);
+			}
+			$user->phone = $app->request->params('userPhone');
+
+			$user->save();
+
+
+			if(empty($_FILES['userPhoto']['name']) ) {
+				$app->flash( 'success', 'User Created' );
+			} elseif ( ! empty($_FILES['userPhoto']['name']) && $_FILES['userPhoto']['error'] != 0) {
+				$app->flash( 'fail', 'Photo Upload failed' );
+			}
+			$app->redirect( './users' );
+		} );
+
 //		$app->delete( '/', function () use ( $app ) {
 //			$user = ORM::for_table('users')->find_one($app->request->params('user-id'));
 //			$user->delete();
