@@ -455,15 +455,15 @@ $app->group('/admin', function () use ($app) {
 		echo $app->render('login.html.twig', ['form_action_link'=> $app->urlFor('admin')]);
 	})->name('login');
 
-//	// Users
-//	$app->group('/users', function () use ($app) {
-//
-//		$app->get( '/', function () use ( $app ) {
-//			$users = ORM::for_table( 'users' )->find_many();
-//
-//			echo $app->render( 'admin/users.html.twig', [ 'users' => $users ] );
-//		} )->name( 'users' );
-//
+	// Users
+	$app->group('/users', function () use ($app) {
+
+		$app->get( '/', function () use ( $app ) {
+			$users = ORM::for_table( 'users' )->find_many();
+
+			echo $app->render( 'admin/users.html.twig', [ 'users' => $users ] );
+		} )->name( 'users' );
+
 //		$app->post( '/', function () use ( $app ) {
 //
 //			$user = ORM::for_table('users')->create();
@@ -553,9 +553,9 @@ $app->group('/admin', function () use ($app) {
 //			$app->flash( 'success', 'Photo Changed' );
 //			$app->redirect( '../../admin/users' );
 //		});
-//
-//
-//	});
+
+
+	});
 
 	// Photos
 	$app->group('/photos', function() use ($app) {

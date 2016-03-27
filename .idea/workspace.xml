@@ -42,8 +42,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32307693">
-              <caret line="557" column="7" selection-start-line="457" selection-start-column="4" selection-end-line="557" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.39102563">
+              <caret line="466" column="8" selection-start-line="466" selection-start-column="8" selection-end-line="554" selection-end-column="11" />
               <folding>
                 <element signature="e#1543#7927#1#PHP" expanded="false" />
                 <element signature="e#7967#9828#1#PHP" expanded="false" />
@@ -61,8 +61,9 @@
                 <element signature="e#11429#12462#1#PHP" expanded="false" />
                 <element signature="e#12500#12635#1#PHP" expanded="false" />
                 <element signature="e#12687#12799#1#PHP" expanded="false" />
-                <element signature="e#16294#19699#1#PHP" expanded="false" />
-                <element signature="e#19750#22381#1#PHP" expanded="false" />
+                <element signature="e#12895#13050#1#PHP" expanded="false" />
+                <element signature="e#16270#19675#1#PHP" expanded="false" />
+                <element signature="e#19726#22357#1#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -669,7 +670,13 @@
       <option name="project" value="LOCAL" />
       <updated>1459057609831</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="testing white page">
+      <created>1459057665511</created>
+      <option name="number" value="00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1459057665511</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1536,8 +1543,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32307693">
-          <caret line="557" column="7" selection-start-line="457" selection-start-column="4" selection-end-line="557" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.39102563">
+          <caret line="466" column="8" selection-start-line="466" selection-start-column="8" selection-end-line="554" selection-end-column="11" />
           <folding>
             <element signature="e#1543#7927#1#PHP" expanded="false" />
             <element signature="e#7967#9828#1#PHP" expanded="false" />
@@ -1555,8 +1562,9 @@
             <element signature="e#11429#12462#1#PHP" expanded="false" />
             <element signature="e#12500#12635#1#PHP" expanded="false" />
             <element signature="e#12687#12799#1#PHP" expanded="false" />
-            <element signature="e#16294#19699#1#PHP" expanded="false" />
-            <element signature="e#19750#22381#1#PHP" expanded="false" />
+            <element signature="e#12895#13050#1#PHP" expanded="false" />
+            <element signature="e#16270#19675#1#PHP" expanded="false" />
+            <element signature="e#19726#22357#1#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
