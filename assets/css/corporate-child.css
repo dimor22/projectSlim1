@@ -43,3 +43,17 @@ td.time-option.time-disabled:hover {
 div#info-form input {
     text-align: center;
 }
+
+.textwidget:hover {
+    cursor: pointer;
+}
+
+.time-selected {
+    background: rgba(57, 139, 202, 0.62);
+    color: white;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th, .table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th {
+    background: rgba(57, 139, 202, 0.62);
+    color: white;
+}

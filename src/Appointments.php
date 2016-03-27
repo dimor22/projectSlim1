@@ -62,7 +62,19 @@ class Appointments {
 
 	// look up available times
 	public function lookup_times($date){
-
+		$times = [];
+		$appts = ORM::for_table('appts')->where('date', $date)->find_many();
+		if ($appts->count() > 0 ){
+//			for ( $i = 0; $i < $appts->count(); $i++) {
+//				$times[] = $appts->time;
+//			}
+			foreach($appts as $appt) {
+				$times[] = $appt->time;
+			}
+			echo json_encode($times);
+		} else {
+			echo json_encode(['response'=> 'all available']);
+		}
 	}
 	// save appt
 	public function save_appt($params){

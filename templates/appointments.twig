@@ -73,9 +73,9 @@
                         <div class="panel-body">
                             <div class="col-text-1 text-normal  element-top-0 element-bottom-0" data-os-animation="none" data-os-animation-delay="0s">
                                 <table class="table table-hover">
-                                    <tbody>
+                                    <tbody id="time-list">
                                     <tr>
-                                        <td class="time-option time-disabled">9:00 - 11:00 AM</td>
+                                        <td class="time-option">9:00 - 11:00 AM</td>
                                     </tr>
                                     <tr>
                                         <td class="time-option">11:00 - 1:00 PM</td>
@@ -84,7 +84,7 @@
                                         <td class="time-option">1:00 - 3:00 PM</td>
                                     </tr>
                                     <tr>
-                                        <td class="time-option time-disabled">3:00 - 5:00 PM</td>
+                                        <td class="time-option">3:00 - 5:00 PM</td>
                                     </tr>
                                     <tr>
                                         <td class="time-option">5:00 - 7:00 PM</td>
@@ -128,9 +128,11 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <button class="btn btn-default scroll-to-id" id="submit-step1" data-os-animation-delay="0.2s">Next <i class="fa fa-check-square-o" data-animation="none"></i></button>
                         </div>
                     </div>
                 </div>
+
             </div>
             <!-- CONTACT INFO -->
             <div id="step2" class="row text-center element-bottom-40">
@@ -294,14 +296,27 @@
                 // show product when a time is selected
                 $('.time-option').click(function () {
                     if (! $(this).hasClass('time-disabled')) {
+                        // highlight time selected
+                        $('.time-option').removeClass('time-selected');
+                        $(this).addClass('time-selected');
+                        // set time
                         appt.setTime(this.innerHTML);
+                        // display product list
                         appt.showProduct();
                     };
                 });
+
+
                 // go to step 2 when a product is selected
                 $('.product-option').click(function () {
-                    // check step 1 data is saved
+                    // highlight time selected
+                    $('.product-option').removeClass('time-selected');
+                    $(this).addClass('time-selected');
+                    // set product
                     appt.setProduct(this.innerHTML);
+                    // validate step1 and proceed to step2
+                });
+                $('#submit-step1').click(function () {
                     if(appt.validateStep1()) {
                         // go step 2
                         appt.goStep2();
@@ -404,7 +419,6 @@
                     if (! validateEmail(appt.info.email)) {
                         $('#appt-email').css('border', '2px solid red');
                         badEmail = true;
-                        cl('bad email')
                     }
                 }
 
@@ -415,7 +429,6 @@
                     appt.info.state.length > 0 &&
                     appt.info.zip.length > 0 &&
                     badEmail == false ){
-                    cl('good email')
                     return true;
                 }
                 return false;
@@ -445,14 +458,36 @@
             showTimes: function(){
                 $('#times').show();
             },
+            generateTimes: function (times) {
+                var ulElement = $('#time-list');
+                var tds = $('#time-list').children().children();
+                for ( var i = 0; i < tds.length; i++){
+                    if ( jQuery.inArray($(tds[i]).text(), times) > -1){
+                        $(tds[i]).addClass('time-disabled');
+                    } else {
+                        $(tds[i]).removeClass('time-disabled');
+                    }
+                }
+            },
             showProduct: function(){
                 $('#product').show();
             },
             setDate: function (date) {
                 this.date = date;
             },
-            getDatesAvailables: function (date) {
+            getAvailableTimes: function (date) {
                 // ajax call
+                $.ajax({
+                    method: "POST",
+                    url: "src/Appointments.php",
+                    data: { action: "lookup", date: date },
+                    error: function(){ console.log('there was an error')},
+                    success: function(data){
+                        var response = JSON.parse(data);
+                        appt.generateTimes(response);
+                        cl(response);
+                    }
+                })
             },
             setTime: function (time) {
                 this.time = time;
@@ -510,9 +545,12 @@
             minDate: new Date(), // Now can select only dates, which goes after today
             todayButton: true,
             onSelect: function (formattedDate, date, inst) {
+                $('.time-option').removeClass('time-selected');
+                $('.product-option').removeClass('time-selected');
                 appt.resetStep1();
                 appt.setDate(formattedDate);
                 appt.showTimes();
+                appt.getAvailableTimes(formattedDate);
             }
         });
 

@@ -210,28 +210,6 @@ $app->get('/', function() use ($app, $twig) {
 				'strong'    =>  'Donald Coleman',
 				'span'      =>  'Developer',
 				'p'         =>  ' Completely synergize resource sucking relationships premier niche markets. Professionally cultivate customer.'
-			],
-			[
-				'delay' =>  '0.4s',
-				'alt'   =>  'Shirley King',
-				'src'   =>  'assets/images/corporate/team04-notinclude.jpg',
-				'social'    =>  [
-					[
-						'name'  =>  'facebook',
-						'href'  =>  '#'
-					],
-					[
-						'name'  =>  'twitter',
-						'href'  =>  '#'
-					],
-					[
-						'name'  =>  'behance',
-						'href'  =>  '#'
-					]
-				],
-				'strong'    =>  'Shirley King',
-				'span'      =>  'Designer',
-				'p'         =>  ' Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly testing procedures.'
 			]
 		],
 		'testimonials_info'  => [
