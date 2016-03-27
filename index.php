@@ -494,13 +494,13 @@ $app->group('/admin', function () use ($app) {
 			$app->redirect( './users' );
 		} );
 
-//		$app->delete( '/', function () use ( $app ) {
-//			$user = ORM::for_table('users')->find_one($app->request->params('user-id'));
-//			$user->delete();
-//			$app->flash( 'success', 'User Deleted' );
-//			$app->redirect( './users' );
-//		} );
-//
+		$app->delete( '/', function () use ( $app ) {
+			$user = ORM::for_table('users')->find_one($app->request->params('user-id'));
+			$user->delete();
+			$app->flash( 'success', 'User Deleted' );
+			$app->redirect( './users' );
+		} );
+
 //		$app->post( '/edit-profile', function () use ( $app ) {
 //
 //			$user = ORM::for_table('users')->find_one($app->request->params('userId'));
