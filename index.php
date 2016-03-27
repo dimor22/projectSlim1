@@ -455,298 +455,298 @@ $app->group('/admin', function () use ($app) {
 		echo $app->render('login.html.twig', ['form_action_link'=> $app->urlFor('admin')]);
 	})->name('login');
 
-	// Users
-	$app->group('/users', function () use ($app) {
-
-		$app->get( '/', function () use ( $app ) {
-			$users = ORM::for_table( 'users' )->find_many();
-
-			echo $app->render( 'admin/users.html.twig', [ 'users' => $users ] );
-		} )->name( 'users' );
-
-		$app->post( '/', function () use ( $app ) {
-
-			$user = ORM::for_table('users')->create();
-
-			$user->username = $app->request->params('userName');
-			$user->email = $app->request->params('userEmail');
-			$user->pwd = $app->request->params('userPassword');
-			$user->fname = $app->request->params('userFname');
-			$user->lname = $app->request->params('userLname');
-			if ($_FILES['userPhoto']['size'] == 0){
-				$user->photo = 'no_photo.jpg';
-			} else {
-				$user->photo = $_FILES["userPhoto"]["name"];
-
-				$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['userPhoto']['name'];
-				$upload = move_uploaded_file($_FILES["userPhoto"]["tmp_name"], $uploadFile);
-			}
-			$user->phone = $app->request->params('userPhone');
-
-			$user->save();
-
-
-			if(empty($_FILES['userPhoto']['name']) ) {
-				$app->flash( 'success', 'User Created' );
-			} elseif ( ! empty($_FILES['userPhoto']['name']) && $_FILES['userPhoto']['error'] != 0) {
-				$app->flash( 'fail', 'Photo Upload failed' );
-			}
-			$app->redirect( './users' );
-		} );
-
-		$app->delete( '/', function () use ( $app ) {
-			$user = ORM::for_table('users')->find_one($app->request->params('user-id'));
-			$user->delete();
-			$app->flash( 'success', 'User Deleted' );
-			$app->redirect( './users' );
-		} );
-
-		$app->post( '/edit-profile', function () use ( $app ) {
-
-			$user = ORM::for_table('users')->find_one($app->request->params('userId'));
-
-			if(! empty($app->request->params('userFname')) ) {
-				$_SESSION['adminName'] = $user->fname;
-				if (! empty($app->request->params('userLname')) ){
-					$_SESSION['adminName'] = $user->fname . ' ' . $user->lname;
-				}
-			} else {
-				$_SESSION['adminName'] = $user->username;
-			}
-
-			$user->set([
-				'username'  =>  $app->request->params('userName'),
-				'email'  =>  $app->request->params('userEmail'),
-				'phone'  =>  $app->request->params('userPhone'),
-				'fname'  =>  $app->request->params('userFname'),
-				'lname'  =>  $app->request->params('userLname'),
-			]);
-			$user->save();
-
-			$app->flash( 'success', 'Profile Edited' );
-			$app->redirect( '../../admin/users' );
-		});
-
-		$app->post( '/password', function () use ( $app ) {
-
-			$user = ORM::for_table('users')->find_one($app->request->params('userId'));
-			$user->set([
-				'pwd'  =>  $app->request->params('confirmPwd'),
-			]);
-			$user->save();
-
-			$app->flash( 'success', 'Password Updated' );
-			$app->redirect( '../../admin/users' );
-		});
-
-		$app->post( '/change-photo', function () use ( $app ) {
-
-			$user = ORM::for_table('users')->find_one($app->request->params('userId'));
-			$user->set([
-				'photo'  =>  $_FILES["userPhoto"]["name"],
-			]);
-			$user->save();
-
-			$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['userPhoto']['name'];
-			$upload = move_uploaded_file($_FILES["userPhoto"]["tmp_name"], $uploadFile);
-
-			$app->flash( 'success', 'Photo Changed' );
-			$app->redirect( '../../admin/users' );
-		});
-
-
-	});
-
-//	// Photos
-//	$app->group('/photos', function() use ($app) {
+//	// Users
+//	$app->group('/users', function () use ($app) {
 //
-//		$app->get('/', function() use ($app){
-//			$albumName = 'bathroom';
-//			$slider = getSliderPhotos();
-//			$gallery = getGalleryPhotos($albumName);
-//			$albums = ORM::for_table('albums')->find_many();
-//			$album = ORM::for_table('albums')->where('name', $albumName)->find_one();
-//			$beafs = ORM::for_table('beaf')->order_by_desc('created_at')->find_many();
+//		$app->get( '/', function () use ( $app ) {
+//			$users = ORM::for_table( 'users' )->find_many();
 //
-//			echo $app->render('admin/photos.html.twig', [
-//				'gallery' => $gallery,
-//				'slider' => $slider->as_array(),
-//				'album' => $album->as_array(),
-//				'albums' => $albums,
-//				'beafs' =>  $beafs
-//			]);
-//		})->name('photos');
+//			echo $app->render( 'admin/users.html.twig', [ 'users' => $users ] );
+//		} )->name( 'users' );
 //
-//		$app->post('/', function() use ($app) {
+//		$app->post( '/', function () use ( $app ) {
 //
-//			$albumName = $app->request->params('album');
-//			$album = ORM::for_table('albums')->where('name', $albumName)->find_one();
-//			$beafs = ORM::for_table('beaf')->order_by_desc('created_at')->find_many();
+//			$user = ORM::for_table('users')->create();
 //
-//
-//			$slider = getSliderPhotos();
-//			$gallery = getGalleryPhotos($albumName);
-//
-//			if(isset($_FILES['gallery-photo']) && $_FILES['gallery-photo']['size'] > 0){
-//				$photo = ORM::for_table('photos')->create();
-//				$photo->set([
-//					'name'  =>  $_FILES["gallery-photo"]["name"],
-//					'album' =>  $albumName
-//
-//				]);
-//				$photo->save();
-//
-//				$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['gallery-photo']['name'];
-//				move_uploaded_file($_FILES["gallery-photo"]["tmp_name"], $uploadFile);
-//			}
-//
-//			$slider = getSliderPhotos();
-//			$gallery = getGalleryPhotos($albumName);
-//			$albums = ORM::for_table('albums')->find_many();
-//
-//
-//			echo $app->render('admin/photos.html.twig', [
-//				'gallery' => $gallery,
-//				'slider' => $slider->as_array(),
-//				'album' => $album,
-//				'albums' => $albums,
-//				'beafs' =>  $beafs
-//
-//
-//			]);
-//
-//
-//		})->name('addAlbum');
-//
-//		$app->post('/newalbum', function() use ($app){
-//			$newAlbumName = $app->request->params('newalbum');
-//
-//			$newAlbum = ORM::for_table('albums')->create();
-//			$newAlbum->name = $newAlbumName;
-//			$newAlbum->save();
-//
-//			$app->redirect( '../../admin/photos' );
-//		});
-//
-//		$app->delete('/', function() use ($app) {
-//			$option = $app->request->params('option');
-//
-//			if ($option == 'add') {
-//				$photo = ORM::for_table('photos')->find_one($app->request->params('gallery-photo'));
-//				$photo->slider = 1;
-//				$photo->save();
-//				$app->flash( 'success', 'Photo Added To Slider' );
-//
-//			} elseif ($option == 'remove') {
-//				$photo = ORM::for_table('photos')->find_one($app->request->params('gallery-photo'));
-//				$photo->slider = 0;
-//				$photo->save();
-//				$app->flash( 'success', 'Photo Removed From Slider' );
-//
+//			$user->username = $app->request->params('userName');
+//			$user->email = $app->request->params('userEmail');
+//			$user->pwd = $app->request->params('userPassword');
+//			$user->fname = $app->request->params('userFname');
+//			$user->lname = $app->request->params('userLname');
+//			if ($_FILES['userPhoto']['size'] == 0){
+//				$user->photo = 'no_photo.jpg';
 //			} else {
-//				$galleryPhotoId = ORM::for_table('photos')->find_one($app->request->params('gallery-photo'));
-//				$galleryPhotoId->delete();
-//				$app->flash( 'success', 'Photo Deleted' );
+//				$user->photo = $_FILES["userPhoto"]["name"];
 //
+//				$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['userPhoto']['name'];
+//				$upload = move_uploaded_file($_FILES["userPhoto"]["tmp_name"], $uploadFile);
 //			}
+//			$user->phone = $app->request->params('userPhone');
 //
-//			$app->redirect( './photos' );
-//		});
+//			$user->save();
 //
-//		$app->delete('/album', function() use ($app){
-//			$album = ORM::for_table('albums')->find_one($app->request->params('album-id'));
-//			$albumName = $album->name;
-//			$album->delete();
-//			$photos = ORM::for_table('photos')->where('album', $albumName)->find_many();
-//			$photos->delete();
 //
-//			$app->flash( 'success', 'Album Deleted' );
-//			$app->redirect('../../admin/photos');
-//		});
+//			if(empty($_FILES['userPhoto']['name']) ) {
+//				$app->flash( 'success', 'User Created' );
+//			} elseif ( ! empty($_FILES['userPhoto']['name']) && $_FILES['userPhoto']['error'] != 0) {
+//				$app->flash( 'fail', 'Photo Upload failed' );
+//			}
+//			$app->redirect( './users' );
+//		} );
 //
-//		$app->delete('/beaf', function() use ($app){
-//			$beaf = ORM::for_table('beaf')->find_one($app->request->params('beaf-id'));
-//			$beaf->delete();
+//		$app->delete( '/', function () use ( $app ) {
+//			$user = ORM::for_table('users')->find_one($app->request->params('user-id'));
+//			$user->delete();
+//			$app->flash( 'success', 'User Deleted' );
+//			$app->redirect( './users' );
+//		} );
 //
-//			$app->flash( 'success', 'Before and After Deleted' );
-//			$app->redirect('../../admin/photos');
-//		});
-//	});
+//		$app->post( '/edit-profile', function () use ( $app ) {
 //
-//	// Testimonials
-//	$app->group('/testimonials', function () use ($app) {
+//			$user = ORM::for_table('users')->find_one($app->request->params('userId'));
 //
-//		// Get All testimonials
-//		$app->get('/', function() use ($app){
-//			$testimonials = ORM::for_table('testimonials')->order_by_desc('created_at')->find_many();
-//			$data['testimonials'] = $testimonials;
-//			echo $app->render('admin/testimonials.html.twig', $data);
-//		})->name('testimonials');
-//
-//		// New testimonial
-//		$app->post('/', function() use ($app){
-//			$testimonial = ORM::for_table('testimonials')->create();
-//			$testimonial->title = $app->request->params('testimonialTitle');
-//			$testimonial->body = $app->request->params('testimonialBody');
-//			$testimonial->owner = $app->request->params('testimonialOwner');
-//			$testimonial->company = $app->request->params('testimonialCompany');
-//			if ($_FILES['testimonialPhoto']['size'] == 0){
-//				$testimonial->photo = 'no_photo.jpg';
+//			if(! empty($app->request->params('userFname')) ) {
+//				$_SESSION['adminName'] = $user->fname;
+//				if (! empty($app->request->params('userLname')) ){
+//					$_SESSION['adminName'] = $user->fname . ' ' . $user->lname;
+//				}
 //			} else {
-//				$testimonial->photo = $_FILES["testimonialPhoto"]["name"];
-//
-//				$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['testimonialPhoto']['name'];
-//				$upload = move_uploaded_file($_FILES["testimonialPhoto"]["tmp_name"], $uploadFile);
+//				$_SESSION['adminName'] = $user->username;
 //			}
-//			$testimonial->save();
-//
-//			$app->redirect('testimonials');
-//		});
-//
-//		// Edit testimonial
-//		$app->post('/edit-testimonial', function() use ($app) {
-//			$user = ORM::for_table('testimonials')->find_one($app->request->params('testimonialId'));
-//
 //
 //			$user->set([
-//				'title'  =>  $app->request->params('testimonialTitle'),
-//				'body'  =>  $app->request->params('testimonialBody'),
-//				'owner'  =>  $app->request->params('testimonialOwner'),
-//				'company'  =>  $app->request->params('testimonialCompany'),
+//				'username'  =>  $app->request->params('userName'),
+//				'email'  =>  $app->request->params('userEmail'),
+//				'phone'  =>  $app->request->params('userPhone'),
+//				'fname'  =>  $app->request->params('userFname'),
+//				'lname'  =>  $app->request->params('userLname'),
 //			]);
 //			$user->save();
 //
-//			$app->flash( 'success', 'Testimonial Edited' );
-//			$app->redirect( '../../admin/testimonials' );
+//			$app->flash( 'success', 'Profile Edited' );
+//			$app->redirect( '../../admin/users' );
 //		});
 //
-//		// Edit photo
+//		$app->post( '/password', function () use ( $app ) {
+//
+//			$user = ORM::for_table('users')->find_one($app->request->params('userId'));
+//			$user->set([
+//				'pwd'  =>  $app->request->params('confirmPwd'),
+//			]);
+//			$user->save();
+//
+//			$app->flash( 'success', 'Password Updated' );
+//			$app->redirect( '../../admin/users' );
+//		});
+//
 //		$app->post( '/change-photo', function () use ( $app ) {
 //
-//			$user = ORM::for_table('testimonials')->find_one($app->request->params('userId'));
+//			$user = ORM::for_table('users')->find_one($app->request->params('userId'));
 //			$user->set([
-//				'photo'  =>  $_FILES["changeTestimonialPhoto"]["name"],
+//				'photo'  =>  $_FILES["userPhoto"]["name"],
 //			]);
 //			$user->save();
 //
-//			$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['changeTestimonialPhoto']['name'];
-//			$upload = move_uploaded_file($_FILES["changeTestimonialPhoto"]["tmp_name"], $uploadFile);
+//			$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['userPhoto']['name'];
+//			$upload = move_uploaded_file($_FILES["userPhoto"]["tmp_name"], $uploadFile);
 //
 //			$app->flash( 'success', 'Photo Changed' );
-//			$app->redirect( '../../admin/testimonials' );
+//			$app->redirect( '../../admin/users' );
 //		});
 //
-//		// Delete testimonials with ID
-//		$app->delete('/', function() use ($app) {
-//			$testimonial = ORM::for_table('testimonials')->find_one($app->request->params('testimonial-id'));
-//			$testimonial->delete();
-//			$app->flash( 'success', 'Testimonial Deleted' );
-//			$app->redirect( './testimonials' );
-//
-//
-//		});
 //
 //	});
+
+	// Photos
+	$app->group('/photos', function() use ($app) {
+
+		$app->get('/', function() use ($app){
+			$albumName = 'bathroom';
+			$slider = getSliderPhotos();
+			$gallery = getGalleryPhotos($albumName);
+			$albums = ORM::for_table('albums')->find_many();
+			$album = ORM::for_table('albums')->where('name', $albumName)->find_one();
+			$beafs = ORM::for_table('beaf')->order_by_desc('created_at')->find_many();
+
+			echo $app->render('admin/photos.html.twig', [
+				'gallery' => $gallery,
+				'slider' => $slider->as_array(),
+				'album' => $album->as_array(),
+				'albums' => $albums,
+				'beafs' =>  $beafs
+			]);
+		})->name('photos');
+
+		$app->post('/', function() use ($app) {
+
+			$albumName = $app->request->params('album');
+			$album = ORM::for_table('albums')->where('name', $albumName)->find_one();
+			$beafs = ORM::for_table('beaf')->order_by_desc('created_at')->find_many();
+
+
+			$slider = getSliderPhotos();
+			$gallery = getGalleryPhotos($albumName);
+
+			if(isset($_FILES['gallery-photo']) && $_FILES['gallery-photo']['size'] > 0){
+				$photo = ORM::for_table('photos')->create();
+				$photo->set([
+					'name'  =>  $_FILES["gallery-photo"]["name"],
+					'album' =>  $albumName
+
+				]);
+				$photo->save();
+
+				$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['gallery-photo']['name'];
+				move_uploaded_file($_FILES["gallery-photo"]["tmp_name"], $uploadFile);
+			}
+
+			$slider = getSliderPhotos();
+			$gallery = getGalleryPhotos($albumName);
+			$albums = ORM::for_table('albums')->find_many();
+
+
+			echo $app->render('admin/photos.html.twig', [
+				'gallery' => $gallery,
+				'slider' => $slider->as_array(),
+				'album' => $album,
+				'albums' => $albums,
+				'beafs' =>  $beafs
+
+
+			]);
+
+
+		})->name('addAlbum');
+
+		$app->post('/newalbum', function() use ($app){
+			$newAlbumName = $app->request->params('newalbum');
+
+			$newAlbum = ORM::for_table('albums')->create();
+			$newAlbum->name = $newAlbumName;
+			$newAlbum->save();
+
+			$app->redirect( '../../admin/photos' );
+		});
+
+		$app->delete('/', function() use ($app) {
+			$option = $app->request->params('option');
+
+			if ($option == 'add') {
+				$photo = ORM::for_table('photos')->find_one($app->request->params('gallery-photo'));
+				$photo->slider = 1;
+				$photo->save();
+				$app->flash( 'success', 'Photo Added To Slider' );
+
+			} elseif ($option == 'remove') {
+				$photo = ORM::for_table('photos')->find_one($app->request->params('gallery-photo'));
+				$photo->slider = 0;
+				$photo->save();
+				$app->flash( 'success', 'Photo Removed From Slider' );
+
+			} else {
+				$galleryPhotoId = ORM::for_table('photos')->find_one($app->request->params('gallery-photo'));
+				$galleryPhotoId->delete();
+				$app->flash( 'success', 'Photo Deleted' );
+
+			}
+
+			$app->redirect( './photos' );
+		});
+
+		$app->delete('/album', function() use ($app){
+			$album = ORM::for_table('albums')->find_one($app->request->params('album-id'));
+			$albumName = $album->name;
+			$album->delete();
+			$photos = ORM::for_table('photos')->where('album', $albumName)->find_many();
+			$photos->delete();
+
+			$app->flash( 'success', 'Album Deleted' );
+			$app->redirect('../../admin/photos');
+		});
+
+		$app->delete('/beaf', function() use ($app){
+			$beaf = ORM::for_table('beaf')->find_one($app->request->params('beaf-id'));
+			$beaf->delete();
+
+			$app->flash( 'success', 'Before and After Deleted' );
+			$app->redirect('../../admin/photos');
+		});
+	});
+
+	// Testimonials
+	$app->group('/testimonials', function () use ($app) {
+
+		// Get All testimonials
+		$app->get('/', function() use ($app){
+			$testimonials = ORM::for_table('testimonials')->order_by_desc('created_at')->find_many();
+			$data['testimonials'] = $testimonials;
+			echo $app->render('admin/testimonials.html.twig', $data);
+		})->name('testimonials');
+
+		// New testimonial
+		$app->post('/', function() use ($app){
+			$testimonial = ORM::for_table('testimonials')->create();
+			$testimonial->title = $app->request->params('testimonialTitle');
+			$testimonial->body = $app->request->params('testimonialBody');
+			$testimonial->owner = $app->request->params('testimonialOwner');
+			$testimonial->company = $app->request->params('testimonialCompany');
+			if ($_FILES['testimonialPhoto']['size'] == 0){
+				$testimonial->photo = 'no_photo.jpg';
+			} else {
+				$testimonial->photo = $_FILES["testimonialPhoto"]["name"];
+
+				$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['testimonialPhoto']['name'];
+				$upload = move_uploaded_file($_FILES["testimonialPhoto"]["tmp_name"], $uploadFile);
+			}
+			$testimonial->save();
+
+			$app->redirect('testimonials');
+		});
+
+		// Edit testimonial
+		$app->post('/edit-testimonial', function() use ($app) {
+			$user = ORM::for_table('testimonials')->find_one($app->request->params('testimonialId'));
+
+
+			$user->set([
+				'title'  =>  $app->request->params('testimonialTitle'),
+				'body'  =>  $app->request->params('testimonialBody'),
+				'owner'  =>  $app->request->params('testimonialOwner'),
+				'company'  =>  $app->request->params('testimonialCompany'),
+			]);
+			$user->save();
+
+			$app->flash( 'success', 'Testimonial Edited' );
+			$app->redirect( '../../admin/testimonials' );
+		});
+
+		// Edit photo
+		$app->post( '/change-photo', function () use ( $app ) {
+
+			$user = ORM::for_table('testimonials')->find_one($app->request->params('userId'));
+			$user->set([
+				'photo'  =>  $_FILES["changeTestimonialPhoto"]["name"],
+			]);
+			$user->save();
+
+			$uploadFile = $_SERVER['DOCUMENT_ROOT'] . $app->request->getRootUri() . '/photos/' . $_FILES['changeTestimonialPhoto']['name'];
+			$upload = move_uploaded_file($_FILES["changeTestimonialPhoto"]["tmp_name"], $uploadFile);
+
+			$app->flash( 'success', 'Photo Changed' );
+			$app->redirect( '../../admin/testimonials' );
+		});
+
+		// Delete testimonials with ID
+		$app->delete('/', function() use ($app) {
+			$testimonial = ORM::for_table('testimonials')->find_one($app->request->params('testimonial-id'));
+			$testimonial->delete();
+			$app->flash( 'success', 'Testimonial Deleted' );
+			$app->redirect( './testimonials' );
+
+
+		});
+
+	});
 
 });
 
