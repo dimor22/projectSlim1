@@ -41,21 +41,21 @@ class Appointments {
 	public function process_request( $params ) {
 		switch ($params['action']){
 			case "lookup":
-				lookup_times($params['date']);
+				$this->lookup_times($params['date']);
 			case "save":
-				save_appt($params);
+				$this->save_appt($params);
 				break;
 			case "delete":
-				delete_appt($params['id']);
+				$this->delete_appt($params['id']);
 				break;
 			case "edit":
-				edit_appt($params['id']);
+				$this->edit_appt($params['id']);
 				break;
 			case "get":
-				get_appt($params['id']);
+				$this->get_appt($params['id']);
 				break;
 			case "getAll":
-				get_all_appts();
+				$this->get_all_appts();
 				break;
 		}
 	}
@@ -65,18 +65,18 @@ class Appointments {
 
 	}
 	// save appt
-	public function save_appt($appt){
+	public function save_appt($params){
 		$appt = ORM::for_table('appts')->create();
-		$appt->date = $appt['date'];
-		$appt->time = $appt['time'];
-		$appt->product = $appt['product'];
-		$appt->name = $appt['name'];
-		$appt->address = $appt['address'];
-		$appt->city = $appt['city'];
-		$appt->state = $appt['state'];
-		$appt->zip = $appt['zip'];
-		$appt->phone = $appt['phone'];
-		$appt->email = $appt['email'];
+		$appt->date = $params['date'];
+		$appt->time = $params['time'];
+		$appt->product = $params['product'];
+		$appt->name = $params['name'];
+		$appt->address = $params['address'];
+		$appt->city = $params['city'];
+		$appt->state = $params['state'];
+		$appt->zip = $params['zip'];
+		$appt->phone = $params['phone'];
+		$appt->email = $params['email'];
 		$appt->save();
 
 		return true;
@@ -100,4 +100,4 @@ class Appointments {
 }
 
 $processAppt = new Appointments();
-$processAppt->processAppt($_REQUEST);
+$processAppt->process_request($_REQUEST);
