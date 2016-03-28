@@ -44,7 +44,7 @@ div#info-form input {
     text-align: center;
 }
 
-.textwidget:hover {
+.textwidget:hover, .product-option:hover {
     cursor: pointer;
 }
 
