@@ -65,9 +65,9 @@ class Appointments {
 		$times = [];
 		$appts = ORM::for_table('appts')->where('date', $date)->find_many();
 		if ($appts->count() > 0 ){
-//			for ( $i = 0; $i < $appts->count(); $i++) {
-//				$times[] = $appts->time;
-//			}
+			for ( $i = 0; $i < $appts->count(); $i++) {
+				$times[] = $appts->time;
+			}
 			foreach($appts as $appt) {
 				$times[] = $appt->time;
 			}
@@ -107,9 +107,9 @@ class Appointments {
 	}
 	// edit all appts
 	public function get_all_appts(){
-
+		//return ORM::for_table('appts')->order_by_desc('created_at')->find_many();
 	}
 }
 
 $processAppt = new Appointments();
-$processAppt->process_request($_REQUEST);
+//$processAppt->process_request($_REQUEST);

@@ -1,0 +1,76 @@
+{% extends "admin/admin_base.html.twig" %}
+
+{% block title %}Testimonials{% endblock %}
+
+{% block content_header %}
+    <h1>
+        Appointments
+        <small>All Appointments</small>
+    </h1>
+{% endblock content_header %}
+
+{% block content %}
+    <!-- Main content -->
+    <section class="content">
+
+        {% include 'admin/modals/add_testimonial.twig' %}
+        {% include 'admin/modals/delete_testimonial.twig' %}
+        {% include 'admin/modals/edit_testimonial.twig' %}
+        {% include 'admin/modals/edit_testimonial_photo.html.twig' %}
+
+        <div class="row">
+            <a class="btn btn-app text-center btn-flat" data-toggle="modal" data-target="#add-testimonial">
+                <i class="fa fa-plus"></i> New Appointment
+            </a>
+        </div>
+        <hr />
+        {#<div class="row">#}
+        {#{% for appt in appts %}#}
+            {#<div class="col-xs-6 col-md-4">#}
+                {#<div class="box box-solid">#}
+                    {#<div class="box-header with-border">#}
+                        {#<i class="fa fa-comments-o"></i>#}
+                        {#<h3 class="box-title">{{ testimonial.owner|e }}</h3>#}
+                    {#</div>#}
+                    {#<!-- /.box-header -->#}
+                    {#<div class="box-body">#}
+                        {#<div class="widget-user-image">#}
+                            {#<img class="profile-user-img img-responsive img-circle change-testimonial-photo" src="../photos/{{ testimonial.photo }}" alt="User Avatar" data-toggle="modal" data-target="#edit-testimonial-photo" id="photo-{{ testimonial.id }}">#}
+                        {#</div>#}
+                        {#<p class="text-center">{{ testimonial.body|e }}</p>#}
+                        {#{% if testimonial.company %}#}
+                            {#<p>Company: {{ testimonial.company }}</p>#}
+                        {#{% endif %}#}
+                        {#{% if testimonial.title %}#}
+                            {#<p>Title: {{ testimonial.title }}</p>#}
+                        {#{% endif %}#}
+                    {#</div>#}
+                    {#<!-- /.box-body -->#}
+                    {#<div class="box-footer">#}
+                        {#<div class="col-xs-6 col-sm-6">#}
+                                {#<a class="btn btn-app edit-testimonial-btn" data-toggle="modal" data-target="#edit-testimonial" id="edit-{{ testimonial.id }}">#}
+                                    {#<i class="fa fa-edit"></i> Edit#}
+                                {#</a>#}
+                            {#<!-- /.description-block -->#}
+                        {#</div>#}
+                        {#<div class="col-xs-6 col-sm-6">#}
+                                {#<a class="btn btn-app delete-testimonial-btn" data-toggle="modal" data-target="#delete-testimonial" id="{{ testimonial.id }}">#}
+                                    {#<i class="fa fa-close"></i> Delete#}
+                                {#</a>#}
+                            {#<!-- /.description-block -->#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<!-- /.box -->#}
+            {#</div>#}
+        {#{% endfor %}#}
+        {#</div>#}
+
+    </section>
+    <!-- /.content -->
+{% endblock content %}
+
+{% block js %}
+
+
+{% endblock js %}

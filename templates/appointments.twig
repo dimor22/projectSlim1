@@ -142,7 +142,7 @@
                         <strong>Form Incomplete!</strong>
                         All fields are required except email - Please try again.
                     </div>
-                    <div class="panel panel-default  element-top-50 element-bottom-20 os-animation animated fadeInUp" data-os-animation="fadeInUp" data-os-animation-delay="0.6s" style="animation-delay: 0.6s;">
+                    <div class="panel panel-default  element-top-40 element-bottom-20 os-animation animated fadeInUp" data-os-animation="fadeInUp" data-os-animation-delay="0.6s" style="animation-delay: 0.6s;">
                         <div class="panel-heading">
                             <h3 class="panel-title">Your Info</h3>
                         </div>
@@ -478,11 +478,10 @@
                 this.date = date;
             },
             getAvailableTimes: function (date) {
-                // ajax call
                 $.ajax({
-                    method: "POST",
-                    url: "src/Appointments.php",
-                    data: { action: "lookup", date: date },
+                    method: "GET",
+                    url: "{{ siteUrl('/appointments/date') }}",
+                    data: { date: date },
                     error: function(){ console.log('there was an error')},
                     success: function(data){
                         var response = JSON.parse(data);
@@ -510,21 +509,20 @@
                 appt.info.email = $('#appt-email').val();
             },
             saveAppt: function (apptId) {
-                 //ajax call
                 $.ajax({
                     method: "POST",
-                    url: "src/Appointments.php",
-                    data: { action: "save",
-                            date: appt.date,
-                            time: appt.time,
-                            product: appt.product,
-                            name: appt.info.name,
-                            phone: appt.info.phone,
-                            address: appt.info.address,
-                            city: appt.info.city,
-                            state: appt.info.state,
-                            zip: appt.info.zip,
-                            email: appt.info.email
+                    url: "{{ siteUrl('/appointments') }}",
+                    data: {
+                        date: appt.date,
+                        time: appt.time,
+                        product: appt.product,
+                        name: appt.info.name,
+                        phone: appt.info.phone,
+                        address: appt.info.address,
+                        city: appt.info.city,
+                        state: appt.info.state,
+                        zip: appt.info.zip,
+                        email: appt.info.email
                     },
                     error: function(){ console.log('there was an error')},
                     success: function(data){

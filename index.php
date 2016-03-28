@@ -325,6 +325,36 @@ $app->get('/appointments', function () use ($app) {
 	];
 
 	$app->render('appointments.twig', ['data'   =>  $pageData, 'state7'  => 'active']);
+})->name('appts');
+
+$app->post('/appointments', function() use ($app){
+	$params = $app->request->params();
+	$appt = ORM::for_table('appts')->create();
+	$appt->date = $params['date'];
+	$appt->time = $params['time'];
+	$appt->product = $params['product'];
+	$appt->name = $params['name'];
+	$appt->address = $params['address'];
+	$appt->city = $params['city'];
+	$appt->state = $params['state'];
+	$appt->zip = $params['zip'];
+	$appt->phone = $params['phone'];
+	$appt->email = $params['email'];
+	$appt->save();
+});
+
+$app->get('/appointments/date', function() use ($app){
+	$params = $app->request->params();
+	$times = [];
+	$appts = ORM::for_table('appts')->where('date', $params['date'])->find_many();
+	if ($appts->count() > 0 ){
+		foreach($appts as $appt) {
+			$times[] = $appt->time;
+		}
+		echo json_encode($times);
+	} else {
+		echo json_encode(['response'=> 'all available']);
+	}
 });
 
 $app->get('/about', function () use ($app) {
@@ -722,6 +752,38 @@ $app->group('/admin', function () use ($app) {
 			$app->redirect( './testimonials' );
 
 
+		});
+
+	});
+
+	// Appointments
+
+	$app->group('/appointments', function () use ($app, $appt) {
+
+		$app->get('/', function() use ($app, $appt) {
+//			$appts = $appt->get_all_appts();
+//			$data['appts'] = $appts;
+			echo $app->render('admin/appointments.html.twig');
+
+		})->name('appointments');
+
+		// New appointment
+		$app->post('/', function() use ($app){
+			$params = $app->request->params();
+			$appt = ORM::for_table('appts')->create();
+			$appt->date = $params['date'];
+			$appt->time = $params['time'];
+			$appt->product = $params['product'];
+			$appt->name = $params['name'];
+			$appt->address = $params['address'];
+			$appt->city = $params['city'];
+			$appt->state = $params['state'];
+			$appt->zip = $params['zip'];
+			$appt->phone = $params['phone'];
+			$appt->email = $params['email'];
+			$appt->save();
+
+			$app->redirect('appointments');
 		});
 
 	});
