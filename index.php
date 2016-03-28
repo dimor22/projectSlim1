@@ -68,7 +68,7 @@ $app->notFound(function () use ($app) {
 $app->configureMode('production', function () use ($app) {
 	$app->config(array(
 		'log.enable' => true,
-		'debug' => true
+		'debug' => false
 	));
 });
 
@@ -758,12 +758,12 @@ $app->group('/admin', function () use ($app) {
 
 	// Appointments
 
-	$app->group('/appointments', function () use ($app, $appt) {
+	$app->group('/appointments', function () use ($app) {
 
-		$app->get('/', function() use ($app, $appt) {
-//			$appts = $appt->get_all_appts();
-//			$data['appts'] = $appts;
-			echo $app->render('admin/appointments.html.twig');
+		$app->get('/', function() use ($app) {
+			$appts = ORM::for_table('appts')->order_by_asc('date')->find_many();
+			$data['appts'] = $appts;
+			echo $app->render('admin/appointments.html.twig', $data);
 
 		})->name('appointments');
 

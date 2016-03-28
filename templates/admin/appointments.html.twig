@@ -24,47 +24,51 @@
             </a>
         </div>
         <hr />
-        {#<div class="row">#}
-        {#{% for appt in appts %}#}
-            {#<div class="col-xs-6 col-md-4">#}
-                {#<div class="box box-solid">#}
-                    {#<div class="box-header with-border">#}
-                        {#<i class="fa fa-comments-o"></i>#}
-                        {#<h3 class="box-title">{{ testimonial.owner|e }}</h3>#}
-                    {#</div>#}
-                    {#<!-- /.box-header -->#}
-                    {#<div class="box-body">#}
-                        {#<div class="widget-user-image">#}
-                            {#<img class="profile-user-img img-responsive img-circle change-testimonial-photo" src="../photos/{{ testimonial.photo }}" alt="User Avatar" data-toggle="modal" data-target="#edit-testimonial-photo" id="photo-{{ testimonial.id }}">#}
-                        {#</div>#}
-                        {#<p class="text-center">{{ testimonial.body|e }}</p>#}
-                        {#{% if testimonial.company %}#}
-                            {#<p>Company: {{ testimonial.company }}</p>#}
-                        {#{% endif %}#}
-                        {#{% if testimonial.title %}#}
-                            {#<p>Title: {{ testimonial.title }}</p>#}
-                        {#{% endif %}#}
-                    {#</div>#}
-                    {#<!-- /.box-body -->#}
-                    {#<div class="box-footer">#}
-                        {#<div class="col-xs-6 col-sm-6">#}
-                                {#<a class="btn btn-app edit-testimonial-btn" data-toggle="modal" data-target="#edit-testimonial" id="edit-{{ testimonial.id }}">#}
-                                    {#<i class="fa fa-edit"></i> Edit#}
-                                {#</a>#}
-                            {#<!-- /.description-block -->#}
-                        {#</div>#}
-                        {#<div class="col-xs-6 col-sm-6">#}
-                                {#<a class="btn btn-app delete-testimonial-btn" data-toggle="modal" data-target="#delete-testimonial" id="{{ testimonial.id }}">#}
-                                    {#<i class="fa fa-close"></i> Delete#}
-                                {#</a>#}
-                            {#<!-- /.description-block -->#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
-                {#<!-- /.box -->#}
-            {#</div>#}
-        {#{% endfor %}#}
-        {#</div>#}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">All Appointments</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tbody><tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Product</th>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Zip</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Created</th>
+                            </tr>
+                            {% for appt in appts %}
+                                <tr>
+                                    <td>{{ appt.date }}</td>
+                                    <td>{{ appt.time }}</td>
+                                    <td>{{ appt.product }}</td>
+                                    <td>{{ appt.name }}</td>
+                                    <td>{{ appt.address }}</td>
+                                    <td>{{ appt.city }}</td>
+                                    <td>{{ appt.state }}</td>
+                                    <td>{{ appt.zip }}</td>
+                                    <td>{{ appt.phone }}</td>
+                                    <td>{{ appt.email }}</td>
+                                    <td>{{ appt.created_at }}</td>
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
 
     </section>
     <!-- /.content -->
