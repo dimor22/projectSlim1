@@ -10,7 +10,7 @@ $mail = new PHPMailer;
 //$mail->SMTPDebug = 3;                               // Enable verbose debug output
 
 $mail->isSMTP();                                      // Set mailer to use SMTP
-$mail->Host = 'ecureserver.net';  // Specify main and backup SMTP servers
+$mail->Host = 'localhost';  // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                               // Enable SMTP authentication
 $mail->Username = 'info@novainteriorslv.com';                 // SMTP username
 $mail->Password = 'Novainterior1';                           // SMTP password

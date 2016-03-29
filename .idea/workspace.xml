@@ -42,8 +42,8 @@
       <file leaf-file-name="testMailer.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testMailer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35384616">
-              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.31794873">
+              <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -230,6 +230,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="projectSlim1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="projectSlim1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpmailer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpmailer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope">
@@ -351,12 +373,6 @@
       <created>1455654865334</created>
       <option name="number" value="Default" />
       <updated>1455654865334</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Global variables extracted to a slim hook">
-      <created>1456300775885</created>
-      <option name="number" value="00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1456300775885</updated>
     </task>
     <task id="LOCAL-00009" summary="Ajax now retrieves user data when editing profile">
       <created>1456415349538</created>
@@ -646,7 +662,13 @@
       <option name="project" value="LOCAL" />
       <updated>1459209344897</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="testing email&#10;">
+      <created>1459209873547</created>
+      <option name="number" value="00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1459209873547</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -692,7 +714,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/nova-interiors" />
     </ignored-roots>
-    <MESSAGE value="corporate color applied to home, contact and about page. &#10;Added map js to contact page" />
     <MESSAGE value="autodetect host, remote or local, and sets db variables accordingly&#10;" />
     <MESSAGE value="ready to demo" />
     <MESSAGE value="added living room page" />
@@ -717,7 +738,8 @@
     <MESSAGE value="front-end appointments updated with endpoints" />
     <MESSAGE value="back-end appointments basic data view finished" />
     <MESSAGE value="mailer installed" />
-    <option name="LAST_COMMIT_MESSAGE" value="mailer installed" />
+    <MESSAGE value="testing email&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="testing email&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2383,8 +2405,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/phpmailer/phpmailer/class.phpmailer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="1442" column="0" selection-start-line="1442" selection-start-column="0" selection-end-line="1442" selection-end-column="0" />
           <folding>
             <marker date="1446372928000" expanded="false" signature="9:833" placeholder=" PHPMailer - PHP email creation and transport class. ..." />
             <marker date="1446372928000" expanded="true" signature="840:1171" placeholder=" PHPMailer - PHP email creation and transport class. ..." />
@@ -3122,8 +3144,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/testMailer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35384616">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.31794873">
+          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
           <folding />
         </state>
       </provider>
