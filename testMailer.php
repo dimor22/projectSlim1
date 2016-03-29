@@ -27,10 +27,10 @@ $mail->addReplyTo('tech@novainteriorslv.com', 'Support');
 
 ////$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
 ////$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-//$mail->isHTML(true);                                  // Set email format to HTML
+$mail->isHTML(true);                                  // Set email format to HTML
 //
 $mail->Subject = 'Here is the subject';
-//$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
 $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 if($mail->send()) {
