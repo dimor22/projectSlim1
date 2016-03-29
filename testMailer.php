@@ -10,7 +10,7 @@ $mail = new PHPMailer;
 //$mail->SMTPDebug = 3;                               // Enable verbose debug output
 
 $mail->isSMTP();                                      // Set mailer to use SMTP
-$mail->Host = 'localhost';  // Specify main and backup SMTP servers
+$mail->Host = 'ecureserver.net';  // Specify main and backup SMTP servers
 //$mail->SMTPAuth = true;                               // Enable SMTP authentication
 //$mail->Username = 'info@novainteriorslv.com';                 // SMTP username
 //$mail->Password = 'Novainterior1';                           // SMTP password
@@ -27,10 +27,10 @@ $mail->addReplyTo('tech@novainteriorslv.com', 'Support');
 
 ////$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
 ////$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-$mail->isHTML(true);                                  // Set email format to HTML
+//$mail->isHTML(true);                                  // Set email format to HTML
 //
 $mail->Subject = 'Here is the subject';
-$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+//$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
 $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 if($mail->send()) {
