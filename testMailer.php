@@ -11,10 +11,10 @@ $mail = new PHPMailer;
 
 $mail->isSMTP();                                      // Set mailer to use SMTP
 $mail->Host = 'localhost';  // Specify main and backup SMTP servers
-$mail->SMTPAuth = true;                               // Enable SMTP authentication
-$mail->Username = 'info@novainteriorslv.com';                 // SMTP username
-$mail->Password = 'Novainterior1';                           // SMTP password
-$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+//$mail->SMTPAuth = true;                               // Enable SMTP authentication
+//$mail->Username = 'info@novainteriorslv.com';                 // SMTP username
+//$mail->Password = 'Novainterior1';                           // SMTP password
+//$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 $mail->Port = 465;                                    // TCP port to connect to
 
 
