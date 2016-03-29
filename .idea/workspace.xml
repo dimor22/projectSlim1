@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e8f720d-04c4-494c-9725-d662a93cea44" name="Default" comment="">
+    <list default="true" id="3e8f720d-04c4-494c-9725-d662a93cea44" name="Default" comment="testing email&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testMailer.php" afterPath="$PROJECT_DIR$/testMailer.php" />
     </list>
@@ -42,8 +42,8 @@
       <file leaf-file-name="testMailer.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testMailer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3897436">
-              <caret line="32" column="33" selection-start-line="32" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.42564103">
+              <caret line="19" column="62" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -374,12 +374,6 @@
       <option name="number" value="Default" />
       <updated>1455654865334</updated>
     </task>
-    <task id="LOCAL-00011" summary="Upload photo feature working on new/edit user">
-      <created>1456527959961</created>
-      <option name="number" value="00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1456527959961</updated>
-    </task>
     <task id="LOCAL-00012" summary="Change photo functionality added when you click on the photo">
       <created>1456533459700</created>
       <option name="number" value="00012" />
@@ -668,7 +662,13 @@
       <option name="project" value="LOCAL" />
       <updated>1459209990736</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="testing email&#10;">
+      <created>1459224535946</created>
+      <option name="number" value="00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1459224535946</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -3144,8 +3144,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/testMailer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3897436">
-          <caret line="32" column="33" selection-start-line="32" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.42564103">
+          <caret line="19" column="62" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
           <folding />
         </state>
       </provider>
