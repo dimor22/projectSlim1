@@ -10,7 +10,7 @@ $mail->isSendmail();
 //Set who the message is to be sent from
 $mail->setFrom('tech@novainteriorslv.com', 'Nova Interiors');
 //Set an alternative reply-to address
-$mail->addReplyTo('tech@novainteriorslv.com', 'First Last');
+$mail->addReplyTo('tech@novainteriorslv.com', 'Nova Tech Email');
 //Set who the message is to be sent to
 $mail->addAddress('dimor22@gmail.com', 'David Lopez');
 //Set the subject line

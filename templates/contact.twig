@@ -75,7 +75,7 @@
                                     <div class="visible-md element-height-60"></div>
                                     <div class="visible-lg element-height-60"></div>
                                 </div>
-                                <form id="contactForm" action="contact_mailer.php" class="contact-form">
+                                <form id="contactForm" action="{{ siteUrl('/contact') }}" class="contact-form" method="post" novalidate="novalidate">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group form-icon-group"> <i class="fa fa-user"></i>
@@ -87,10 +87,10 @@
                                         </div>
                                     </div>
                                     <div class="form-group form-icon-group"> <i class="fa fa-pencil"></i>
-                                        <textarea class="form-control" id="message" name="message" placeholder="Your message" rows="10" required=""></textarea>
+                                        <textarea class="form-control" id="message" name="message" placeholder="Your message *" rows="10" required=""></textarea>
                                     </div>
                                     <div class="text-center">
-                                        <input type="submit" value="Send email" class="btn btn-primary"> </div>
+                                        <input id="submitBtn" type="submit" value="Send email" class="btn btn-primary"> </div>
                                     <div class="messages text-center"></div>
                                 </form>
                                 <div class="divider-wrapper">
@@ -215,5 +215,46 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script src="assets/js/map.min.js"></script>
+
+    <!-- app specific js -->
+    <script src="public/js/app.js"></script>
+
+    <!-- form validation -->
+    <script>
+
+        function validateEmail(email) {
+            var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            return emailReg.test( email );
+        }
+
+        $('#submitBtn').click(function (e) {
+            e.preventDefault();
+            $('input').css('border', '1px solid rgba(0, 0, 0, 0.1)');
+
+            var name = $('#name');
+            var email = $('#email');
+            var message = $('#message');
+            var error = false;
+
+            if (name.val().length === 0){
+                name.css('border', '2px solid #398BCA');
+                error = true;
+            }
+            if (email.val().length === 0 || ! validateEmail(email.val()) ){
+                email.css('border', '2px solid #398BCA');
+                error = true;
+            }
+            if (message.val().length === 0){
+                message.css('border', '2px solid #398BCA');
+                error = true;
+            }
+            if (!error) {
+                $('#contactForm').submit();
+            }
+        });
+
+
+
+    </script>
 
 {% endblock %}

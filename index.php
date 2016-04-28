@@ -240,7 +240,6 @@ $app->get('/', function() use ($app, $twig) {
 				'This Theme is just awesome. It is so easy to create a gorgeous looking sites. I would also like to mention their excellent and superfast support. It never took more than 2-3hours to have the correct solution. I\'m going to buy more themes of them, sure! Keep up the good work.'
 		]
 	];
-	//$me = ORM::for_table('users')->find_one(1);
 	echo $app->render('public_base.twig', ['data' => $pageData, 'state1'  => 'active']);
 })->name('home');
 
@@ -318,6 +317,33 @@ $app->get('/contact', function () use ($app) {
 	];
 	echo $app->render('contact.twig', ['data'   =>  $pageData, 'state3'  => 'active']);
 })->name('contact');
+
+$app->post('/contact', function () use ($app) {
+
+	$email = $app->request->params('email');
+	$name = $app->request->params('name');
+	$message = $app->request->params('message');
+
+	require 'vendor/phpmailer/phpmailer/class.phpmailer.php';
+
+	$mail = new PHPMailer;
+	$mail->isSendmail();
+	$mail->setFrom($email, $name);
+	$mail->addReplyTo($email, $name);
+	$mail->addAddress('dimor22@gmail.com', 'Nova Interiors Web Form');
+	$mail->Subject = 'Message From ' + $name;
+	$mail->msgHTML('<p>' . $message . '</p>');
+	$mail->AltBody = $message;
+	if (!$mail->send()) {
+		$app->flash( 'danger', 'Sorry, your message could not be sent at this time.' );
+		$app->redirect('contact');
+	} else {
+		$app->flash( 'form', 'Thank You, your message have been sent.' );
+		$app->redirect('contact');
+	}
+
+
+});
 
 $app->get('/appointments', function () use ($app) {
 	$pageData = [
