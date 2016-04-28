@@ -125,7 +125,7 @@
                                     {% for slide in data.slides %}
                                         <!-- SLIDE  -->
                                         <li data-transition="fade" data-slotamount="5" data-masterspeed="500" data-saveperformance="on" data-title="Intro Slide">
-                                            <!-- MAIN IMAGE --><img src="{{ slide }}" alt="slidebg1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                                            <!-- MAIN IMAGE --><img src="photos/{{ slide }}" alt="slidebg1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
                                         </li>
                                     {% endfor %}
                                 </ul>
@@ -146,26 +146,27 @@
                         <div class="divider-border divider-border-center element-top-10 element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s" style="height:3px;">
                             <div class="divider-border-inner" style="width:60px;"> </div>
                         </div>
-                        <p class="lead text-center center element-bottom-40 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.2s"> We help businesses to create and implement exceptional experiences for their customers.
-                            <br> We specialise in online <strong>multi-channel</strong> technology services. </p>
+                        <p class="lead text-center center element-bottom-40 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.2s">
+                            We help businesses and private homes make their dreams come true. They dream it, we build it.
+                            <br> We specialise in many <strong>premium construction products</strong> like ones bellow. </p>
                         <div class="list-container row element-bottom-50 os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.1s">
                             <div class="col-md-4 element-bottom-20 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.1s"> <span class="service-simple-image">
-                                <img alt="Visualise" src="assets/images/corporate/idea.png">
+                                <img alt="Visualise" src="photos/hardwood.jpg">
                             </span>
-                                <h2>Visualise</h2>
-                                <p>Lambda is ultra flexible and lets you create stunning pages easily for any kind of site out of the box. Get started now.</p>
+                                <h2>Hardwood Floors</h2>
+                                <p>Hardwood is an easy way to improve the look, durability and value of your home.</p>
                             </div>
                             <div class="col-md-4 element-bottom-20 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.2s"> <span class="service-simple-image">
-                                <img alt="Research" src="assets/images/corporate/research.png">
+                                <img alt="Research" src="photos/laminate.jpg">
                             </span>
-                                <h2>Research</h2>
-                                <p>Lambda is ultra flexible and lets you create stunning pages easily for any kind of site out of the box. Get started now.</p>
+                                <h2>Laminate</h2>
+                                <p>Laminate flooring is a blend. It looks similar. like hardwood or bamboo but it's not. Yet it's not vinyl tiling and it's not engineered flooring.  On the other hand, it's a little of all of those things.</p>
                             </div>
                             <div class="col-md-4 element-bottom-20 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.3s"> <span class="service-simple-image">
-                                <img alt="Develop" src="assets/images/corporate/development.png">
+                                <img alt="Develop" src="photos/bamboo.jpg">
                             </span>
-                                <h2>Develop</h2>
-                                <p>Basic search engine optimisation is fundamental. Lambda makes sure that your website will be always be accessible.</p>
+                                <h2>Bamboo</h2>
+                                <p>A bamboo floor is a type of flooring manufactured from the bamboo plant desirable for its exotic feel and looks.</p>
                             </div>
                         </div>
                     </div>
@@ -197,7 +198,7 @@
                         <div class="divider-border divider-border-center element-top-10 element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s" style="height:3px;">
                             <div class="divider-border-inner" style="width:60px;"> </div>
                         </div>
-                        <p class="lead text-center center element-bottom-40" data-os-animation="none" data-os-animation-delay="0s"> We put all our 25 years of design experience into every project.
+                        <p class="lead text-center center element-bottom-40" data-os-animation="none" data-os-animation-delay="0s"> We put all our heart and soul on the perfect finishing.
                             <br> Take a look at some of our latest work.</p>
                         <div class="portfolio-container element-bottom-60">
                             <div class="row">
@@ -211,7 +212,7 @@
                                 {%  for photo in data.work %}
                                     <div class="masonry-item portfolio-item filter-people" data-title="{{ photo.data-title }}">
                                         <div class="figure portfolio-os-animation image-filter-blur image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="bounceInDown" data-os-animation-delay="0.1s">
-                                            <a class="figure-image magnific" href="{{ photo.href }}" target="_self"> <img alt="{{ photo.alt }}" class="normalwidth" src="{{ photo.src }}">
+                                            <a class="figure-image magnific" href="photos/{{ photo.href }}" target="_self"> <img alt="{{ photo.alt }}" class="normalwidth" src="photos/{{ photo.src }}">
                                                 <div class="figure-overlay">
                                                     <div class="figure-overlay-container">
                                                         <div class="figure-caption">
@@ -328,26 +329,30 @@
                              data-flex-controlsposition="inside" data-flex-controlsvertical="bottom" data-flex-directions="hide" data-flex-duration="600" data-flex-itemwidth="258" data-flex-sliderdirection="horizontal" data-flex-slideshow="true" data-flex-speed="7000"
                              data-os-animation="none" data-os-animation-delay="0s" id="flexslider-74">
                             <ul class="slides">
+
                                 <li>
-                                    <figure> <img alt="client1" data-original-title="Red-fan" data-toggle="tooltip" height="200" src="assets/images/corporate/client1.png" width="400"> </figure>
+                                    <figure><a href="http://www.prosourcewholesale.com/lasvegas" target="_blank"><img alt="client1" data-original-title="Prosource" data-toggle="tooltip" height="200" src="photos/partner1.gif" width="400"> </a> </figure>
                                 </li>
                                 <li>
-                                    <figure> <img alt="client2" data-original-title="Freetax" data-toggle="tooltip" height="200" src="assets/images/corporate/client2.png" width="400"> </figure>
+                                    <figure> <a href="http://www.marbleexpresslv.com/" target="_blank"><img alt="client2" data-original-title="Marble-Express" data-toggle="tooltip" height="200" src="photos/partner2.jpeg" width="400"> </a> </figure>
                                 </li>
                                 <li>
-                                    <figure> <img alt="client5" data-original-title="Remedia" data-toggle="tooltip" height="200" src="assets/images/corporate/client5.png" width="400"> </figure>
+                                    <figure> <a href="http://www.daltile.com/" target="_blank"><img alt="client5" data-original-title="Daltile" data-toggle="tooltip" height="200" src="photos/partner3.jpeg" width="400"></a>  </figure>
                                 </li>
                                 <li>
-                                    <figure> <img alt="client4" data-original-title="Streetway" data-toggle="tooltip" height="200" src="assets/images/corporate/client4.png"> </figure>
+                                    <figure> <a href="http://www.flooringdepotlv.com/" target="_blank"><img alt="client4" data-original-title="Flooring-Depot" data-toggle="tooltip" height="200" src="photos/partner4.gif"></a>  </figure>
                                 </li>
                                 <li>
-                                    <figure> <img alt="client3" data-original-title="Scotex" data-toggle="tooltip" height="200" src="assets/images/corporate/client3.png" width="400"> </figure>
+                                    <figure><a href="http://www.prosourcewholesale.com/lasvegas" target="_blank">  <img alt="client1" data-original-title="Prosource" data-toggle="tooltip" height="200" src="photos/partner1.gif" width="400"> </a> </figure>
                                 </li>
                                 <li>
-                                    <figure> <img alt="client7" data-original-title="Moveit" data-toggle="tooltip" height="200" src="assets/images/corporate/client7.png" width="400"> </figure>
+                                    <figure> <a href="http://www.marbleexpresslv.com/" target="_blank"><img alt="client2" data-original-title="Marble-Express" data-toggle="tooltip" height="200" src="photos/partner2.jpeg" width="400"> </a></figure>
                                 </li>
                                 <li>
-                                    <figure> <img alt="client6" data-original-title="Redlex" data-toggle="tooltip" height="200" src="assets/images/corporate/client6.png" width="400"> </figure>
+                                    <figure><a href="http://www.daltile.com/" target="_blank"> <img alt="client5" data-original-title="Daltile" data-toggle="tooltip" height="200" src="photos/partner3.jpeg" width="400"></a> </figure>
+                                </li>
+                                <li>
+                                    <figure> <a href="http://www.flooringdepotlv.com/" target="_blank"><img alt="client4" data-original-title="Flooring-Depot" data-toggle="tooltip" height="200" src="photos/partner4.gif"></a>  </figure>
                                 </li>
                             </ul>
                         </div>

@@ -78,69 +78,71 @@ $app->configureMode('production', function () use ($app) {
  */
 
 $app->get('/', function() use ($app, $twig) {
+	$slides = ORM::for_table('photos')->where('slider', 1)->find_array();
+	$work = ORM::for_table('photos')->where_like('name', '%work%')->find_array();
 	$pageData = [
 		'title'     => 'Home Page',
 		'slides'    => [
-			'assets/images/corporate/top-slider/photo1.jpg',
-			'assets/images/corporate/top-slider/photo2.jpg',
-			'assets/images/corporate/top-slider/photo3.jpg',
-			'assets/images/corporate/top-slider/photo4.jpg',
+			$slides[1]['name'],
+			$slides[2]['name'],
+			$slides[3]['name'],
+			$slides[0]['name']
 		],
 		'work'      => [
 			[
 				'data-title'    => 'NOVA INTERIORS',
-				'href'          => 'assets/images/corporate/latest-work/photo1.jpg',
+				'href'          => $work[0]['name'],
 				'alt'           => 'NOVA INTERIORS',
-				'src'           => 'assets/images/corporate/latest-work/photo1.jpg',
+				'src'           => $work[0]['name'],
 				'h3'            => 'NOVA INTERIORS'
 			],
 			[
 				'data-title'    => 'NOVA INTERIORS',
-				'href'          => 'assets/images/corporate/latest-work/photo2.jpg',
+				'href'          => $work[1]['name'],
 				'alt'           => 'NOVA INTERIORS',
-				'src'           => 'assets/images/corporate/latest-work/photo2.jpg',
+				'src'           => $work[1]['name'],
 				'h3'            => 'NOVA INTERIORS'
 			],
 			[
 				'data-title'    => 'NOVA INTERIORS',
-				'href'          => 'assets/images/corporate/latest-work/photo3.jpg',
+				'href'          => $work[2]['name'],
 				'alt'           => 'NOVA INTERIORS',
-				'src'           => 'assets/images/corporate/latest-work/photo3.jpg',
+				'src'           => $work[2]['name'],
 				'h3'            => 'NOVA INTERIORS'
 			],
 			[
 				'data-title'    => 'NOVA INTERIORS',
-				'href'          => 'assets/images/corporate/latest-work/photo4.jpg',
+				'href'          => $work[3]['name'],
 				'alt'           => 'NOVA INTERIORS',
-				'src'           => 'assets/images/corporate/latest-work/photo4.jpg',
+				'src'           => $work[3]['name'],
 				'h3'            => 'NOVA INTERIORS'
 			],
 			[
 				'data-title'    => 'NOVA INTERIORS',
-				'href'          => 'assets/images/corporate/latest-work/photo5.jpg',
+				'href'          => $work[4]['name'],
 				'alt'           => 'NOVA INTERIORS',
-				'src'           => 'assets/images/corporate/latest-work/photo5.jpg',
+				'src'           => $work[4]['name'],
 				'h3'            => 'NOVA INTERIORS'
 			],
 			[
 				'data-title'    => 'NOVA INTERIORS',
-				'href'          => 'assets/images/corporate/latest-work/photo6.jpg',
+				'href'          => $work[5]['name'],
 				'alt'           => 'NOVA INTERIORS',
-				'src'           => 'assets/images/corporate/latest-work/photo6.jpg',
+				'src'           => $work[5]['name'],
 				'h3'            => 'NOVA INTERIORS'
 			],
 			[
 				'data-title'    => 'NOVA INTERIORS',
-				'href'          => 'assets/images/corporate/latest-work/photo7.jpg',
+				'href'          => $work[6]['name'],
 				'alt'           => 'NOVA INTERIORS',
-				'src'           => 'assets/images/corporate/latest-work/photo7.jpg',
+				'src'           => $work[6]['name'],
 				'h3'            => 'NOVA INTERIORS'
 			],
 			[
 				'data-title'    => 'NOVA INTERIORS',
-				'href'          => 'assets/images/corporate/latest-work/photo8.jpg',
+				'href'          => $work[7]['name'],
 				'alt'           => 'NOVA INTERIORS',
-				'src'           => 'assets/images/corporate/latest-work/photo8.jpg',
+				'src'           => $work[7]['name'],
 				'h3'            => 'NOVA INTERIORS'
 			]
 		],
