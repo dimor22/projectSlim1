@@ -333,7 +333,7 @@ $app->post('/contact', function () use ($app) {
 	$mail->setFrom($email, $name);
 	$mail->addReplyTo($email, $name);
 	$mail->addAddress('dimor22@gmail.com', 'Nova Interiors Web Form');
-	$mail->Subject = 'Message From ' + $name;
+	$mail->Subject = 'Message From ' . $name;
 	$mail->msgHTML('<p>' . $message . '</p>');
 	$mail->AltBody = $message;
 	if (!$mail->send()) {
