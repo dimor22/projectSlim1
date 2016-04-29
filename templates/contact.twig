@@ -89,6 +89,7 @@
                                     <div class="form-group form-icon-group"> <i class="fa fa-pencil"></i>
                                         <textarea class="form-control" id="message" name="message" placeholder="Your message *" rows="10" required=""></textarea>
                                     </div>
+                                    <div id="no-robots" class="g-recaptcha" data-sitekey="6LfXoh4TAAAAACgReXrUKL4fnKCk7VMYry2XeMuo"></div>
                                     <div class="text-center">
                                         <input id="submitBtn" type="submit" value="Send email" class="btn btn-primary"> </div>
                                     <div class="messages text-center"></div>
@@ -255,7 +256,8 @@
         });
 
 
-
     </script>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 
 {% endblock %}

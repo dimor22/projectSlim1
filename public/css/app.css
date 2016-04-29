@@ -99,3 +99,9 @@ select.btn.btn-default.btn-lg {
     border: 2px solid red;
 }
 
+div#no-robots {
+    margin: 0 auto;
+    width: 50%;
+    margin-bottom: 8px;
+}
+

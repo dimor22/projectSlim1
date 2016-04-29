@@ -325,24 +325,51 @@ $app->post('/contact', function () use ($app) {
 	$email = $app->request->params('email');
 	$name = $app->request->params('name');
 	$message = $app->request->params('message');
+	$captcha = $app->request->params('g-recaptcha-response');
 
-	require 'vendor/phpmailer/phpmailer/class.phpmailer.php';
+	// Send google captcha response
 
-	$mail = new PHPMailer;
-	$mail->isSendmail();
-	$mail->setFrom($email, $name);
-	$mail->addReplyTo($email, $name);
-	$mail->addAddress('dimor22@gmail.com', 'Nova Interiors Web Form');
-	$mail->Subject = 'Message From ' . $name;
-	$mail->msgHTML('<p>' . $message . '</p>');
-	$mail->AltBody = $message;
-	if (!$mail->send()) {
+	$url = 'https://www.google.com/recaptcha/api/siteverify';
+	$data = array('secret' => '6LfXoh4TAAAAAN3xHCaiB1DrBASB3sx6wXNyglYe', 'response' => $captcha);
+
+	// use key 'http' even if you send the request to https://...
+	$options = array(
+		'http' => array(
+			'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+			'method'  => 'POST',
+			'content' => http_build_query($data)
+		)
+	);
+	$context  = stream_context_create($options);
+	$result = file_get_contents($url, false, $context);
+	$result = json_decode($result);
+
+	if ($result->success === TRUE) {
+
+		require 'vendor/phpmailer/phpmailer/class.phpmailer.php';
+
+		$mail = new PHPMailer;
+		$mail->isSendmail();
+		$mail->setFrom("info@novainteriorslv.com", "NovaInteriors");
+		$mail->addReplyTo($email, $name);
+		$mail->addAddress('dimor22@gmail.com', 'Nova Interiors Web Form');
+		$mail->Subject = 'Message from Nova Interiors Web Form';
+		$mail->msgHTML('<ul><li><strong>Name: </strong>'. $name .'</li><li><strong>Email: </strong>'. $email .'</li></ul><p>' . $message . '</p>');
+		$mail->AltBody = $message;
+		if (!$mail->send()) {
+			$app->flash( 'danger', 'Sorry, your message could not be sent at this time.' );
+			$app->redirect('contact');
+		} else {
+			$app->flash( 'form', 'Thank You, your message have been sent.' );
+			$app->redirect('contact');
+		}
+
+	} else {
 		$app->flash( 'danger', 'Sorry, your message could not be sent at this time.' );
 		$app->redirect('contact');
-	} else {
-		$app->flash( 'form', 'Thank You, your message have been sent.' );
-		$app->redirect('contact');
 	}
+
+
 
 
 });
