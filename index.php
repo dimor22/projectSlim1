@@ -450,10 +450,12 @@ $app->get('/testimonials', function () use ($app) {
 
 $app->get('/gallery', function () use ($app) {
 	$photos = ORM::for_table('photos')->order_by_desc('created_at')->find_array();
+	$albums = ORM::for_table('albums')->order_by_asc('name')->find_array();
 
 	$pageData = [
 		'title' =>  'Gallery Page',
-		'photos' => $photos
+		'photos' => $photos,
+		'albums'    => $albums
 	];
 	$app->render('gallery.twig', ['data'   =>  $pageData, 'state6'  => 'active']);
 });

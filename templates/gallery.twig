@@ -34,9 +34,9 @@
                                                 </span> </button>
                                                 <ul class="dropdown-menu pull-right">
                                                     <li> <a class="portfolio-filter" data-filter="*">All</a> </li>
-                                                    <li> <a class="portfolio-filter" data-filter=".filter-kitchen">Kitchen</a> </li>
-                                                    <li> <a class="portfolio-filter" data-filter=".filter-bathroom">Bathroom</a> </li>
-                                                    <li> <a class="portfolio-filter" data-filter=".filter-livingroom">Livingroom</a> </li>
+                                                    {% for album in data.albums %}
+                                                        <li> <a class="portfolio-filter" data-filter=".filter-{{ album.name }}">{{ album.name | capitalize }}</a> </li>
+                                                    {% endfor %}
                                                 </ul>
                                             </div>
                                         </div>
