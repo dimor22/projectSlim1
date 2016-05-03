@@ -284,11 +284,11 @@
                         <div class="text-center flexslider feature-slider" data-flex-animation="fade" data-flex-controls="hide" data-flex-controls-position="outside" data-flex-controlsalign="center" data-flex-directions="hide" data-flex-slideshow="true"
                              data-flex-speed="7000" data-os-animation="none" data-os-animation-delay="0s" id="flexslider-818">
                             <ul class="slides">
-                                {% for info in data.testimonials_info %}
+                                {% for testimonial in data.testimonials %}
                                     <li>
                                         <blockquote class="blockquote-simple">
-                                            <h1>{{ info.h1 }}</h1> <img alt="{{ info.alt }}" class="attachment-thumbnail" height="150" src="{{ info.src }}" width="150">
-                                            <footer> <cite title="Technolab">{{ info.cite }}</cite> </footer>
+                                            <h1>{{ testimonial.owner }}</h1> <img alt="Testimonial of {{ testimonial.owner }}" class="attachment-thumbnail" height="150" src="photos/{{ testimonial.photo }}" width="150">
+
                                         </blockquote>
                                     </li>
                                 {% endfor %}
@@ -299,10 +299,10 @@
                         <div class="element-top-80 element-bottom-80 text-center text-light flexslider feature-slider" data-flex-animation="slide" data-flex-controls="hide" data-flex-controls-position="outside" data-flex-controlsalign="center" data-flex-directions="hide"
                              data-flex-slideshow="true" data-flex-speed="7000" data-os-animation="none" data-os-animation-delay="0s" id="flexslider-39">
                             <ul class="slides">
-                                {% for text in data.testimonial_text %}
+                                {% for testimonial in data.testimonials %}
                                     <li>
                                         <blockquote>
-                                            <p>{{ text }}</p>
+                                            <p>{{ testimonial.body }}</p>
                                         </blockquote>
                                     </li>
                                 {% endfor %}

@@ -80,6 +80,7 @@ $app->configureMode('production', function () use ($app) {
 $app->get('/', function() use ($app, $twig) {
 	$slides = ORM::for_table('photos')->where('slider', 1)->find_array();
 	$work = ORM::for_table('photos')->where_like('name', '%work%')->find_array();
+	$testimonials = ORM::for_table('testimonials')->order_by_desc('created_at')->find_array();
 	$pageData = [
 		'title'     => 'Home Page',
 		'slides'    => [
@@ -214,33 +215,7 @@ $app->get('/', function() use ($app, $twig) {
 				'p'         =>  ' Completely synergize resource sucking relationships premier niche markets. Professionally cultivate customer.'
 			]
 		],
-		'testimonials_info'  => [
-
-			[
-				'h1'    =>  'Lisa Hughes',
-				'src'   => 'assets/images/corporate/team16-notinclude.jpg',
-				'alt'   =>  'team16-notinclude',
-				'cite'  =>  'Technolab'
-			],
-			[
-				'h1'    =>  'Marie Clark',
-				'src'   => 'assets/images/corporate/team15-notinclude.jpg',
-				'alt'   =>  'team15-notinclude',
-				'cite'  =>  'Technolab'
-			],
-			[
-				'h1'    =>  'Scott Adams',
-				'src'   => 'assets/images/corporate/team13-notinclude.jpg',
-				'alt'   =>  'team13-notinclude',
-				'cite'  =>  'Trisbam'
-			]
-
-		],
-		'testimonial_text'  =>  [
-				'This theme is super easy to customise and the support team is just awesome. They helped me add a few design and styling changes and guided me to customise my theme. They were very knowledgable and fast. Thanks again! This is the best theme and support money can buy!',
-				'After purchasing all of the top rated theme I find this theme to be the most intuitive. Everything is right where it\'s supposed to be and makes use of the best plugin combinations I have ever seen. Truly, there are no words to describe how happy I am with this theme! Recommended',
-				'This Theme is just awesome. It is so easy to create a gorgeous looking sites. I would also like to mention their excellent and superfast support. It never took more than 2-3hours to have the correct solution. I\'m going to buy more themes of them, sure! Keep up the good work.'
-		]
+		'testimonials'  => $testimonials
 	];
 	echo $app->render('public_base.twig', ['data' => $pageData, 'state1'  => 'active']);
 })->name('home');
@@ -435,8 +410,10 @@ $app->get('/services', function () use ($app) {
 });
 
 $app->get('/testimonials', function () use ($app) {
+	$testimonials = ORM::for_table('testimonials')->order_by_desc('created_at')->find_array();
 	$pageData = [
-		'title' =>  'Testimonial Page'
+		'title' =>  'Testimonial Page',
+		'testimonials'  => $testimonials
 	];
 	$app->render('testimonials.twig',  ['data'   =>  $pageData, 'state5'  => 'active']);
 });
