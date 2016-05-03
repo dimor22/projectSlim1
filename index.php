@@ -359,6 +359,7 @@ $app->get('/appointments', function () use ($app) {
 
 $app->post('/appointments', function() use ($app){
 	$params = $app->request->params();
+
 	$appt = ORM::for_table('appts')->create();
 	$appt->date = $params['date'];
 	$appt->time = $params['time'];
@@ -371,6 +372,35 @@ $app->post('/appointments', function() use ($app){
 	$appt->phone = $params['phone'];
 	$appt->email = $params['email'];
 	$appt->save();
+
+	// Send email
+
+	require 'vendor/phpmailer/phpmailer/class.phpmailer.php';
+
+	$mail = new PHPMailer;
+	$mail->isSendmail();
+	$mail->setFrom("info@novainteriorslv.com", "NovaInteriors");
+	$mail->addReplyTo($params['email'], $params['name']);
+	$mail->addAddress('dimor22@gmail.com', 'Nova Interiors Website');
+	$mail->Subject = 'New Appointment from Nova Interiors';
+	$mail->msgHTML('<ul><li><strong>Name: </strong>'. $params['name'] .'</li>
+						<li><strong>Email: </strong>'. $params['email'] .'</li>
+						<li><strong>Phone: </strong>'. $params['phone'] .'</li>
+						<li><strong>Address: </strong>'. $params['address'] .'</li>
+						<li><strong>City: </strong>'. $params['city'] .'</li>
+						<li><strong>State: </strong>'. $params['state'] .'</li>
+						<li><strong>Zip: </strong>'. $params['zip'] .'</li>
+						<li><strong>Date: </strong>'. $params['date'] .'</li>
+						<li><strong>Time: </strong>'. $params['time'] .'</li>
+						<li><strong>Product: </strong>'. $params['product'] .'</li></ul>');
+	$mail->AltBody = $params['name'] . ' ' . $params['phone'] . ' ' . $params['email'];
+	if (!$mail->send()) {
+		$app->flash( 'danger', 'Sorry, your message could not be sent at this time.' );
+		$app->redirect('contact');
+	} else {
+		$app->flash( 'form', 'Thank You, your message have been sent.' );
+		$app->redirect('contact');
+	}
 });
 
 $app->get('/appointments/date', function() use ($app){
@@ -793,7 +823,7 @@ $app->group('/admin', function () use ($app) {
 	$app->group('/appointments', function () use ($app) {
 
 		$app->get('/', function() use ($app) {
-			$appts = ORM::for_table('appts')->order_by_asc('date')->find_many();
+			$appts = ORM::for_table('appts')->order_by_desc('date')->find_array();
 			$data['appts'] = $appts;
 			echo $app->render('admin/appointments.html.twig', $data);
 
@@ -816,6 +846,18 @@ $app->group('/admin', function () use ($app) {
 			$appt->save();
 
 			$app->redirect('appointments');
+		});
+
+		$app->delete('/', function() use ($app) {
+			$date = new DateTime();
+			$testimonial = ORM::for_table('appts')->find_one($app->request->params('appt-id'));
+			$testimonial->completed_at = $date->format('Y-m-d H:i:s');
+			$testimonial->save();
+
+			$app->flash( 'success', 'Appointment Completed' );
+			$app->redirect( './appointments' );
+
+
 		});
 
 	});

@@ -13,16 +13,38 @@
     <!-- Main content -->
     <section class="content">
 
-        {% include 'admin/modals/add_testimonial.twig' %}
-        {% include 'admin/modals/delete_testimonial.twig' %}
-        {% include 'admin/modals/edit_testimonial.twig' %}
-        {% include 'admin/modals/edit_testimonial_photo.html.twig' %}
+        {% include 'admin/modals/delete_appt.twig' %}
+
 
         <div class="row">
-            <a class="btn btn-app text-center btn-flat" data-toggle="modal" data-target="#add-testimonial">
-                <i class="fa fa-plus"></i> New Appointment
-            </a>
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3 id="done-appts"></h3>
+                        <p>Appointments Completed</p>
+                    </div>
+                    <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3 id="new-appts"></h3>
+                        <p>New Appointments</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
+
         <hr />
         <div class="row">
             <div class="col-md-12">
@@ -45,6 +67,7 @@
                                 <th>Phone</th>
                                 <th>Email</th>
                                 <th>Created</th>
+                                <th>Action</th>
                             </tr>
                             {% for appt in appts %}
                                 <tr>
@@ -59,6 +82,11 @@
                                     <td>{{ appt.phone }}</td>
                                     <td>{{ appt.email }}</td>
                                     <td>{{ appt.created_at }}</td>
+                                    {% if appt.completed_at == "0000-00-00 00:00:00" %}
+                                        <td class="new-appt"><button class="btn btn-danger btn-flat btn-sm delete-appt-btn" data-toggle="modal" data-target="#delete-appt" id="{{ appt.id }}">New</button></td>
+                                    {% else %}
+                                        <td class="done-appt"><button class="btn btn-success btn-flat btn-sm delete-appt-btn"  id="{{ appt.id }}">Done</button></td>
+                                    {% endif %}
                                 </tr>
                             {% endfor %}
 
@@ -75,6 +103,20 @@
 {% endblock content %}
 
 {% block js %}
+<script>
+
+    // delete testimonial
+
+    $('.delete-appt-btn').click( function(){
+        if ($(this).attr('id')){
+            $("input:hidden[name=appt-id]").val($(this).attr('id'));
+        }
+    });
+
+    $('#new-appts').html($('.new-appt').length)
+    $('#done-appts').html($('.done-appt').length)
+
+</script>
 
 
 {% endblock js %}
