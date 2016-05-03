@@ -18,17 +18,7 @@
                                             <span>All</span>
                                         </h3>
                                         <div class="portfolio-filters pull-right">
-                                            <div class="btn-group">
-                                                <button class="btn btn-primary dropdown-toggle btn-icon-right btn-sm" data-toggle="dropdown" type="button"><b>Sort</b> <span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </span> </button>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li> <a class="portfolio-sort" data-sort="default">Default</a> </li>
-                                                    <li> <a class="portfolio-sort" data-sort="title">Title</a> </li>
-                                                    <li> <a class="portfolio-sort" data-sort="date">Date</a> </li>
-                                                    <li> <a class="portfolio-sort" data-sort="comments">Comments</a> </li>
-                                                </ul>
-                                            </div>
+
                                             <div class="btn-group">
                                                 <button class="btn btn-primary dropdown-toggle btn-icon-right btn-sm" data-toggle="dropdown" type="button"><b>Order</b> <span>
                                                     <i class="fa fa-angle-down"></i>
@@ -54,118 +44,25 @@
                                 </div>
                             </div>
                             <div class="portfolio masonry no-transition" data-col-lg="4" data-col-md="4" data-col-sm="2" data-col-xs="2" data-layout="fitRows" data-padding="20">
-                                <div class="masonry-item portfolio-item filter-kitchen filter-people" data-menu-order="0" data-date="2014-09-23T01:03:17+00:00" data-title="Corporate animation" data-comments="0">
-                                    <div class="figure portfolio-os-animation image-filter-none image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="fadeIn" data-os-animation-delay="0s">
-                                        <a class="figure-image magnific-vimeo" href="assets/images/corporate/gallery/k_photo1.jpg" target="_self"><img alt="Corporate animation" class="normalwidth" src="assets/images/corporate/gallery/k_photo1.jpg">
-                                            <div class="figure-overlay">
-                                                <div class="figure-overlay-container">
-                                                    <div class="figure-caption">
-                                                        <h3 class="figure-caption-title bordered bordered-small">NOVA INTERIORS</h3>
-                                                        <p class="figure-caption-description">Send Us An Email</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="masonry-item portfolio-item filter-bathroom" data-menu-order="1" data-date="2014-09-23T03:03:17+00:00" data-title="Freshquote co" data-comments="0">
+
+                                {% for photo in data.photos %}
+
+                                <div class="masonry-item portfolio-item filter-{{ photo.album | lower }}" data-menu-order="1" data-date="{{ photo.created_at }}" data-title="Freshquote co" data-comments="0">
                                     <div class="figure portfolio-os-animation image-filter-none image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="fadeIn" data-os-animation-delay="0.3s">
-                                        <a class="figure-image magnific" data-links="" href="assets/images/corporate/gallery/b_photo1.jpg" target="_self"><img alt="Freshquote co" class="normalwidth" src="assets/images/corporate/gallery/b_photo1.jpg">
+                                        <a class="figure-image magnific" data-links="" href="photos/{{ photo.name }}" target="_self"><img alt="Freshquote co" class="normalwidth" src="photos/{{ photo.name }}">
                                             <div class="figure-overlay">
                                                 <div class="figure-overlay-container">
                                                     <div class="figure-caption">
                                                         <h3 class="figure-caption-title bordered bordered-small">NOVA INTERIORS</h3>
-                                                        <p class="figure-caption-description">Give Us a Call</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </a>
                                     </div>
                                 </div>
-                                <div class="masonry-item portfolio-item filter-kitchen" data-menu-order="1" data-date="2014-09-23T03:03:17+00:00" data-title="Freshquote co" data-comments="0">
-                                    <div class="figure portfolio-os-animation image-filter-none image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="fadeIn" data-os-animation-delay="0.6s">
-                                        <a class="figure-image magnific-gallery" data-links="assets/images/corporate/gallery/k_photo2.jpg" href="assets/images/corporate/top-slider/photo1.jpg" target="_self"><img alt="Rapid Longitude branding" class="normalwidth" src="assets/images/corporate/gallery/k_photo2.jpg">
-                                            <div class="figure-overlay">
-                                                <div class="figure-overlay-container">
-                                                    <div class="figure-caption">
-                                                        <h3 class="figure-caption-title bordered bordered-small">NOVA INTERIORS</h3>
-                                                        <p class="figure-caption-description"></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="masonry-item portfolio-item filter-kitchen" data-menu-order="4" data-date="2014-09-23T07:03:17+00:00" data-title="Risky Heart magazine" data-comments="0">
-                                    <div class="figure portfolio-os-animation image-filter-none image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="fadeIn" data-os-animation-delay="0.9s">
-                                        <a class="figure-image magnific" data-links="" href="assets/images/corporate/gallery/k_photo3.jpg" target="_self"><img alt="Risky Heart magazine" class="normalwidth" src="assets/images/corporate/gallery/k_photo3.jpg">
-                                            <div class="figure-overlay">
-                                                <div class="figure-overlay-container">
-                                                    <div class="figure-caption">
-                                                        <h3 class="figure-caption-title bordered bordered-small">NOVA INTERIORS</h3>
-                                                        <p class="figure-caption-description"></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="masonry-item portfolio-item filter-livingroom" data-menu-order="6" data-date="2014-09-23T02:03:17+00:00" data-title="Stationary Concept" data-comments="0">
-                                    <div class="figure portfolio-os-animation image-filter-none image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="fadeIn" data-os-animation-delay="1.2s">
-                                        <a class="figure-image magnific" data-links="" href="assets/images/corporate/gallery/l_photo1.jpg" target="_self"><img alt="Stationary Concept" class="normalwidth" src="assets/images/corporate/gallery/l_photo1.jpg">
-                                            <div class="figure-overlay">
-                                                <div class="figure-overlay-container">
-                                                    <div class="figure-caption">
-                                                        <h3 class="figure-caption-title bordered bordered-small">NOVA INTERIORS</h3>
-                                                        <p class="figure-caption-description"></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="masonry-item portfolio-item filter-livingroom" data-menu-order="7" data-date="2014-09-23T01:29:17+00:00" data-title="Lambda Magazine" data-comments="0">
-                                    <div class="figure portfolio-os-animation image-filter-none image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="fadeIn" data-os-animation-delay="1.5s">
-                                        <a class="figure-image magnific" data-links="" href="assets/images/corporate/gallery/l_photo2.jpg" target="_self"><img alt="Lambda Magazine" class="normalwidth" src="assets/images/corporate/gallery/l_photo2.jpg">
-                                            <div class="figure-overlay">
-                                                <div class="figure-overlay-container">
-                                                    <div class="figure-caption">
-                                                        <h3 class="figure-caption-title bordered bordered-small">NOVA INTERIORS</h3>
-                                                        <p class="figure-caption-description"></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="masonry-item portfolio-item filter-bathroom" data-menu-order="8" data-date="2014-09-23T01:28:17+00:00" data-title="Visual identity" data-comments="0">
-                                    <div class="figure portfolio-os-animation image-filter-none image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="fadeIn" data-os-animation-delay="1.5s">
-                                        <a class="figure-image magnific" data-links="" href="assets/images/corporate/gallery/b_photo2.jpg" target="_self"><img alt="Visual identity" class="normalwidth" src="assets/images/corporate/gallery/b_photo2.jpg">
-                                            <div class="figure-overlay">
-                                                <div class="figure-overlay-container">
-                                                    <div class="figure-caption">
-                                                        <h3 class="figure-caption-title bordered bordered-small">NOVA INTERIORS</h3>
-                                                        <p class="figure-caption-description"></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="masonry-item portfolio-item filter-bathroom" data-title="Lambda Magazine">
-                                    <div class="figure portfolio-os-animation image-filter-none image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="fadeIn" data-os-animation-delay="1.5s">
-                                        <a class="figure-image magnific" data-links="" href="assets/images/corporate/gallery/b_photo3.jpg" target="_self"><img alt="Yellow Yard co" class="normalwidth" src="assets/images/corporate/gallery/b_photo3.jpg">
-                                            <div class="figure-overlay">
-                                                <div class="figure-overlay-container">
-                                                    <div class="figure-caption">
-                                                        <h3 class="figure-caption-title bordered bordered-small">NOVA INTERIORS</h3>
-                                                        <p class="figure-caption-description">Contact Us today</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
+
+                                {% endfor %}
+
                             </div>
                         </div>
                     </div>

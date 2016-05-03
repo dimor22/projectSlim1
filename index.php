@@ -449,8 +449,11 @@ $app->get('/testimonials', function () use ($app) {
 });
 
 $app->get('/gallery', function () use ($app) {
+	$photos = ORM::for_table('photos')->order_by_desc('created_at')->find_array();
+
 	$pageData = [
-		'title' =>  'Gallery Page'
+		'title' =>  'Gallery Page',
+		'photos' => $photos
 	];
 	$app->render('gallery.twig', ['data'   =>  $pageData, 'state6'  => 'active']);
 });
