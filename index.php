@@ -328,6 +328,12 @@ $app->post('/contact', function () use ($app) {
 		$mail->setFrom("info@novainteriorslv.com", "NovaInteriors");
 		$mail->addReplyTo($email, $name);
 		$mail->addAddress('dimor22@gmail.com', 'Nova Interiors Web Form');
+		$mail->addAddress('alex@novainteriors.com');
+		$mail->addAddress('omar@novainteriors.com');
+		$mail->addAddress('jortiz@novainteriors.com');
+		$mail->addAddress('alex@novainteriors.com');
+		$mail->addAddress('tech@novainteriors.com');
+
 		$mail->Subject = 'Message from Nova Interiors Web Form';
 		$mail->msgHTML('<ul><li><strong>Name: </strong>'. $name .'</li><li><strong>Email: </strong>'. $email .'</li></ul><p>' . $message . '</p>');
 		$mail->AltBody = $message;
@@ -382,6 +388,11 @@ $app->post('/appointments', function() use ($app){
 	$mail->setFrom("info@novainteriorslv.com", "NovaInteriors");
 	$mail->addReplyTo($params['email'], $params['name']);
 	$mail->addAddress('dimor22@gmail.com', 'Nova Interiors Website');
+	$mail->addAddress('alex@novainteriors.com');
+	$mail->addAddress('omar@novainteriors.com');
+	$mail->addAddress('jortiz@novainteriors.com');
+	$mail->addAddress('alex@novainteriors.com');
+	$mail->addAddress('tech@novainteriors.com');
 	$mail->Subject = 'New Appointment from Nova Interiors';
 	$mail->msgHTML('<ul><li><strong>Name: </strong>'. $params['name'] .'</li>
 						<li><strong>Email: </strong>'. $params['email'] .'</li>
