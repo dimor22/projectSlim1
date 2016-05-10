@@ -864,7 +864,7 @@ $app->group('/admin', function () use ($app) {
 			$app->redirect('appointments');
 		});
 
-		$app->delete('/', function() use ($app) {
+		$app->put('/', function() use ($app) {
 			$date = new DateTime();
 			$testimonial = ORM::for_table('appts')->find_one($app->request->params('appt-id'));
 			$testimonial->completed_at = $date->format('Y-m-d H:i:s');
@@ -872,8 +872,15 @@ $app->group('/admin', function () use ($app) {
 
 			$app->flash( 'success', 'Appointment Completed' );
 			$app->redirect( './appointments' );
+		});
 
+		$app->delete('/', function() use ($app) {
+			$date = new DateTime();
+			$testimonial = ORM::for_table('appts')->find_one($app->request->params('appt-id'));
+			$testimonial->delete();
 
+			$app->flash( 'fail', 'Appointment Deleted' );
+			$app->redirect( './appointments' );
 		});
 
 	});

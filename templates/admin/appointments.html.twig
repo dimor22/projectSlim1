@@ -14,12 +14,13 @@
     <section class="content">
 
         {% include 'admin/modals/delete_appt.twig' %}
+        {% include 'admin/modals/done_appt.twig' %}
 
 
         <div class="row">
             <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
-                <div class="small-box bg-aqua">
+                <div class="small-box bg-green">
                     <div class="inner">
                         <h3 id="done-appts"></h3>
                         <p>Appointments Completed</p>
@@ -31,7 +32,7 @@
             </div>
             <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
-                <div class="small-box bg-red">
+                <div class="small-box bg-yellow">
                     <div class="inner">
                         <h3 id="new-appts"></h3>
                         <p>New Appointments</p>
@@ -50,7 +51,9 @@
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">All Appointments</h3>
+                        <h3 class="box-title">All Appointments -
+                            <button class="btn btn-default btn-flat btn-sm" id="show-completed">Show Completed</button>
+                            <button class="btn btn-default btn-flat btn-sm" id="hide-completed">Hide Completed</button></h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body table-responsive no-padding">
@@ -83,10 +86,11 @@
                                     <td>{{ appt.email }}</td>
                                     <td>{{ appt.created_at }}</td>
                                     {% if appt.completed_at == "0000-00-00 00:00:00" %}
-                                        <td class="new-appt"><button class="btn btn-danger btn-flat btn-sm delete-appt-btn" data-toggle="modal" data-target="#delete-appt" id="{{ appt.id }}">New</button></td>
+                                        <td class="new-appt"><button class="btn btn-warning btn-flat btn-sm done-appt-btn" data-toggle="modal" data-target="#done-appt" id="{{ appt.id }}">New</button></td>
                                     {% else %}
-                                        <td class="done-appt"><button class="btn btn-success btn-flat btn-sm delete-appt-btn"  id="{{ appt.id }}">Done</button></td>
+                                        <td class="done-appt"><button class="btn btn-success btn-flat btn-sm" id="{{ appt.id }}">Done</button></td>
                                     {% endif %}
+                                        <td class="delete-appt"><button class="btn btn-danger btn-flat btn-sm delete-appt-btn" data-toggle="modal" data-target="#delete-appt"  id="{{ appt.id }}">Delete</button></td>
                                 </tr>
                             {% endfor %}
 
@@ -107,14 +111,33 @@
 
     // delete testimonial
 
-    $('.delete-appt-btn').click( function(){
+    $('.done-appt-btn, .delete-appt-btn').click( function(){
         if ($(this).attr('id')){
             $("input:hidden[name=appt-id]").val($(this).attr('id'));
         }
     });
 
-    $('#new-appts').html($('.new-appt').length)
-    $('#done-appts').html($('.done-appt').length)
+
+    $('#new-appts').html($('.new-appt').length);
+    $('#done-appts').html($('.done-appt').length);
+
+    $('.done-appt').parent().hide();
+    $('#hide-completed').hide();
+
+    // Show completed
+    $('#show-completed').click( function(){
+        $('.done-appt').parent().show();
+        $(this).hide();
+        $('#hide-completed').show();
+    });
+
+    // Hide completed
+    $('#hide-completed').click( function(){
+        $('.done-appt').parent().hide();
+        $(this).hide();
+        $('#show-completed').show();
+    });
+
 
 </script>
 
