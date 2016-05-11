@@ -150,12 +150,12 @@ $app->get('/', function() use ($app, $twig) {
 		'team'      => [
 			[
 				'delay' =>  '0.1s',
-				'alt'   =>  'Brandon Reed',
-				'src'   =>  'assets/images/corporate/team01-notinclude.jpg',
+				'alt'   =>  'Alex',
+				'src'   =>  'photos/jhovany.jpg',
 				'social'    =>  [
 					[
-					'name'  =>  'facebook',
-					'href'  =>  '#'
+						'name'  =>  'facebook',
+						'href'  =>  '#'
 					],
 					[
 						'name'  =>  'twitter',
@@ -166,14 +166,14 @@ $app->get('/', function() use ($app, $twig) {
 						'href'  =>  '#'
 					]
 				],
-				'strong'    =>  'Brandon Reed',
+				'strong'    =>  'Alex',
 				'span'      =>  'CEO',
 				'p'         =>  ' Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate users.'
 			],
 			[
 				'delay' =>  '0.2s',
-				'alt'   =>  'Amanda Hayes',
-				'src'   =>  'assets/images/corporate/team02-notinclude.jpg',
+				'alt'   =>  'Omar',
+				'src'   =>  'photos/omar.jpg',
 				'social'    =>  [
 					[
 						'name'  =>  'facebook',
@@ -188,14 +188,14 @@ $app->get('/', function() use ($app, $twig) {
 						'href'  =>  '#'
 					]
 				],
-				'strong'    =>  'Amanda Hayes',
+				'strong'    =>  'Omar',
 				'span'      =>  'Director',
 				'p'         =>  ' Efficiently unleash cross-media information without cross-media value. Quickly maximize deliverables schemas.'
 			],
 			[
 				'delay' =>  '0.3s',
-				'alt'   =>  'Donald Coleman',
-				'src'   =>  'assets/images/corporate/team03-notinclude.jpg',
+				'alt'   =>  'Juan',
+				'src'   =>  'photos/juan.jpg',
 				'social'    =>  [
 					[
 						'name'  =>  'facebook',
@@ -210,7 +210,7 @@ $app->get('/', function() use ($app, $twig) {
 						'href'  =>  '#'
 					]
 				],
-				'strong'    =>  'Donald Coleman',
+				'strong'    =>  'Juan',
 				'span'      =>  'Developer',
 				'p'         =>  ' Completely synergize resource sucking relationships premier niche markets. Professionally cultivate customer.'
 			]
@@ -226,8 +226,8 @@ $app->get('/contact', function () use ($app) {
 		'team'      => [
 			[
 				'delay' =>  '0.1s',
-				'alt'   =>  'Brandon Reed',
-				'src'   =>  'assets/images/corporate/team01-notinclude.jpg',
+				'alt'   =>  'Alex',
+				'src'   =>  'photos/jhovany.jpg',
 				'social'    =>  [
 					[
 						'name'  =>  'facebook',
@@ -242,14 +242,14 @@ $app->get('/contact', function () use ($app) {
 						'href'  =>  '#'
 					]
 				],
-				'strong'    =>  'Brandon Reed',
+				'strong'    =>  'Alex',
 				'span'      =>  'CEO',
 				'p'         =>  ' Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate users.'
 			],
 			[
 				'delay' =>  '0.2s',
-				'alt'   =>  'Amanda Hayes',
-				'src'   =>  'assets/images/corporate/team02-notinclude.jpg',
+				'alt'   =>  'Omar',
+				'src'   =>  'photos/omar.jpg',
 				'social'    =>  [
 					[
 						'name'  =>  'facebook',
@@ -264,14 +264,14 @@ $app->get('/contact', function () use ($app) {
 						'href'  =>  '#'
 					]
 				],
-				'strong'    =>  'Amanda Hayes',
+				'strong'    =>  'Omar',
 				'span'      =>  'Director',
 				'p'         =>  ' Efficiently unleash cross-media information without cross-media value. Quickly maximize deliverables schemas.'
 			],
 			[
 				'delay' =>  '0.3s',
-				'alt'   =>  'Donald Coleman',
-				'src'   =>  'assets/images/corporate/team03-notinclude.jpg',
+				'alt'   =>  'Juan',
+				'src'   =>  'photos/juan.jpg',
 				'social'    =>  [
 					[
 						'name'  =>  'facebook',
@@ -286,7 +286,7 @@ $app->get('/contact', function () use ($app) {
 						'href'  =>  '#'
 					]
 				],
-				'strong'    =>  'Donald Coleman',
+				'strong'    =>  'Juan',
 				'span'      =>  'Developer',
 				'p'         =>  ' Completely synergize resource sucking relationships premier niche markets. Professionally cultivate customer.'
 			]
@@ -328,11 +328,11 @@ $app->post('/contact', function () use ($app) {
 		$mail->setFrom("info@novainteriorslv.com", "NovaInteriors");
 		$mail->addReplyTo($email, $name);
 		$mail->addAddress('dimor22@gmail.com', 'Nova Interiors Web Form');
-		$mail->addAddress('alex@novainteriors.com');
-		$mail->addAddress('omar@novainteriors.com');
-		$mail->addAddress('jortiz@novainteriors.com');
-		$mail->addAddress('alex@novainteriors.com');
-		$mail->addAddress('tech@novainteriors.com');
+		$mail->addAddress('alex@novainteriorslv.com');
+		$mail->addAddress('omar@novainteriorslv.com');
+		$mail->addAddress('jortiz@novainteriorslv.com');
+		$mail->addAddress('alex@novainteriorslv.com');
+		$mail->addAddress('tech@novainteriorslv.com');
 
 		$mail->Subject = 'Message from Nova Interiors Web Form';
 		$mail->msgHTML('<ul><li><strong>Name: </strong>'. $name .'</li><li><strong>Email: </strong>'. $email .'</li></ul><p>' . $message . '</p>');
@@ -388,11 +388,11 @@ $app->post('/appointments', function() use ($app){
 	$mail->setFrom("info@novainteriorslv.com", "NovaInteriors");
 	$mail->addReplyTo($params['email'], $params['name']);
 	$mail->addAddress('dimor22@gmail.com', 'Nova Interiors Website');
-	$mail->addAddress('alex@novainteriors.com');
-	$mail->addAddress('omar@novainteriors.com');
-	$mail->addAddress('jortiz@novainteriors.com');
-	$mail->addAddress('alex@novainteriors.com');
-	$mail->addAddress('tech@novainteriors.com');
+	$mail->addAddress('alex@novainteriorslv.com');
+	$mail->addAddress('omar@novainteriorslv.com');
+	$mail->addAddress('jortiz@novainteriorslv.com');
+	$mail->addAddress('alex@novainteriorslv.com');
+	$mail->addAddress('tech@novainteriorslv.com');
 	$mail->Subject = 'New Appointment from Nova Interiors';
 	$mail->msgHTML('<ul><li><strong>Name: </strong>'. $params['name'] .'</li>
 						<li><strong>Email: </strong>'. $params['email'] .'</li>
