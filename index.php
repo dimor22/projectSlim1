@@ -287,8 +287,8 @@ $app->get('/contact', function () use ($app) {
 					]
 				],
 				'strong'    =>  'Juan',
-				'span'      =>  'Developer',
-				'p'         =>  ' Completely synergize resource sucking relationships premier niche markets. Professionally cultivate customer.'
+				'span'      =>  'Estimator',
+				'p'         =>  'Calculate  time, labor and materials for an specific job and then put together a bid.'
 			]
 		],
 	];
