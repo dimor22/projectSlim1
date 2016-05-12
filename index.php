@@ -848,6 +848,7 @@ $app->group('/admin', function () use ($app) {
 		// New appointment
 		$app->post('/', function() use ($app){
 			$params = $app->request->params();
+
 			$appt = ORM::for_table('appts')->create();
 			$appt->date = $params['date'];
 			$appt->time = $params['time'];

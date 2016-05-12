@@ -86,12 +86,6 @@
                                     <tr>
                                         <td class="time-option">3:00 - 5:00 PM</td>
                                     </tr>
-                                    <tr>
-                                        <td class="time-option">5:00 - 7:00 PM</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-option">7:00 - 9:00 PM</td>
-                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -101,29 +95,23 @@
                 <div class="col-md-4">
                     <div id="product" class="panel panel-default  element-top-50 element-bottom-20 os-animation animated fadeInUp" data-os-animation="fadeInUp" data-os-animation-delay="0.6s" style="animation-delay: 0.6s;">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Product Interest</h3>
+                            <h3 class="panel-title">Products Of Interest</h3>
                         </div>
                         <div class="panel-body">
                             <div class="col-text-1 text-normal  element-top-0 element-bottom-0" data-os-animation="none" data-os-animation-delay="0s">
                                 <table class="table table-hover">
                                     <tbody>
                                     <tr>
-                                        <td class="product-option">FLOOR</td>
+                                        <td class="product-option">FLOORING</td>
                                     </tr>
                                     <tr>
-                                        <td class="product-option">KITCHEN</td>
+                                        <td class="product-option">KITCHEN REMODEL</td>
                                     </tr>
                                     <tr>
-                                        <td class="product-option">BATHROOM</td>
+                                        <td class="product-option">SHOWER REMODEL</td>
                                     </tr>
                                     <tr>
-                                        <td class="product-option">LIVINGROOM</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="product-option">PATIO</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="product-option">BEDROOM</td>
+                                        <td class="product-option">STONE COUNTERTOPS</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -251,7 +239,7 @@
         var appt = {
             date: '',
             time: '',
-            product: '',
+            product: [],
             info: {
                 name: '',
                 phone: '',
@@ -312,8 +300,11 @@
                 // go to step 2 when a product is selected
                 $('.product-option').click(function () {
                     // highlight time selected
-                    $('.product-option').removeClass('time-selected');
-                    $(this).addClass('time-selected');
+                    if($(this).hasClass('time-selected')) {
+                        $(this).removeClass('time-selected');
+                    } else {
+                        $(this).addClass('time-selected');
+                    }
                     // set product
                     appt.setProduct(this.innerHTML);
                     // validate step1 and proceed to step2
@@ -496,7 +487,16 @@
                 //ajax call
             },
             setProduct: function (product) {
-                this.product = product;
+                // check if product is already in the array
+
+                var productIndex = $.inArray(product, this.product)
+                if( productIndex >= 0){
+                    this.product.splice(productIndex, 1);
+                } else {
+                    this.product.push(product);
+                }
+
+                cl('products --> ' + this.product);
             },
             setInfo: function () {
                 appt.info.name = $('#appt-name').val();
@@ -514,7 +514,7 @@
                     data: {
                         date: appt.date,
                         time: appt.time,
-                        product: appt.product,
+                        product: appt.product.toString(),
                         name: appt.info.name,
                         phone: appt.info.phone,
                         address: appt.info.address,
