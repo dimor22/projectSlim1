@@ -1,0 +1,76 @@
+{% extends "public_base.twig" %}
+
+{% block title %}{{ data.title }}{% endblock title %}
+
+{% block content %}
+
+    <article>
+
+        <section class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="portfolio-container element-top-50 element-bottom-50">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="portfolio-header clearfix">
+                                        <h3 class="portfolio-title pull-left"><strong>View /</strong>
+                                            <span>All</span>
+                                        </h3>
+                                        <div class="portfolio-filters pull-right">
+
+                                            <div class="btn-group">
+                                                <button class="btn btn-primary dropdown-toggle btn-icon-right btn-sm" data-toggle="dropdown" type="button"><b>Order</b> <span>
+                                                    <i class="fa fa-angle-down"></i>
+                                                </span> </button>
+                                                <ul class="dropdown-menu pull-right">
+                                                    <li> <a class="portfolio-order" data-value="true">Ascending</a> </li>
+                                                    <li> <a class="portfolio-order" data-value="false">Descending</a> </li>
+                                                </ul>
+                                            </div>
+                                            <div class="btn-group">
+                                                <button class="btn btn-primary dropdown-toggle btn-icon-right btn-sm" data-toggle="dropdown" type="button"><b>Category</b> <span>
+                                                    <i class="fa fa-angle-down"></i>
+                                                </span> </button>
+                                                <ul class="dropdown-menu pull-right">
+                                                    <li> <a class="portfolio-filter" data-filter="*">All</a> </li>
+                                                    {% for album in data.albums %}
+                                                        <li> <a class="portfolio-filter" data-filter=".filter-{{ album.name }}">{{ album.name | capitalize }}</a> </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portfolio masonry no-transition" data-col-lg="4" data-col-md="4" data-col-sm="2" data-col-xs="2" data-layout="fitRows" data-padding="20">
+
+                                {% for photo in data.photos %}
+
+                                <div class="masonry-item portfolio-item filter-{{ photo.album | lower }}" data-menu-order="1" data-date="{{ photo.created_at }}" data-title="Freshquote co" data-comments="0">
+                                    <div class="figure portfolio-os-animation image-filter-none image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="fadeIn" data-os-animation-delay="0.3s">
+                                        <a class="figure-image magnific" data-links="" href="photos/{{ photo.name }}" target="_self"><img alt="Freshquote co" class="normalwidth" src="photos/{{ photo.name }}">
+                                            <div class="figure-overlay">
+                                                <div class="figure-overlay-container">
+                                                    <div class="figure-caption">
+                                                        <h3 class="figure-caption-title bordered bordered-small">NOVA INTERIORS</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+
+{% endblock content %}
+
+{% block extrajs %}{% endblock %}

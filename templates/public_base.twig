@@ -1,0 +1,484 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>{% block title %}{{ data.title }}{% endblock title %} - Nova Interiors</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,900%7CGentium+Basic:400italic&amp;subset=latin,latin" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/css/extras.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/corporate.css">
+    {% block extra_css %}{% endblock extra_css %}
+    <link rel="stylesheet" href="assets/css/corporate-child.css">
+    <!-- App extended css -->
+    <link rel="stylesheet" href="public/css/app.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/images/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/images/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/images/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/images/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/images/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/images/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/images/favicons/apple-icon-144x144.png">
+    <link rel="icon" type="image/png" href="assets/images/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="assets/images/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="assets/images/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="shortcut icon" href="assets/images/favicons/favicon.ico">
+
+
+
+    {% block beforejs %}{% endblock beforejs %}
+</head>
+
+<body class="pace-on pace-counter">
+<div class="pace-overlay"></div>
+<div class="top-bar">
+    <div class="container">
+        <div class="top top-left">
+            <div class="sidebar-widget text-left small-screen-center widget_text">
+                <div class="textwidget"> <i class="fa fa-envelope"></i>&nbsp; <a href="mailto:dimor22@gmail.com">{{ header_email }}</a> </div>
+            </div>
+            <div class="sidebar-widget text-left small-screen-center widget_text">
+                <div class="textwidget"> <i class="fa fa-phone"></i> &nbsp; {{ header_phone }} </div>
+            </div>
+        </div>
+        <div class="top top-right">
+            <div class="sidebar-widget text-right small-screen-center widget_social">
+                <ul class="unstyled inline social-icons social-simple social-normal">
+                    <li>
+                        <a data-iconcolor="#3b5998" target="_blank" href="https://www.facebook.com/profile.php?id=100008806451028"> <i class="fa fa-facebook"></i> </a>
+                    </li>
+                    <li>
+                        <a data-iconcolor="#00acee" target="_blank" href="https://twitter.com/Nova_Interiors"> <i class="fa fa-twitter"></i> </a>
+                    </li>
+                    <li>
+                        <a data-iconcolor="#00acee" target="_blank" href="http://www.yelp.com/biz/nova-interiors-las-vegas"> <i class="fa fa-yelp"></i> </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% if flash %}
+    {% for key, msg in flash %}
+        <div class="alert alert-{{ key }} alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-check"></i> {{ msg }}!</h4>
+        </div>
+    {% endfor %}
+
+{% endif %}
+<div class="menu navbar navbar-static-top header-logo-left-menu-right oxy-mega-menu navbar-sticky" id="masthead">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" data-target=".main-navbar" data-toggle="collapse" type="button"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            <a class="navbar-brand" href="{{ siteUrl('/') }}">
+                <img src="assets/images/nova-logo.png"/>
+            </a> </div>
+        <div class="nav-container">
+            <nav class="collapse navbar-collapse main-navbar logo-navbar navbar-right">
+                <div class="menu-container">
+                    <ul class="nav navbar-nav" id="menu-main">
+                        <li class="menu-item {{ state1|default('') }}  "> <a href="{{ siteUrl('/') }}">Home</a> </li>
+                        <li class="menu-item {{ state7|default('') }}"> <a href="{{ siteUrl('/appointments') }}">Appointments</a> </li>
+                        <li class="menu-item {{ state6|default('') }}"> <a href="{{ siteUrl('/gallery') }}">Gallery</a> </li>
+                        <li class="menu-item {{ state5|default('') }}"> <a href="{{ siteUrl('/testimonials') }}">Testimonials</a> </li>
+                        <li class="menu-item {{ state4|default('') }}"> <a href="{{ siteUrl('/services') }}">Services</a> </li>
+                        <li class="menu-item {{ state8|default('') }}"> <a href="{{ siteUrl('/how-to') }}">How to</a> </li>
+                        <li class="menu-item {{ state2|default('') }}"> <a href="{{ siteUrl('/about') }}">About</a> </li>
+                        <li class="menu-item {{ state3|default('') }}"> <a href="{{ siteUrl('/contact') }}">Contact</a> </li>
+
+                    </ul>
+                </div>
+                <div class="menu-sidebar">
+                    <div class="sidebar-widget widget_search" id="search-5">
+                        <form action="corporate-index.html" method="get" name="searchform">
+                            <div class="input-group">
+                                <input class="form-control" name="s" placeholder="Search" type="text"> <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit" value="Search">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span> </div>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<div id="content" role="main">
+    {% block content %}
+    <article>
+        <section class="section">
+            <div class="container-fullwidth">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="fullwidthbanner-container">
+                            <div class="tp-banner">
+                                <ul>
+                                    {% for slide in data.slides %}
+                                        <!-- SLIDE  -->
+                                        <li data-transition="fade" data-slotamount="5" data-masterspeed="500" data-saveperformance="on" data-title="Intro Slide">
+                                            <!-- MAIN IMAGE --><img src="photos/{{ slide }}" alt="slidebg1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                                <div class="tp-bannertimer"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-center element-top-70 os-animation big" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                            Our services
+                        </h1>
+                        <div class="divider-border divider-border-center element-top-10 element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s" style="height:3px;">
+                            <div class="divider-border-inner" style="width:60px;"> </div>
+                        </div>
+                        <p class="lead text-center center element-bottom-40 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.2s">
+                            We help businesses and homeowners make their dreams come true. They dream it, we build it.
+                            <br> We specialize in many <strong>premium construction products.</strong></p>
+                        <div class="list-container row element-bottom-50 os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.1s">
+                            <div class="col-md-4 element-bottom-20 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.1s"> <span class="service-simple-image">
+                                <img alt="Visualise" src="photos/hardwood.jpg">
+                            </span>
+                                <h2>Hardwood Floors</h2>
+                                <p>Hardwood is an easy way to improve the look, durability and value of your home.</p>
+                            </div>
+                            <div class="col-md-4 element-bottom-20 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.3s"> <span class="service-simple-image">
+                                <img alt="Develop" src="photos/porcelain.jpg">
+                            </span>
+                                <h2>Porcelain Tile</h2>
+                                <p>It is fired at higher temperatures than regular ceramic tile, so it’s more dense, less porous, and shows better wear characteristics. 30% stronger than granite and resistant to staining, porcelain is also easier to clean, and offers superior wear and resistance.</p>
+                            </div>
+                            <div class="col-md-4 element-bottom-20 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.3s"> <span class="service-simple-image">
+                                <img alt="Develop" src="photos/carpet.jpg">
+                            </span>
+                                <h2>Carpet</h2>
+                                <p>Comforting, warm and welcoming ... it's easy to see why so many
+                                    people choose carpet to come home to. With a large selction, you're sure to find
+                                    carpet that works perfectly for you and your family.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="background-overlay" style="background-color: rgba(57,139,202,1);"></div>
+            <div class="container container-vertical-middle">
+                <div class="row vertical-middle">
+                    <div class="col-md-10">
+                        <h2 class="text-center element-top-60 element-bottom-60 text-light os-animation big light" data-os-animation="fadeInLeft" data-os-animation-delay="0s">
+                            FREE In-Home Estimate
+                        </h2> </div>
+                    <div class="col-md-2 text-center"> <a class="btn btn-primary btn-lg text-light btn-icon-right element-top-60 element-bottom-60" data-os-animation="none" data-os-animation-delay="0s" href="{{ siteUrl('/appointments') }}" target="_self">
+                            Schedule Now
+                            <i class="fa fa-comment-o" data-animation="tada"></i>
+                        </a> </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-center element-top-70 os-animation big" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                            Our latest work
+                        </h1>
+                        <div class="divider-border divider-border-center element-top-10 element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s" style="height:3px;">
+                            <div class="divider-border-inner" style="width:60px;"> </div>
+                        </div>
+                        <p class="lead text-center center element-bottom-40" data-os-animation="none" data-os-animation-delay="0s"> We put all our heart and soul on the perfect finishing.
+                            <br> Take a look at some of our latest work.</p>
+                        <div class="portfolio-container element-bottom-60">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="portfolio-header clearfix">
+                                        <div class="portfolio-filters pull-right"> </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portfolio masonry no-transition magnific-all" data-col-lg="4" data-col-md="4" data-col-sm="4" data-col-xs="2" data-layout="fitRows" data-padding="15">
+                                {%  for photo in data.work %}
+                                    <div class="masonry-item portfolio-item filter-people" data-title="{{ photo.data-title }}">
+                                        <div class="figure portfolio-os-animation image-filter-blur image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="bounceInDown" data-os-animation-delay="0.1s">
+                                            <a class="figure-image magnific" href="photos/{{ photo.href }}" target="_self"> <img alt="{{ photo.alt }}" class="normalwidth" src="photos/{{ photo.src }}">
+                                                <div class="figure-overlay">
+                                                    <div class="figure-overlay-container">
+                                                        <div class="figure-caption">
+                                                            <h3 class="figure-caption-title bordered bordered-small">{{ photo.h3 }}</h3>
+                                                            <p class="figure-caption-description"> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-center element-top-70 os-animation big" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                            Our team
+                        </h1>
+                        <div class="divider-border divider-border-center element-top-10 element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s" style="height:3px;">
+                            <div class="divider-border-inner" style="width:60px;"> </div>
+                        </div>
+                        <p class="lead text-center center element-bottom-40 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.2s"> Time to meet our team of construction and business professionals.
+                            <br> Let us help your business reach it&#8217;s potential.</p>
+                        <div class="row staff-list-container list-container element-bottom-50">
+                            {% for person in data.team %}
+                                <div class="figure col-md-4 fade-in element-bottom-20 figcaption-bottom text-left fade-in os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s">
+                                    <div class="figure-image"> <img alt="{{ person.alt }}" src="{{ person.src }}">
+
+                                    </div>
+                                    <div class="figure-caption text-left">
+                                        <h3 class="figure-caption-title">
+                                            <strong>{{ person.strong }}</strong>
+                                            <span>{{ person.span }}</span>
+                                        </h3>
+                                        <p class="figure-caption-description">{{ person.p }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="background-overlay" style="background-color: rgba(57,139,202,1);"></div>
+            <div class="container-fullwidth container-vertical-middle">
+                <div class="row vertical-middle">
+                    <div class="col-md-6" style="background:#f0f0f0;">
+                        <div class="text-center flexslider feature-slider" data-flex-animation="fade" data-flex-controls="hide" data-flex-controls-position="outside" data-flex-controlsalign="center" data-flex-directions="hide" data-flex-slideshow="true"
+                             data-flex-speed="7000" data-os-animation="none" data-os-animation-delay="0s" id="flexslider-818">
+                            <ul class="slides">
+                                {% for testimonial in data.testimonials %}
+                                    <li>
+                                        <blockquote class="blockquote-simple">
+                                            <h1>{{ testimonial.owner }}</h1> <img alt="Testimonial of {{ testimonial.owner }}" class="attachment-thumbnail" height="150" src="photos/{{ testimonial.photo }}" width="150">
+
+                                        </blockquote>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="element-top-80 element-bottom-80 text-center text-light flexslider feature-slider" data-flex-animation="slide" data-flex-controls="hide" data-flex-controls-position="outside" data-flex-controlsalign="center" data-flex-directions="hide"
+                             data-flex-slideshow="true" data-flex-speed="7000" data-os-animation="none" data-os-animation-delay="0s" id="flexslider-39">
+                            <ul class="slides">
+                                {% for testimonial in data.testimonials %}
+                                    <li>
+                                        <blockquote>
+                                            <p>{{ testimonial.body }}</p>
+                                        </blockquote>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="background-overlay grid-overlay-0" style="background-color: rgba(255,255,255,1);"></div>
+            <div class="container-fullwidth">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-center element-top-70 os-animation big" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                            Our Clients
+                        </h1>
+                        <div class="divider-border divider-border-center element-top-10 element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s" style="height:3px;">
+                            <div class="divider-border-inner" style="width:60px;"> </div>
+                        </div>
+                        <p class="lead text-center center element-bottom-40 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.2s"> We work close with our clients projets
+                            <br> to provide a unique experience</p>
+                        <div class="flexslider flex-controls-bottom element-top-20 element-bottom-60" data-flex-animation="slide" data-flex-captionhorizontal="left" data-flex-controls="hide" data-flex-controlsalign="center"
+                             data-flex-controlsposition="inside" data-flex-controlsvertical="bottom" data-flex-directions="hide" data-flex-duration="600" data-flex-itemwidth="258" data-flex-sliderdirection="horizontal" data-flex-slideshow="true" data-flex-speed="7000"
+                             data-os-animation="none" data-os-animation-delay="0s" id="flexslider-74">
+                            <ul class="slides">
+
+                                <li>
+                                    <figure><a href="http://www.prosourcewholesale.com/lasvegas" target="_blank"><img alt="client1" data-original-title="Prosource" data-toggle="tooltip" height="200" src="photos/partner1.gif" width="400"> </a> </figure>
+                                </li>
+                                <li>
+                                    <figure> <a href="http://www.marbleexpresslv.com/" target="_blank"><img alt="client2" data-original-title="Marble-Express" data-toggle="tooltip" height="200" src="photos/partner2.jpeg" width="400"> </a> </figure>
+                                </li>
+                                <li>
+                                    <figure> <a href="http://www.daltile.com/" target="_blank"><img alt="client5" data-original-title="Daltile" data-toggle="tooltip" height="200" src="photos/partner3.jpeg" width="400"></a>  </figure>
+                                </li>
+                                <li>
+                                    <figure> <a href="http://www.flooringdepotlv.com/" target="_blank"><img alt="client4" data-original-title="Flooring-Depot" data-toggle="tooltip" height="200" src="photos/partner4.gif"></a>  </figure>
+                                </li>
+                                <li>
+                                    <figure><a href="http://www.prosourcewholesale.com/lasvegas" target="_blank">  <img alt="client1" data-original-title="Prosource" data-toggle="tooltip" height="200" src="photos/partner1.gif" width="400"> </a> </figure>
+                                </li>
+                                <li>
+                                    <figure> <a href="http://www.marbleexpresslv.com/" target="_blank"><img alt="client2" data-original-title="Marble-Express" data-toggle="tooltip" height="200" src="photos/partner2.jpeg" width="400"> </a></figure>
+                                </li>
+                                <li>
+                                    <figure><a href="http://www.daltile.com/" target="_blank"> <img alt="client5" data-original-title="Daltile" data-toggle="tooltip" height="200" src="photos/partner3.jpeg" width="400"></a> </figure>
+                                </li>
+                                <li>
+                                    <figure> <a href="http://www.flooringdepotlv.com/" target="_blank"><img alt="client4" data-original-title="Flooring-Depot" data-toggle="tooltip" height="200" src="photos/partner4.gif"></a>  </figure>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </article>
+    {% endblock content %}
+    <footer id="footer">
+        <section class="section">
+            <div class="container">
+                <div class="row element-top-40 element-bottom-40 footer-columns-4">
+                    <div class="col-sm-4">
+                        <div class="sidebar-widget widget_text" id="text-2">
+                            <h3 class="sidebar-header">Our Vision</h3>
+                            <div class="textwidget">
+                                <p>To be recognized for our Quality, Value, Honesty, and Fairness in the Floor Covering Industry
+                                </p><a href="http://www.tile-assn.com/" target="_blank"><img src="photos/ntca.png"/></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="sidebar-widget widget_categories">
+                            <h3 class="sidebar-header">MENU</h3>
+                            <ul>
+                                <li> <a href="{{ siteUrl('/appointments') }}">
+                                        Appointments
+                                    </a> </li>
+                                <li> <a href="{{ siteUrl('/gallery') }}">
+                                        Gallery
+                                    </a> </li>
+                                <li> <a href="{{ siteUrl('/testimonials') }}">
+                                        Testimonials
+                                    </a> </li>
+                                <li> <a href="{{ siteUrl('/services') }}">
+                                        Services
+                                    </a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="sidebar-widget widget_text">
+                            <div class="textwidget"><img alt="headquarters" src="assets/images/nova-logo.png"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section subfooter">
+            <div class="container">
+                <div class="row element-top-10 element-bottom-10 footer-columns-2">
+                    <div class="col-sm-6">
+                        <div class="sidebar-widget widget_text">
+                            <div class="textwidget"> Website Powered by <a href="https://www.linkedin.com/in/dlopezwd
+" target="_blank">DL</a> &copy; Nova Interiors 2016 </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="sidebar-widget widget_social">
+                            <ul class="unstyled inline social-icons social-simple social-normal">
+                                <li>
+                                    <a data-iconcolor="#3b5998" href="https://www.facebook.com/profile.php?id=100008806451028" target="_blank"> <i class="fa fa-facebook"></i> </a>
+                                </li>
+                                <li>
+                                    <a data-iconcolor="#00acee" href="https://twitter.com/Nova_Interiors" target="_blank"> <i class="fa fa-twitter"></i> </a>
+                                </li>
+                                <li>
+                                    <a data-iconcolor="#00acee" href="http://www.yelp.com/biz/nova-interiors-las-vegas" target="_blank"> <i class="fa fa-yelp"></i> </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+</div>
+<a class="go-top go-top-circle" href="javascript:void(0)"> <i class="fa fa-angle-up"></i> </a>
+<script type="text/javascript">
+    var oxyThemeData = {
+        navbarHeight: 100,
+        navbarScrolled: 90,
+        navbarScrolledPoint: 20,
+        menuClose: 'off',
+        scrollFinishedMessage: 'No more items to load.',
+        hoverMenu:
+        {
+            hoverActive: false,
+            hoverDelay: 1,
+            hoverFadeDelay: 200
+        },
+        siteLoader: 'on'
+    };
+</script>
+<script src="assets/js/theme.min.js"></script>
+<script src="assets/js/revolution.min.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function()
+    {
+        jQuery('.tp-banner').show().revolution(
+                {
+                    delay: 7000,
+                    startwidth: 1170,
+                    startheight: 480,
+                    onHoverStop: "on", // Stop Banner Timer at Hover on Slide on/off
+                    thumbWidth: 100, // Thumb With and Height and Amount (only if navigation Tyope set to thumb !)
+                    thumbHeight: 50,
+                    thumbAmount: 3,
+                    hideThumbs: 0,
+                    navigationType: "bullet", // bullet, thumb, none
+                    navigationArrows: "solo", // nexttobullets, solo (old name verticalcentered), none
+                    navigationStyle: "round", // round,square,navbar,round-old,square-old,navbar-old, or any from the list in the docu (choose between 50+ different item), custom
+                    navigationHAlign: "center", // Vertical Align top,center,bottom
+                    navigationVAlign: "bottom", // Horizontal Align left,center,right
+                    navigationHOffset: 0,
+                    navigationVOffset: 20,
+                    soloArrowLeftHalign: "left",
+                    soloArrowLeftValign: "center",
+                    soloArrowLeftHOffset: 20,
+                    soloArrowLeftVOffset: 0,
+                    soloArrowRightHalign: "right",
+                    soloArrowRightValign: "center",
+                    soloArrowRightHOffset: 20,
+                    soloArrowRightVOffset: 0,
+                    touchenabled: "on", // Enable Swipe Function : on/off
+                    stopAtSlide: -1, // Stop Timer if Slide "x" has been Reached. If stopAfterLoops set to 0, then it stops already in the first Loop at slide X which defined. -1 means do not stop at any slide. stopAfterLoops has no sinn in this case.
+                    stopAfterLoops: -1, // Stop Timer if All slides has been played "x" times. IT will stop at THe slide which is defined via stopAtSlide:x, if set to -1 slide never stop automatic
+                    hideCaptionAtLimit: 0, // It Defines if a caption should be shown under a Screen Resolution ( Basod on The Width of Browser)
+                    hideAllCaptionAtLilmit: 0, // Hide all The Captions if Width of Browser is less then this value
+                    hideSliderAtLimit: 0, // Hide the whole slider, and stop also functions if Width of Browser is less than this value
+                    fullWidth: "on",
+                    shadow: 0
+                });
+    });
+</script>
+
+{% block extrajs %}{% endblock extrajs%}
+</body>
+
+</html>

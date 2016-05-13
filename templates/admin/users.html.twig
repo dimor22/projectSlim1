@@ -17,14 +17,10 @@
             {% include 'admin/modals/edit_user.html.twig' %}
             {% include 'admin/modals/change_password.html.twig' %}
             {% include 'admin/modals/delete_user.html.twig' %}
-            {% if flash.success %}
-                <div class="alert alert-success alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <h4><i class="icon fa fa-check"></i> {{ flash.success }}!</h4>
-                </div>
-            {% endif %}
+            {% include 'admin/modals/edit_photo.html.twig' %}
+
             <div class="row">
-                <a class="btn btn-app text-center" data-toggle="modal" data-target="#add-user">
+                <a class="btn btn-app text-center btn-flat" data-toggle="modal" data-target="#add-user">
                     <i class="fa fa-plus"></i> New User
                 </a>
             </div>
@@ -42,7 +38,7 @@
                                 <h5 class="widget-user-desc">{{ user.phone|e }}</h5>
                             </div>
                             <div class="widget-user-image">
-                                <img class="img-circle" src="../photos/{{ user.photo }}" alt="User Avatar">
+                                <img class="img-circle user-photo-admin" src="../photos/{{ user.photo }}" alt="User Avatar" data-toggle="modal" data-target="#edit-user-photo" id="photo-{{ user.id }}">
                             </div>
                             <div class="box-footer">
                                 <div class="row">
@@ -87,6 +83,43 @@
 
 {% block js %}
     <script>
+
+        // add user
+
+        $('#submit-add-user-btn').click( function(e){
+            e.preventDefault();
+
+            var username = $('#userName').val();
+            var email = $('#userEmail').val();
+            var pwd = $('#userPassword').val();
+            var pwd2 = $('#confirmPwd').val();
+            var error = '';
+
+            function validateEmail(email) {
+                var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                return emailReg.test( email );
+            }
+            if (username.length > 0 && email.length > 0 && pwd.length > 0 && pwd2.length > 0 ){
+                if (validateEmail(email)) {
+                    if ( pwd === pwd2) {
+                        $('#add-user-form').submit();
+                    } else {
+                        error = 'Passwords don\'t match';
+                    }
+                } else {
+                    error = 'Email not valid';
+                }
+            } else {
+                error = 'Username, Email and Password are Required';
+            }
+
+            if ( error.length > 0 ) {
+                $('.feedback-wrapper').show();
+                $('#user-validation-error').html(error);
+            }
+
+        });
+
         //edit user
 
         $('.edit-user-btn').click(function(){
@@ -166,13 +199,32 @@
         });
 
 
-
         // delete user
         $('.delete-user-btn').click( function(){
             if ($(this).attr('id')){
                 $("input:hidden[name=user-id]").val($(this).attr('id'));
             }
         });
+
+
+        // edit photo
+
+            $('.user-photo-admin').click(function(){
+                var userId = $(this).attr('id');
+                var userIdNumber = userId.substr(userId.indexOf("-") + 1);
+                $.ajax({
+                    method: "POST",
+                    url: "../ajax/user.php",
+                    data: { userId: userIdNumber, action: "pwd" },
+                    error: function(){ console.log('there was an error')},
+                    success: function(data){
+                        userObj = JSON.parse(data);
+                        $('#old-photo').attr('src', '../photos/' + userObj[0].photo);
+                        $('#changePhotoId').val(userObj[0].id);
+                    }
+                })
+            });
+
     </script>
 {% endblock js %}
 

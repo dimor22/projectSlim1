@@ -1,0 +1,38 @@
+<!-- Modal -->
+<div class="modal fade" id="edit-testimonial-photo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel5">Change Testimonial Photo</h4>
+            </div>
+            <div class="modal-body">
+
+                <img id="old-photo" src="" width="100%">
+
+                <form method="post" id="change-testimonial-photo-form" action="{{ siteUrl('admin/testimonials/change-photo') }}" enctype="multipart/form-data">
+                    <input type="hidden" id="photoTestimonialId" name="photoTestimonialId" value="">
+
+                    <div class="form-group">
+                        <label for="changeTestimonialPhoto">Profile Photo</label>
+                        <input type="file" id="changeTestimonialPhoto" name="changeTestimonialPhoto">
+                        <p class="help-block">{{ photoInfo }}</p>
+                    </div>
+
+                    <!-- error message -->
+                    <div class="callout callout-danger feedback-wrapper">
+                        <h4 id="photo-validation-error"></h4>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Change Photo</button>
+                    </div>
+
+                    </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+body input, body textarea, body .btn, body button {
+  font-family: 'Roboto', sans-serif;
+}
+
+blockquote p {
+  font-weight: 300;
+}
+
+.hairline {
+  font-weight: 100 !important;
+}
+.hairline strong {
+  font-weight: 300;
+}
+
+.light {
+  font-weight: 300 !important;
+}
+
+.bold {
+  font-weight: 700 !important;
+}
+
+.black {
+  font-weight: 900 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Slab', sans-serif;
+  font-weight: 300;
+}
+
+.lead {
+  font-weight: 300;
+}
+.lead strong {
+  font-weight: 400;
+}
+
+#masthead {
+  font-family: 'Roboto Slab', sans-serif;
+}
+
+.navbar-brand {
+  font-weight: 300;
+}

@@ -13,8 +13,13 @@
     <!-- Main content -->
     <section class="content">
 
+        {% include 'admin/modals/add_testimonial.twig' %}
+        {% include 'admin/modals/delete_testimonial.twig' %}
+        {% include 'admin/modals/edit_testimonial.twig' %}
+        {% include 'admin/modals/edit_testimonial_photo.html.twig' %}
+
         <div class="row">
-            <a class="btn btn-app text-center">
+            <a class="btn btn-app text-center btn-flat" data-toggle="modal" data-target="#add-testimonial">
                 <i class="fa fa-plus"></i> New Testimonial
             </a>
         </div>
@@ -29,19 +34,27 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <img class="profile-user-img img-responsive img-circle" src="../photos/{{ testimonial.photo }}" alt="User profile picture">
+                        <div class="widget-user-image">
+                            <img class="profile-user-img img-responsive img-circle change-testimonial-photo" src="../photos/{{ testimonial.photo }}" alt="User Avatar" data-toggle="modal" data-target="#edit-testimonial-photo" id="photo-{{ testimonial.id }}">
+                        </div>
                         <p class="text-center">{{ testimonial.body|e }}</p>
+                        {% if testimonial.company %}
+                            <p>Company: {{ testimonial.company }}</p>
+                        {% endif %}
+                        {% if testimonial.title %}
+                            <p>Title: {{ testimonial.title }}</p>
+                        {% endif %}
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
                         <div class="col-xs-6 col-sm-6">
-                                <a class="btn btn-app">
+                                <a class="btn btn-app edit-testimonial-btn" data-toggle="modal" data-target="#edit-testimonial" id="edit-{{ testimonial.id }}">
                                     <i class="fa fa-edit"></i> Edit
                                 </a>
                             <!-- /.description-block -->
                         </div>
                         <div class="col-xs-6 col-sm-6">
-                                <a class="btn btn-app">
+                                <a class="btn btn-app delete-testimonial-btn" data-toggle="modal" data-target="#delete-testimonial" id="{{ testimonial.id }}">
                                     <i class="fa fa-close"></i> Delete
                                 </a>
                             <!-- /.description-block -->
@@ -56,3 +69,75 @@
     </section>
     <!-- /.content -->
 {% endblock content %}
+
+{% block js %}
+
+    <script>
+        // add testimonial
+        var error = '';
+        $('#submit-testimonial-btn').click( function(e){
+            e.preventDefault();
+            if ( $('#testimonialTitle').val().length > 0 && $('#testimonialBody').val().length > 0 && $('#testimonialOwner').val().length > 0 ){
+                $('#add-testimonial-form').submit();
+            } else {
+                error = 'Title, Body and Owner fields are required.'
+            }
+
+            if ( error.length > 0 ){
+                $('.feedback-wrapper').show();
+                $('#testimonial-validation-error').html(error);
+            }
+        });
+
+        // delete testimonial
+
+        $('.delete-testimonial-btn').click( function(){
+            if ($(this).attr('id')){
+                $("input:hidden[name=testimonial-id]").val($(this).attr('id'));
+            }
+        });
+
+
+        // edit testimonial
+        $('.edit-testimonial-btn').click(function() {
+            var testimonialId = $(this).attr('id');
+            var testimonialIdNumber = testimonialId.substr(testimonialId.indexOf("-") + 1);
+
+            $.ajax({
+                method: "POST",
+                url: "../ajax/testimonial.php",
+                data: {testimonialId: testimonialIdNumber, action: "edit"},
+                error: function () {
+                    console.log('there was an error')
+                },
+                success: function (data) {
+                    var testimonial = JSON.parse(data);
+                    $('#editTestimonialId').val(testimonial[0].id);
+                    $('#editTestimonialTitle').val(testimonial[0].title);
+                    $('#editTestimonialBody').val(testimonial[0].body);
+                    $('#editTestimonialOwner').val(testimonial[0].owner);
+                    $('#editTestimonialCompany').val(testimonial[0].company);
+                }
+            })
+        });
+
+        // change testimonial photo
+
+        $('.change-testimonial-photo').click(function(){
+            var testimonialId = $(this).attr('id');
+            var testimonialIdNumber = testimonialId.substr(testimonialId.indexOf("-") + 1);
+            $.ajax({
+                method: "POST",
+                url: "../ajax/testimonial.php",
+                data: { testimonialId: testimonialIdNumber, action: "pwd" },
+                error: function(){ console.log('there was an error')},
+                success: function(data){
+                    userObj = JSON.parse(data);
+                    $('#old-photo').attr('src', '../photos/' + userObj[0].photo);
+                    $('#photoTestimonialId').val(userObj[0].id);
+                }
+            })
+        });
+
+    </script>
+{% endblock js %}

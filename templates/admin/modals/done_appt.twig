@@ -1,0 +1,24 @@
+<!-- Modal -->
+<div class="modal fade modal-success" id="done-appt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel4">Mark Appointment as Completed</h4>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="">
+                    <input type="hidden" name="_METHOD" value="PUT"/>
+                    <input type="hidden" name="appt-id" value=""/>
+
+                    <p>This action will change the status of this appointed from "new" to "Completed".</p>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Complete Appointment</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,111 @@
+section.content.photos div.row {
+    margin-bottom: 15px;
+}
+
+a.btn.btn-app.text-center {
+    margin: 15px auto;
+    text-align: center;
+    display: block;
+    width: 200px;
+}
+
+hr {
+    border-top: 1px solid rgba(49, 28, 28, 0.25);
+}
+
+.btn-app {
+    min-width: 53px;
+}
+
+li#sign-out a {
+    border: none;
+}
+
+a.btn.btn-default.btn-flat {
+    background-color: #3C8DBC;
+}
+
+.feedback-wrapper{
+    display: none;
+}
+
+.user-photo-admin:hover, .profile-user-img:hover, .gallery-photo:hover {
+    cursor: pointer;
+}
+
+.alert-success.alert-dismissible {
+    position: absolute;
+    z-index: 999999;
+    width: 100%;
+    background-color: rgba(0, 128, 0, 0.9) !important;
+    padding: 20px 40px;
+    color: white;
+    text-align: center;
+    border-radius: 0px;
+}
+
+.alert.alert-fail.alert-dismissible {
+    position: absolute;
+    z-index: 999999;
+    width: 100%;
+    background-color: red;
+    padding: 20px 40px;
+    color: white;
+    text-align: center;
+    border-radius: 0px;
+}
+
+.alert-form.alert-dismissible {
+    position: absolute;
+    z-index: 999999;
+    width: 100%;
+    top: 0px;
+    background-color: rgb(95, 161, 211) !important;
+    padding: 49px 70px;
+    color: white;
+    text-align: center;
+    border-radius: 0px;
+}
+
+.remove-photo-slide{
+    display: none;
+}
+
+#upload-gallery-photo {
+    display: none;
+}
+
+select.btn.btn-default.btn-lg {
+    height: 46px;
+}
+
+.col-xs-12.col-sm-4.col-md-4.col-lg-2.margin-top {
+    margin-top: 10px;
+}
+.btn {margin: 3px;}
+
+.selected-photo {
+    border: 2px solid red;
+}
+#beaf-options{
+    display: none;
+}
+#beaf-options {
+    background: #E6E6E6;
+    padding: 24px;
+    margin: 20px 0px;
+}
+.show-error{
+    border: 2px solid red;
+}
+
+div#no-robots {
+    margin: 0 auto;
+    width: 50%;
+    margin-bottom: 8px;
+}
+
+textarea#appt-details {
+    background-color: white !important;
+    min-height: 200px;
+}

@@ -1,0 +1,250 @@
+{% extends "public_base.twig" %}
+
+{% block title %}{{ data.title }}{% endblock title %}
+{% block content %}
+
+    <article>
+        <section class="section">
+            <div class="background-media" data-0-top-bottom="background-position: 50% 50px" data-start="background-position: 50% -31px" style="background-image: url(assets/images/corporate/p03.jpg); background-repeat:no-repeat; background-size:cover; background-attachment:fixed; background-position: 50% 0%;">
+            </div>
+            <div class="background-overlay" style="background-color: rgba(57,139,202,0.8);"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2 text-center"></div>
+                    <div class="col-md-8 text-center">
+                        <h1 class="element-top-70 text-light os-animation big" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                            Contact us</h1>
+                        <div class="divider-border divider-border-center element-top-10 element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s" style="height:3px;">
+                            <div class="divider-border-inner" style="background:#ffffff; width:60px;"></div>
+                        </div>
+                        <p class="lead text-center center text-light element-bottom-70" data-os-animation="none" data-os-animation-delay="0s">We are a construction company who are passionate about our work.
+                            <br> Drop us a line if you have any requests or you are ready for a new project.</p>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="background-overlay" style="background-color: rgba(255,255,255,0);"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center col-border-bottom">
+                        <div class="row">
+                            <div class="col-md-6 text-left small-screen-center os-animation" data-os-animation="fadeInLeft" data-os-animation-delay="0.3s">
+                                <div class="divider-wrapper">
+                                    <div class="visible-xs element-height-60"></div>
+                                    <div class="visible-sm element-height-60"></div>
+                                    <div class="visible-md element-height-60"></div>
+                                    <div class="visible-lg element-height-60"></div>
+                                </div>
+                                <form id="contactForm" action="{{ siteUrl('/contact') }}" class="contact-form" method="post" novalidate="novalidate">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-icon-group"> <i class="fa fa-user"></i>
+                                                <input class="form-control" id="name" name="name" placeholder="Your name *" type="text" required=""> </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-icon-group"> <i class="fa fa-envelope"></i>
+                                                <input class="form-control" id="email" name="email" placeholder="Your email *" type="email" required=""> </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-icon-group"> <i class="fa fa-pencil"></i>
+                                        <textarea class="form-control" id="message" name="message" placeholder="Your message *" rows="10" required=""></textarea>
+                                    </div>
+                                    <div id="no-robots" class="g-recaptcha" data-sitekey="6LfXoh4TAAAAACgReXrUKL4fnKCk7VMYry2XeMuo"></div>
+                                    <div class="text-center">
+                                        <input id="submitBtn" type="submit" value="Send email" class="btn btn-primary"> </div>
+                                    <div class="messages text-center"></div>
+                                </form>
+                                <div class="divider-wrapper">
+                                    <div class="visible-xs element-height-60"></div>
+                                    <div class="visible-sm element-height-60"></div>
+                                    <div class="visible-md element-height-60"></div>
+                                    <div class="visible-lg element-height-60"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 text-left small-screen-left os-animation" data-os-animation="fadeInRight" data-os-animation-delay="0.3s">
+                                <div class="divider-wrapper">
+                                    <div class="visible-xs element-height-60"></div>
+                                    <div class="visible-sm element-height-60"></div>
+                                    <div class="visible-md element-height-60"></div>
+                                    <div class="visible-lg element-height-60"></div>
+                                </div>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6448.010784352193!2d-115.18857326175666!3d36.093356585238936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8c5d6be2f7d67%3A0x925876e5decfc9a1!2s3280+W+Hacienda+Ave%2C+Las+Vegas%2C+NV+89118!5e0!3m2!1sen!2sus!4v1463094376306" width="600" height="335" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                <div class="divider-wrapper">
+                                    <div class="visible-xs element-height-60"></div>
+                                    <div class="visible-sm element-height-60"></div>
+                                    <div class="visible-md element-height-60"></div>
+                                    <div class="visible-lg element-height-60"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="row staff-list-container list-container element-bottom-50 element-top-30">
+                            {% for person in data.team %}
+                                <div class="figure col-md-4 fade-in element-bottom-20 figcaption-bottom text-left fade-in os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s">
+                                    <div class="figure-image"> <img alt="{{ person.alt }}" src="{{ person.src }}">
+
+                                    </div>
+                                    <div class="figure-caption text-left">
+                                        <h3 class="figure-caption-title">
+                                            <strong>{{ person.strong }}</strong>
+                                            <span>{{ person.span }}</span>
+                                        </h3>
+                                        <p class="figure-caption-description">{{ person.p }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="background-media" data-0-top-bottom="background-position: 50% 50px" data-start="background-position: 50% -31px" style="background-image: url(assets/images/corporate/top-slider/photo3.jpg); background-repeat:no-repeat; background-size:cover; background-attachment:fixed; background-position: 50% 0%;">
+            </div>
+            <div class="background-overlay grid-overlay-0" style="background-color: rgba(57,139,202,0.9);"></div>
+            <div class="container-fullwidth container-vertical-middle">
+                <div class="row vertical-middle">
+                    <div class="col-md-3 text-center" style="background:rgba(0, 0, 0, 0.2);">
+                        <div class="divider-wrapper">
+                            <div class="visible-xs element-height-40"></div>
+                            <div class="visible-sm element-height-40"></div>
+                            <div class="visible-md element-height-40"></div>
+                            <div class="visible-lg element-height-40"></div>
+                        </div> <i class="fa fa-home text-light" style="font-size:24px"></i>
+                        <p class="lead text-center center text-light element-top-20 element-bottom-20 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s"> <a href="{{ siteUrl('/') }}">Nova Interiors
+                            <br> Las Vegas NV</a></p>
+                        <div class="divider-wrapper">
+                            <div class="visible-xs element-height-30"></div>
+                            <div class="visible-sm element-height-30"></div>
+                            <div class="visible-md element-height-30"></div>
+                            <div class="visible-lg element-height-30"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center small-screen-default" style="background:rgba(0, 0, 0, 0.15);">
+                        <div class="divider-wrapper">
+                            <div class="visible-xs element-height-40"></div>
+                            <div class="visible-sm element-height-40"></div>
+                            <div class="visible-md element-height-40"></div>
+                            <div class="visible-lg element-height-40"></div>
+                        </div> <i class="fa fa-envelope text-light" style="font-size:24px"></i>
+                        <p class="lead text-center center text-light element-top-20 element-bottom-20 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.2s"> <a href="mailto:dimor22@gmail.com">{{ header_email }}</a>
+                            <br> Drop us a line</p>
+                        <div class="divider-wrapper">
+                            <div class="visible-xs element-height-30"></div>
+                            <div class="visible-sm element-height-30"></div>
+                            <div class="visible-md element-height-30"></div>
+                            <div class="visible-lg element-height-30"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center small-screen-default" style="background:rgba(0, 0, 0, 0.1);">
+                        <div class="divider-wrapper">
+                            <div class="visible-xs element-height-40"></div>
+                            <div class="visible-sm element-height-40"></div>
+                            <div class="visible-md element-height-40"></div>
+                            <div class="visible-lg element-height-40"></div>
+                        </div> <i class="fa fa-facebook text-light" style="font-size:24px"></i>
+                        <p class="lead text-center center text-light element-top-20 element-bottom-20 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.3s"> <a href="https://www.facebook.com/profile.php?id=100008806451028" target="_blank">visit our page<br>
+                                on facebook</a></p>
+                        <div class="divider-wrapper">
+                            <div class="visible-xs element-height-30"></div>
+                            <div class="visible-sm element-height-30"></div>
+                            <div class="visible-md element-height-30"></div>
+                            <div class="visible-lg element-height-30"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center small-screen-default" style="background:rgba(0, 0, 0, 0.05);">
+                        <div class="divider-wrapper">
+                            <div class="visible-xs element-height-40"></div>
+                            <div class="visible-sm element-height-40"></div>
+                            <div class="visible-md element-height-40"></div>
+                            <div class="visible-lg element-height-40"></div>
+                        </div> <i class="fa fa-twitter text-light" style="font-size:24px"></i>
+                        <p class="lead text-center center text-light element-top-20 element-bottom-20 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.4s"> <a href="https://twitter.com/Nova_Interiors" target="_blank">follow us on
+                                twitter<br>
+                                for the latest updates</a></p>
+                        <div class="divider-wrapper">
+                            <div class="visible-xs element-height-30"></div>
+                            <div class="visible-sm element-height-30"></div>
+                            <div class="visible-md element-height-30"></div>
+                            <div class="visible-lg element-height-30"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+{% endblock content %}
+
+{% block extrajs %}
+
+    <script>window.map = {
+            map_type: 'ROADMAP',
+            map_zoom: 15,
+            map_style: 'blackwhite',
+            map_scrollable: 'on',
+            marker: 'show',
+            label: ['Nova Interiors, Suite 208  '],
+            address: '',
+            latlng : ['36.0939548,-115.1866099,17'],
+            center_latlng: '',
+            markerURL: 'assets/images/marker.png',
+            auto_center: true,
+        };</script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="assets/js/map.min.js"></script>
+
+    <!-- app specific js -->
+    <script src="public/js/app.js"></script>
+
+    <!-- form validation -->
+    <script>
+
+        function validateEmail(email) {
+            var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            return emailReg.test( email );
+        }
+
+        $('#submitBtn').click(function (e) {
+            e.preventDefault();
+            $('input').css('border', '1px solid rgba(0, 0, 0, 0.1)');
+
+            var name = $('#name');
+            var email = $('#email');
+            var message = $('#message');
+            var error = false;
+
+            if (name.val().length === 0){
+                name.css('border', '2px solid #398BCA');
+                error = true;
+            }
+            if (email.val().length === 0 || ! validateEmail(email.val()) ){
+                email.css('border', '2px solid #398BCA');
+                error = true;
+            }
+            if (message.val().length === 0){
+                message.css('border', '2px solid #398BCA');
+                error = true;
+            }
+            if (!error) {
+                $('#contactForm').submit();
+                $('#submitBtn').attr("value", "Sending...");
+            }
+        });
+
+
+    </script>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+{% endblock %}

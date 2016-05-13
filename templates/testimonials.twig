@@ -1,0 +1,67 @@
+{% extends "public_base.twig" %}
+
+{% block title %}{{ data.title }}{% endblock title %}
+
+{% block content %}
+
+<article>
+
+
+    <section class="section text-light">
+        <div class="background-overlay" style="background-color: rgba(48,60,64,1);"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center element-top-70 element-bottom-40 os-animation big hairline" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                        Testimonials</h1>
+                    <div class="element-top-20 element-bottom-70 text-center os-animation flexslider feature-slider" data-flex-animation="slide" data-flex-controls="show" data-flex-controls-position="outside" data-flex-controlsalign="center"
+                         data-flex-directions="hide" data-flex-slideshow="true" data-flex-speed="7000" data-os-animation="fadeIn" data-os-animation-delay="0s" id="flexslider-35">
+                        <ul class="slides">
+                            {% for testimonial in data.testimonials %}
+                            <li>
+                                <blockquote>
+                                    <p>{{ testimonial.body }}</p>
+                                    <div class="box box-small box-round">
+                                        <div class="box-dummy"></div>
+                                        <div class="box-inner"><img alt="team16-notinclude" class="attachment-thumbnail" height="150" src="photos/{{ testimonial.photo }}" width="150"></div>
+                                    </div>
+                                    <footer> {{ testimonial.owner }}  </footer>
+                                </blockquote>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="background-overlay" style="background-color: rgba(48,60,64,0);"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center element-top-70 element-bottom-40 text-normal os-animation big hairline" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                        All Testimonials</h1>
+                    <div class="list-container row element-top-20 element-bottom-70">
+                        {% for testimonial in data.testimonials %}
+                        <div class="col-md-6">
+                            <blockquote class="blockquote-list">
+                                <div class="box box-small box-round">
+                                    <div class="box-dummy"></div>
+                                    <div class="box-inner"><img alt="team16-notinclude" class="attachment-thumbnail" height="150" src="photos/{{ testimonial.photo }}" width="150"></div>
+                                </div>
+                                <p>{{ testimonial.body }}</p>
+                                <footer> {{ testimonial.owner }}  </footer>
+                            </blockquote>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
+
+{% endblock content %}
+
+{% block extrajs %}{% endblock %}

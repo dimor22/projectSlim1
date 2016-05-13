@@ -12,112 +12,412 @@
 {% block content %}
         <!-- Main content -->
         <section class="content photos">
+            {% include 'admin/modals/gallery_photo_options.twig' %}
+            {% include 'admin/modals/add_album.twig' %}
+            {% include 'admin/modals/delete_album.twig' %}
+            {% include 'admin/modals/add_before_photo.twig' %}
+            {% include 'admin/modals/add_after_photo.twig' %}
+            {% include 'admin/modals/delete_beaf.twig' %}
 
             <div class="row">
-                <div class="col-xs-12">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputFile">Upload Photo - {{ adminName }}</label>
-                            <input type="file" id="exampleInputFile">
-                            <p class="help-block">Example block-level help text here.</p>
-                        </div>
-
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </form>
-                    <!-- /.box -->
-                </div>
+                <a class="btn btn-app text-center btn-flat" data-toggle="modal" data-target="#add-album">
+                    <i class="fa fa-plus"></i> New Photo Album
+                </a>
             </div>
             <hr/>
-            <div class="row">
-                <div class="col-xs-12">
-                    <!-- bathroom -->
-                    <div class="box box-default collapsed-box">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Bathroom </h3>
+            <h3>Choose Photo Album</h3>
+            <form id="album-list-form" method="post" action="">
+                <select class="form-control" name="album">
+                    <option value="none">- Choose Album - </option>
+                    {% for album in albums %}
+                        <option value="{{ album.name }}">{{ album.name }}</option>
+                    {% endfor %}
+                </select>
+            </form>
 
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                                </button>
-                            </div>
-                            <!-- /.box-tools -->
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body" style="none;">
-                            <div class="row">
-                                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><img src="../photos/b-photo1.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><img src="../photos/b-photo2.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><img src="../photos/b-photo3.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><img src="../photos/b-photo4.jpg" class="img-responsive"/> </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-3"><img src="../photos/b-photo1.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/b-photo2.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/b-photo3.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/b-photo4.jpg" class="img-responsive"/> </div>
-                            </div>
-                        </div>
-                        <!-- /.box-body -->
+            <hr/>
+
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <div class="row">
+                        <div class="col-xs-12 text-center"><h2>{{ album.name | capitalize }} Album</h2></div>
                     </div>
-                    <!-- bedroom -->
-                    <div class="box box-default collapsed-box">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Bedroom </h3>
-
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                                </button>
-                            </div>
-                            <!-- /.box-tools -->
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body" style="display: none;">
-                            <div class="row">
-                                <div class="col-xs-3"><img src="../photos/bed-photo1.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/bed-photo2.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/bed-photo3.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/bed-photo4.jpeg" class="img-responsive"/> </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-3"><img src="../photos/bed-photo1.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/bed-photo2.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/bed-photo3.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/bed-photo4.jpeg" class="img-responsive"/> </div>
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <div class="btn-group">
+                                <button id="add-gallery-photo" type="button" class="btn btn-success btn-flat btn-lg">Add Photo</button>
+                                <button type="button" class="btn btn-danger btn-flat btn-lg delete-album-btn" data-toggle="modal" data-target="#delete-album" id="{{ album.id }}">Delete This Album</button>
                             </div>
                         </div>
-                        <!-- /.box-body -->
                     </div>
-                    <!-- kitchen -->
-                    <div class="box box-default collapsed-box">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Kitchen </h3>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <form id="upload-gallery-photo" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="album" value="{{ album.name | capitalize }}"/>
+                                <div class="form-group">
+                                    <label for="gallery-photo">Upload Photo</label>
+                                    <input type="file" id="gallery-photo" name="gallery-photo">
+                                    <p class="help-block">Upload instructions explained here.</p>
+                                </div>
+                                <button type="submit" class="btn btn-default btn-flat btn-lg">Upload</button>
+                            </form>
+                        </div>
 
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                                </button>
-                            </div>
-                            <!-- /.box-tools -->
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body" style="display: none;">
-                            <div class="row">
-                                <div class="col-xs-3 photo-frame"><img src="../photos/k-photo1.jpg" class="img-responsive photo"/> </div>
-                                <div class="col-xs-3"><img src="../photos/k-photo2.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/k-photo3.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/k-photo4.jpg" class="img-responsive"/> </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-3"><img src="../photos/k-photo1.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/k-photo2.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/k-photo3.jpg" class="img-responsive"/> </div>
-                                <div class="col-xs-3"><img src="../photos/k-photo4.jpg" class="img-responsive"/> </div>
-                            </div>
-                        </div>
-                        <!-- /.box-body -->
                     </div>
                 </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    {% for photos in gallery %}
+                        <div class="row">
+                            {% for photo in photos %}
+                            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                <img src="../photos/{{ photo.name }}"
+                                     class="img-responsive gallery-photo"
+                                     data-toggle="modal"
+                                     data-target="#gallery-photo-options"
+                                     id="gallery-{{ photo.id }}"
+                                />
+                            </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- /.box-body -->
+            </div>
+
+            <hr/>
+
+
+            <div class="box box-solid">
+                <div class="box-header with-border text-center">
+                    <h2>Slider Photos</h2>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+
+                    {% for photos in slider %}
+                                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                    <img src="../photos/{{ photos.name }}"
+                                         class="img-responsive gallery-photo inSlide"
+                                         data-toggle="modal"
+                                         data-target="#gallery-photo-options"
+                                         id="gallery-{{ photos.id }}"
+                                    />
+                                </div>
+                    {% endfor %}
+                    </div>
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+
+            <div class="box box-solid">
+                <div class="box-header with-border text-center">
+                    <h2>Before and After Photos</h2>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body text-center">
+                    <button type="button" id="show-beaf-options" class="btn btn-success btn-flat btn-lg">Add Before / After</button>
+                    <div id="beaf-options">
+                        <select id="beaf-category" name="category" class="btn btn-default btn-lg">
+                            <option value="none">- Category - </option>
+                            {% for album in albums %}
+                                <option value="{{ album.name }}">{{ album.name | capitalize }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="btn-group">
+                            <form id="add-beaf-form" action="" method="post">
+                                <button type="button" id="add-before-photo-btn" class="btn btn-default btn-flat btn-lg" data-toggle="modal" data-target="#add-before-photo">Add Before Photo</button>
+                                <button type="button" id="add-after-photo-btn" class="btn btn-default btn-flat btn-lg" data-toggle="modal" data-target="#add-after-photo">Add After Photo</button>
+                                <button type="submit" id="create-beaf" class="btn btn-success btn-flat btn-lg">Create</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-5"><p>BEFORE</p></div>
+                        <div class="col-xs-5"><p>AFTER</p></div>
+                        <div class="col-xs-2"><p>OPTIONS</p></div>
+                    </div>
+
+                    <!-- before after photo row -->
+                    {%  for beaf in beafs %}
+                    <div class="row photo-set">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <img src="../photos/{{ beaf.before }}" class="img-responsive"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <img src="../photos/{{ beaf.after }}" class="img-responsive"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 margin-top">
+                            <button type="button" class="btn btn-default btn-flat btn-lg">Edit</button>
+                            <button type="button" id="beafId-{{ beaf.id }}" class="btn btn-danger btn-flat btn-lg delete-beaf-btn" data-toggle="modal" data-target="#delete-beaf">Delete</button>
+                            <button type="button" class="btn btn-warning btn-flat btn-lg">{{ beaf.category }}</button>
+                        </div>
+                    </div>
+                    <hr/>
+                    {% endfor %}
+
+                </div>
+                <!-- /.box-body -->
             </div>
 
 
         </section>
         <!-- /.content -->
 {% endblock content %}
+
+{% block js %}
+
+    <script>
+        // validate album name is not duplicated
+        $('#submit-album-btn').click(function (e) {
+            e.preventDefault();
+            var validated = true;
+            // get all option names
+            $.each($('option'), function (index, value) {
+                if ( value.text === $('#albumName').val().toLowerCase()) {
+                    $('.feedback-wrapper').show();
+                    $('#album-validation-error').text('Album already exists');
+                    validated = false;
+                }
+            });
+
+            if ($('#albumName').val().length <= 0 ){
+                validated = false;
+                $('.feedback-wrapper').show();
+                $('#album-validation-error').text('Type something');
+            }
+
+            if (validated) {
+                $('#add-album-form').submit();
+            }
+        });
+
+
+        // reload page when different album is selected
+        $('#album-list-form').change(function () {
+            $(this).submit();
+        });
+
+        // Add photo to gallery
+        $('#add-gallery-photo').click(function () {
+            $('#upload-gallery-photo').toggle();
+        });
+
+        // Add photo to slider
+
+        $('#add-photo-slide').click( function(){
+            $('<input>').attr({
+                type: 'hidden',
+                id: 'option',
+                name: 'option',
+                value: 'add'
+            }).appendTo('#change-photo-form');
+
+            $('#change-photo-form').submit();
+        });
+
+        // Remove photo from slider
+        $('#remove-photo-slide').click( function(){
+            $('<input>').attr({
+                type: 'hidden',
+                id: 'option',
+                name: 'option',
+                value: 'remove'
+            }).appendTo('#change-photo-form');
+
+            $('#change-photo-form').submit();
+        });
+
+
+        // change testimonial photo
+
+        $('.gallery-photo').click(function(){
+            var photoId = $(this).attr('id');
+            var photoIdNumber = photoId.substr(photoId.indexOf("-") + 1);
+            var inSlide = $(this).hasClass('inSlide');
+            $.ajax({
+                method: "POST",
+                url: "../ajax/gallery.php",
+                data: { galleryPhoto: photoIdNumber },
+                error: function(){ console.log('there was an error')},
+                success: function(data){
+                    userObj = JSON.parse(data);
+                    $('#gallery-photo-preview').attr('src', '../photos/' + userObj[0].name);
+                    $('#single-gallery-photo').attr('href', '../photos/' + userObj[0].name);
+                    $('#gallery-photo-id').val(userObj[0].id);
+                    if (inSlide) {
+                        $('#add-photo-slide').hide();
+                        $('#remove-photo-slide').show();
+                    } else {
+                        $('#add-photo-slide').show();
+                        $('#remove-photo-slide').hide();
+                    }
+                    console.log(inSlide);
+
+                }
+            });
+        });
+
+        // delete album
+
+        $('.delete-album-btn').click( function(){
+            if ($(this).attr('id')){
+                $("input:hidden[name=album-id]").val($(this).attr('id'));
+            }
+        });
+
+        // BEFORE AND AFTER PHOTOS
+        //======================================
+
+        var category;
+        var beforePhoto;
+        var afterPhoto;
+
+        // get category
+        function getCategory(){
+            category = $('#beaf-category').val();
+        }
+        // adds class to photo clicked
+        function selectPhoto(targetedClass, option) {
+            console.log('selectPhoto is hit');
+
+            $(targetedClass).click(function () {
+                if ($('.' + option + '-photo').hasClass('selected-photo')) {
+                    $('.selected-photo').removeClass('selected-photo');
+                }
+                $(this).toggleClass('selected-photo');
+
+                if (option == 'before') {
+                    beforePhoto = $(this).attr('src');
+                } else if (option == 'after') {
+                    afterPhoto = $(this).attr('src');
+                }
+
+            });
+        }
+
+        // populate modals "add_before_photo" and "add_after_photo" when their btns are clicked
+        function createPhotos(photoClass, photos){
+            // clear all rows
+            $("#modal-show-before-photo .row").remove();
+
+            var rows = 0;
+            if (photos.length < 4) {
+                rows = 1;
+            } else {
+                rows = Math.ceil(photos.length/4);
+            }
+            var photoIndex = 0;
+            for ( var i = 0; i < rows; i++) {
+                var rowDiv = $("<div></div>");
+                $(rowDiv).attr('class','row');
+                $('#modal-show-' + photoClass).prepend(rowDiv);
+                    for (var e = 0; e < 4; e++) {
+                        if (photoIndex < photos.length) {
+                            var photo = $("<img/>");
+                            photo = photo.attr('src', '../photos/' + photos[photoIndex].name);
+                            photo = photo.attr('class', 'img-responsive');
+                            photo = photo.addClass(photoClass);
+                            var div = $("<div></div>");
+                            div = div.attr('class', 'col-xs-3');
+                            var row = div.html(photo);
+                            rowDiv.append(row);
+                            photoIndex++;
+                        } else {
+                            continue;
+                    }
+                }
+            }
+        }
+
+        $('#add-before-photo-btn').click(function () {
+            getCategory();
+            if (category !== 'none'){
+                $.ajax({
+                    method: "POST",
+                    url: "../ajax/get_category_photos.php",
+                    data: { category: category },
+                    error: function(){ console.log('there was an error loading ajax')},
+                    success: function(data){
+                        var photos = JSON.parse(data);
+                        createPhotos('before-photo', photos);
+                        selectPhoto('.before-photo', 'before');
+                    }
+                });
+            } else {
+                console.log('select a valid category');
+            }
+        });
+        $('#add-after-photo-btn').click(function () {
+            getCategory();
+            if (category !== 'none'){
+                $.ajax({
+                    method: "POST",
+                    url: "../ajax/get_category_photos.php",
+                    data: { category: category },
+                    error: function(){ console.log('there was an error loading ajax')},
+                    success: function(data){
+                        var photos = JSON.parse(data);
+                        createPhotos('after-photo', photos);
+                        selectPhoto('.after-photo', 'after');
+                    }
+                });
+            } else {
+                console.log('select a valid categrory');
+            }
+        });
+
+        $('#beaf-category').change(function () {
+           getCategory();
+        });
+
+        $('.before-photo').click( function(){
+            selectPhoto('.before-photo', 'before');
+        });
+
+
+        // create before and after photo set
+        $('#create-beaf').click(function (e) {
+            e.preventDefault;
+            $('.btn-flat').removeClass('show-error');
+
+            if (typeof(category) !== 'undefined' && typeof(beforePhoto) !== 'undefined' && typeof(afterPhoto) !== 'undefined') {
+                $.ajax({
+                    method: "POST",
+                    url: "../ajax/beaf.php",
+                    data: { before: beforePhoto, after: afterPhoto, category: category },
+                    error: function(){ console.log('there was an error loading ajax')},
+                    success: function(data){
+                        $('#add-beaf-form').submit();
+                    }
+                });
+            } else {
+                if (typeof(category) == 'undefined'){
+                    $('#beaf-category').addClass('show-error');
+                }
+                console.log('something went wrong with the photo selection');
+            }
+            return false;
+        });
+
+        // delete b eaf
+
+        $('.delete-beaf-btn').click( function(){
+            if ($(this).attr('id')){
+                var beafElement = $(this).attr('id');
+                var beafId = beafElement.substr(beafElement.indexOf("-") + 1);
+                $("input:hidden[name=beaf-id]").val(beafId);
+            }
+        });
+
+        // show beaf options
+
+        $('#show-beaf-options').click(function () {
+           $('#beaf-options').fadeToggle();
+        });
+
+    </script>
+
+{% endblock js %}
