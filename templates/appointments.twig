@@ -164,6 +164,10 @@
                                     <label for="appt-email">Email</label>
                                     <input type="email" name="appt-email" class="form-control" id="appt-email" placeholder="Email is optional">
                                 </div>
+                                <div class="form-group">
+                                    <label for="appt-details">Tell us about your project</label>
+                                    <textarea name="appt-details" class="form-control" id="appt-details"></textarea>
+                                </div>
                                 <a href="#appt-top-page-title" class="btn btn-default scroll-to-id" id="submit-info" data-os-animation-delay="0.2s">Review <i class="fa fa-check-square-o" data-animation="none"></i></a>
                             </div>
                         </div>
@@ -184,7 +188,8 @@
                             <div class="col-text-1 text-normal  element-top-0 element-bottom-0" data-os-animation="none" data-os-animation-delay="0s">
                                 <p>Date: <strong id="review-date"></strong>
                                     <br /> At: <strong id="review-time"></strong>
-                                    <br /> Product Interest: <strong id="review-product"></strong><br /><br /><br /></p>
+                                    <br /> Product Interest: <strong id="review-product"></strong>
+                                    <br />About Your Project: <strong id="review-details"></strong><br /><br /></p>
                             </div>
                         </div>
                     </div>
@@ -247,7 +252,8 @@
                 city: '',
                 state: '',
                 zip: '',
-                email: ''
+                email: '',
+                details: ''
             },
             init: function () {
                 // show only step 1
@@ -336,6 +342,7 @@
                         $('#review-state').text(appt.info.state);
                         $('#review-zip').text(appt.info.zip);
                         $('#review-email').text(appt.info.email);
+                        $('#review-details').text(appt.info.details);
                         appt.updateNavigation(3);
                     } else {
                         $('#info-form-error').show();
@@ -385,6 +392,7 @@
                     $('#review-date').text(appt.date);
                     $('#review-time').text(appt.time);
                     $('#review-product').text(appt.product);
+                    $('#review-details').text(appt.info.details);
                 }
 
             },
@@ -489,7 +497,7 @@
                     error: function(){ console.log('there was an error')},
                     success: function(data){
                         var response = JSON.parse(data);
-                        cl(response);
+
                         appt.generateTimes(response);
                     }
                 })
@@ -510,7 +518,7 @@
                     this.product.push(product);
                 }
 
-                cl('products --> ' + this.product);
+
             },
             setInfo: function () {
                 appt.info.name = $('#appt-name').val();
@@ -520,6 +528,7 @@
                 appt.info.state = $('#appt-state').val();
                 appt.info.zip = $('#appt-zip').val();
                 appt.info.email = $('#appt-email').val();
+                appt.info.details = $('#appt-details').val();
             },
             saveAppt: function (apptId) {
                 $.ajax({
@@ -535,7 +544,8 @@
                         city: appt.info.city,
                         state: appt.info.state,
                         zip: appt.info.zip,
-                        email: appt.info.email
+                        email: appt.info.email,
+                        details: appt.info.details
                     },
                     error: function(){ console.log('there was an error')},
                     success: function(data){

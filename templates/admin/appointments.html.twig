@@ -69,6 +69,7 @@
                                 <th>Zip</th>
                                 <th>Phone</th>
                                 <th>Email</th>
+                                <th>Description</th>
                                 <th>Created</th>
                                 <th>Action</th>
                             </tr>
@@ -84,6 +85,7 @@
                                     <td>{{ appt.zip }}</td>
                                     <td>{{ appt.phone }}</td>
                                     <td>{{ appt.email }}</td>
+                                    <td>{{ appt.details }}</td>
                                     <td>{{ appt.created_at }}</td>
                                     {% if appt.completed_at == "0000-00-00 00:00:00" %}
                                         <td class="new-appt"><button class="btn btn-warning btn-flat btn-sm done-appt-btn" data-toggle="modal" data-target="#done-appt" id="{{ appt.id }}">New</button></td>

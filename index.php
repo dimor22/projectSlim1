@@ -377,6 +377,7 @@ $app->post('/appointments', function() use ($app){
 	$appt->zip = $params['zip'];
 	$appt->phone = $params['phone'];
 	$appt->email = $params['email'];
+	$appt->details = $params['details'];
 	$appt->save();
 
 	// Send email
@@ -403,7 +404,8 @@ $app->post('/appointments', function() use ($app){
 						<li><strong>Zip: </strong>'. $params['zip'] .'</li>
 						<li><strong>Date: </strong>'. $params['date'] .'</li>
 						<li><strong>Time: </strong>'. $params['time'] .'</li>
-						<li><strong>Product: </strong>'. $params['product'] .'</li></ul>');
+						<li><strong>Product: </strong>'. $params['product'] .'</li>
+						<li><strong>Details about this project: </strong>'. $params['details'] .'</li></ul>');
 	$mail->AltBody = $params['name'] . ' ' . $params['phone'] . ' ' . $params['email'];
 	if (!$mail->send()) {
 		$app->flash( 'danger', 'Sorry, your message could not be sent at this time.' );
@@ -931,6 +933,7 @@ $app->group('/admin', function () use ($app) {
 			$appt->zip = $params['zip'];
 			$appt->phone = $params['phone'];
 			$appt->email = $params['email'];
+			$appt->details = $params['details'];
 			$appt->save();
 
 			$app->redirect('appointments');

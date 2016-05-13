@@ -105,3 +105,7 @@ div#no-robots {
     margin-bottom: 8px;
 }
 
+textarea#appt-details {
+    background-color: white !important;
+    min-height: 200px;
+}
