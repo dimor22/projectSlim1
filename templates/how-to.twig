@@ -1,0 +1,68 @@
+{% extends "public_base.twig" %}
+
+{% block title %}{{ data.title }}{% endblock title %}
+
+{% block content %}
+
+    <article>
+
+        <section class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="portfolio-container element-top-50 element-bottom-50">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="portfolio-header clearfix">
+                                        <h3 class="portfolio-title pull-left"><strong>View /</strong>
+                                            <span>All</span>
+                                        </h3>
+                                        <div class="portfolio-filters pull-right">
+
+                                            <div class="btn-group">
+                                                <button class="btn btn-primary dropdown-toggle btn-icon-right btn-sm" data-toggle="dropdown" type="button"><b>Order</b> <span>
+                                                    <i class="fa fa-angle-down"></i>
+                                                </span> </button>
+                                                <ul class="dropdown-menu pull-right">
+                                                    <li> <a class="portfolio-order" data-value="true">Ascending</a> </li>
+                                                    <li> <a class="portfolio-order" data-value="false">Descending</a> </li>
+                                                </ul>
+                                            </div>
+                                            <div class="btn-group">
+                                                <button class="btn btn-primary dropdown-toggle btn-icon-right btn-sm" data-toggle="dropdown" type="button"><b>Category</b> <span>
+                                                    <i class="fa fa-angle-down"></i>
+                                                </span> </button>
+                                                <ul class="dropdown-menu pull-right">
+                                                    <li> <a class="portfolio-filter" data-filter="*">All</a> </li>
+                                                    {% for category in data.video_categories %}
+                                                        <li> <a class="portfolio-filter" data-filter=".filter-{{ category }}">{{ category | capitalize }}</a> </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portfolio masonry no-transition" data-col-lg="4" data-col-md="4" data-col-sm="2" data-col-xs="2" data-layout="fitRows" data-padding="20">
+
+                                {% for video in data.videos %}
+
+                                    <div class="masonry-item portfolio-item filter-{{ video.category | lower }}" data-menu-order="1" data-date="" data-title="Freshquote co" data-comments="0">
+                                        <div class="figure portfolio-os-animation image-filter-none image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="fadeIn" data-os-animation-delay="0.3s">
+                                            <iframe width="100%" height="260" src="{{ video.link }}" frameborder="0" allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+
+{% endblock content %}
+
+{% block extrajs %}{% endblock %}

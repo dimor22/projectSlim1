@@ -189,8 +189,8 @@ $app->get('/', function() use ($app, $twig) {
 					]
 				],
 				'strong'    =>  'Omar',
-				'span'      =>  'Director',
-				'p'         =>  ' Efficiently unleash cross-media information without cross-media value. Quickly maximize deliverables schemas.'
+				'span'      =>  'Project manager',
+				'p'         =>  'Oversee and direct construction projects from beginning to completion and review the work progress on daily basis'
 			],
 			[
 				'delay' =>  '0.3s',
@@ -464,11 +464,82 @@ $app->get('/gallery', function () use ($app) {
 	$albums = ORM::for_table('albums')->order_by_asc('name')->find_array();
 
 	$pageData = [
-		'title' =>  'Gallery Page',
-		'photos' => $photos,
-		'albums'    => $albums
+		'title' =>  'How to Page',
+
 	];
-	$app->render('gallery.twig', ['data'   =>  $pageData, 'state6'  => 'active']);
+	$app->render('gallery.twig', ['data'   =>  $pageData, 'state8'  => 'active']);
+});
+
+$app->get('/how-to', function () use ($app) {
+	$videos =  [
+		[
+			'category'  =>  'floor',
+			'link'  => 'https://www.youtube.com/embed/V_7ZoaIWRKE'
+		],
+		[
+			'category'  =>  'floor',
+			'link'  => 'https://www.youtube.com/embed/-NWM4Z1bHEs'
+		],
+		[
+			'category'  =>  'floor',
+			'link'  => 'https://www.youtube.com/embed/T0ZbTT_8h1A'
+		],
+		[
+			'category'  =>  'floor',
+			'link'  => 'https://www.youtube.com/embed/VpzPLIXFkHU'
+		],
+		[
+			'category'  =>  'walls',
+			'link'  => 'https://www.youtube.com/embed/T0ZbTT_8h1A'
+		],
+		[
+			'category'  =>  'walls',
+			'link'  => 'https://www.youtube.com/embed/VpzPLIXFkHU'
+		],
+		[
+			'category'  =>  'waterproof',
+			'link'  => 'https://www.youtube.com/embed/mG5GIqcYkSs'
+		],
+		[
+			'category'  =>  'waterproof',
+			'link'  => 'https://www.youtube.com/embed/42zc-f_eRIc'
+		],
+		[
+			'category'  =>  'waterproof',
+			'link'  => 'https://www.youtube.com/embed/ZM4YdBZ0Vsc'
+		],
+		[
+			'category'  =>  'grout',
+			'link'  => 'https://www.youtube.com/embed/MCkjCRNESeI'
+		],
+		[
+			'category'  =>  'grout',
+			'link'  => 'https://www.youtube.com/embed/vC4c9vo4T3k'
+		],
+		[
+			'category'  =>  'sealers',
+			'link'  => 'https://www.youtube.com/embed/NDRJG3XcI0w'
+		],
+		[
+			'category'  =>  'countertops',
+			'link'  => 'https://www.youtube.com/embed/5UaeR5NwmHY'
+		],
+		[
+			'category'  =>  'carpet',
+			'link'  => 'https://www.youtube.com/embed/FHOmgqxFhpI'
+		]
+	];
+	foreach($videos as $v){
+		$categories[] = $v['category'];
+	}
+	$unique_categories = array_unique($categories);
+
+	$pageData = [
+		'title' =>  'Gallery Page',
+		'videos' => $videos,
+		'video_categories' => $unique_categories
+	];
+	$app->render('how-to.twig', ['data'   =>  $pageData, 'state8'  => 'active']);
 });
 
 

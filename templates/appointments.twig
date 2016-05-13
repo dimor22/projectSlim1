@@ -454,12 +454,25 @@
             generateTimes: function (times) {
                 var ulElement = $('#time-list');
                 var tds = $('#time-list').children().children();
+                var timesfound = 0;
+
+                // this script finds the appt time twice in order to mark it desabled
                 for ( var i = 0; i < tds.length; i++){
-                    if ( jQuery.inArray($(tds[i]).text(), times) > -1){
+                    // find appt time twice
+                    for ( var j = 0; j < times.length; j++){
+                        if ( $(tds[i]).text() == times[j] ){
+                            timesfound++
+                        }
+                    }
+                    if (timesfound > 1){
                         $(tds[i]).addClass('time-disabled');
-                    } else {
+                    }
+                    else {
                         $(tds[i]).removeClass('time-disabled');
                     }
+
+                    timesfound = 0;
+
                 }
             },
             showProduct: function(){
@@ -476,6 +489,7 @@
                     error: function(){ console.log('there was an error')},
                     success: function(data){
                         var response = JSON.parse(data);
+                        cl(response);
                         appt.generateTimes(response);
                     }
                 })
